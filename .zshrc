@@ -26,15 +26,6 @@ exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 export TERM="xterm-256color" # Before sourcing oh-my-zsh
 
 
-# User with skull
-user_with_skull() {
-    echo -n "\ufb8a $(whoami)"
-}
-POWERLEVEL9K_CUSTOM_USER="user_with_skull"
-
-
-
-
 ############ Includes ############
 
 # oh-my-zsh
