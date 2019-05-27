@@ -31,15 +31,10 @@ export TERM="xterm-256color" # Before sourcing oh-my-zsh
 # oh-my-zsh
 # => see under Oh-my-zsh
 
-# zsh-autosuggestions
-include /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh || plugins=($plugins zsh-autosuggestions)
 include '/usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme' || include '/usr/share/powerlevel9k/powerlevel9k.zsh-theme' || export ZSH_THEME=agnoster 
 
 # FZF
 # => see under FZF
-
-# Some nice functions 
-include $HOME/.zshfunc.zsh
 
 # thefuck
 eval $(thefuck --alias)
@@ -58,6 +53,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 HISTSIZE=1000000
 SAVEHIST=1000000
+HISTFILE="$HOME/.zsh_history"
 
 # The list (hash) of commands will be updated for each search by issuing the rehash command. 
 # Disable if file access is slow 
@@ -70,18 +66,54 @@ zstyle ":completion:*:commands" rehash 1
 setopt extendedglob
 
 
+############ Env variables ############
+# make go binaries accessible
+export PATH=$HOME/go/bin:$PATH
+
+export BROWSER="firefox" 
+export XIVIEWER="shotwell"
+
+# Preferred editor for local & root & remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'   # ssh
+elif [[ $USER = "root" ]]; then
+  export EDITOR='vim'   # non ssh but root
+else
+  export EDITOR='subl'  # non ssh and non root
+fi
+
 ############ Plugins ############
-# plugins can be found in $ZSH/plugins/*
-# Custom plugins may be added to $ZSH/custom/plugins/
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(adb colorize git gradle npm pip)
-[[ -d "$ZSH_CUSTOM/plugins/zsh-completions" ]] && plugins=($plugins zsh-completions)
+source /usr/share/zsh/share/antigen.zsh
 
+# Some nice functions 
+include $HOME/.zshfunc.zsh
 
-############ Oh-my-zsh ############
-exportzsh "$HOME/.oh-my-zsh" || exportzsh '/usr/share/oh-my-zsh' || echo "oh-my-zsh not found"
-include $ZSH/oh-my-zsh.sh # after setting plugins 
-BROWSER="firefox" XIVIEWER="shotwell" include $ZSH/plugins/common-aliases/common-aliases.plugin.zsh
+# Load the oh-my-zsh's library
+antigen use oh-my-zsh
+
+antigen bundle adb
+antigen bundle colorize
+antigen bundle command-not-found
+antigen bundle common-aliases
+antigen bundle git
+antigen bundle gradle
+antigen bundle npm
+antigen bundle pip
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Fish-like auto suggestions
+antigen bundle zsh-users/zsh-autosuggestions
+
+# Extra zsh completions
+antigen bundle zsh-users/zsh-completions
+
+# Load the theme
+#antigen theme robbyrussell
+
+# Tell antigen that you're done
+antigen apply
 
 
 ############ FZF ############
@@ -100,22 +132,6 @@ bindkey '^X^R' fzf-history-widget-accept
 # fzf keybindings
 include /usr/share/fzf/key-bindings.zsh
 include /usr/share/fzf/completion.zsh
-
-############ Env variables ############
-# make go binaries accessible
-export PATH=$HOME/go/bin:$PATH
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Preferred editor for local & root & remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'   # ssh
-elif [[ $USER = "root" ]]; then
-  export EDITOR='vim'   # non ssh but root
-else
-  export EDITOR='subl'  # non ssh and non root
-fi
 
 
 ############ Aliases (more special ones first) ############
