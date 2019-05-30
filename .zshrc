@@ -1,6 +1,6 @@
 ############ To install ############
 # antigen:              trizen -S antigen-git            ## https://github.com/zsh-users/antigen
-# purepower:            trizen -S antigen-git            ## https://github.com/romkatv/dotfiles-public/blob/master/.purepower
+# purepower:                                             ## https://github.com/romkatv/dotfiles-public/blob/master/.purepower
 # fzf:                  pacman -S fzf                    ## https://github.com/junegunn/fzf#installation
 # .zshfunc.zsh
 # thefuck:              pacman -S thefuck                ## https://github.com/nvbn/thefuck
@@ -137,7 +137,7 @@ include /usr/share/fzf/completion.zsh
 alias emulator='/opt/android-sdk/tools/emulator'
 
 # start & unlock KeepassXC/Hibiscus with secret-tool
-alias kxc="(secret-tool lookup keepassDB pws | keepassxc --pw-stdin ~/1+3/documents/pws.kdbx &)"
+alias kxc="(secret-tool lookup keepassDB pws | keepassxc --pw-stdin ~/1+3/pws.kdbx &)"
 
 
 ## Projects/Helpers
