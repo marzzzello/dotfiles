@@ -1,7 +1,6 @@
 ############ To install ############
-# oh-my-zsh:            trizen -S oh-my-zsh-git          ## https://github.com/robbyrussell/oh-my-zsh
-# zsh-autosuggestions:  pacman -S zsh-autosuggestions    ## https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-# powerlevel9k:         pacman -S zsh-theme-powerlevel9k ## https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions
+# antigen:              trizen -S antigen-git            ## https://github.com/zsh-users/antigen
+# purepower:            trizen -S antigen-git            ## https://github.com/romkatv/dotfiles-public/blob/master/.purepower
 # fzf:                  pacman -S fzf                    ## https://github.com/junegunn/fzf#installation
 # .zshfunc.zsh
 # thefuck:              pacman -S thefuck                ## https://github.com/nvbn/thefuck
@@ -23,15 +22,9 @@ exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 
 #get emacs tramp working with zsh
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
-export TERM="xterm-256color" # Before sourcing oh-my-zsh
 
 
 ############ Includes ############
-
-# oh-my-zsh
-# => see under Oh-my-zsh
-
-include '/usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme' || include '/usr/share/powerlevel9k/powerlevel9k.zsh-theme' || export ZSH_THEME=agnoster 
 
 # FZF
 # => see under FZF
@@ -70,6 +63,8 @@ setopt extendedglob
 # make go binaries accessible
 export PATH=$HOME/go/bin:$PATH
 
+export TERM="xterm-256color"
+
 export BROWSER="firefox" 
 export XIVIEWER="shotwell"
 
@@ -83,10 +78,10 @@ else
 fi
 
 ############ Plugins ############
-source /usr/share/zsh/share/antigen.zsh
-
 # Some nice functions 
 include $HOME/.zshfunc.zsh
+
+source /usr/share/zsh/share/antigen.zsh
 
 # Load the oh-my-zsh's library
 antigen use oh-my-zsh
@@ -104,13 +99,15 @@ antigen bundle pip
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Fish-like auto suggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=1'
 antigen bundle zsh-users/zsh-autosuggestions
 
 # Extra zsh completions
 antigen bundle zsh-users/zsh-completions
 
 # Load the theme
-#antigen theme robbyrussell
+antigen theme romkatv/powerlevel10k
+include ~/.purepower
 
 # Tell antigen that you're done
 antigen apply
@@ -226,3 +223,4 @@ alias proxystop='sudo iptables -t nat -F'
 ###
 
 printFails
+
