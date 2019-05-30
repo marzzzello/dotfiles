@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+# {infoMsg}
+
+import i3
+
+border = i3.filter(focused=True)[0]['border']
+
+if border == "normal":
+  i3.command("border pixel {borderSize}")
+else:
+  i3.command("border normal {borderSize}")
