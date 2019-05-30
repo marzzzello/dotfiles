@@ -1,5 +1,25 @@
 # Dotfiles
 
+## To install
+- dunst
+- i3-gaps
+- i3status-rust
+- rofi
+- wpgtk
+
+Optional:
+- goes16-background
+- himawaripy
+
+
+
+1. Install all: `$aurhelper dunst i3-gaps i3status-rust-git rofi wpgtk-git`
+2. If you want some fancy wallpaper images from the earth in almost realtime then also install `goes16-background-git` and `himawaripy-git`
+3. Install dotfiles like descriped further down.  
+4. Go to your wallpaper folder and generate colorscheme with `wpg -a *` or alternatively do it over the gui with `wpg`.
+5. Set colorscheme with `wpg -s [TAB]`. This also generates all the config files from the templates in `.config/wpg/templates`. So make sure no error message appears and the config files get generated.
+
+
 ## Starting from scratch 
 ```
 git init --bare $HOME/.dotfiles
