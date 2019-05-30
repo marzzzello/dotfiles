@@ -59,7 +59,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show
 bindsym $mod+q exec --no-startup-id rofi-surfraw
-bindsym $mod+m exec --no-startup-id ~/.config/rofi/monitor.sh
+bindsym $mod+m exec --no-startup-id ~/.config/i3/monitor.sh
 
 # change focus
 bindsym $mod+j focus left
