@@ -15,6 +15,7 @@ Optional:
 
 1. Install all: `$aurhelper
 autorandr
+arandr
 awesome-terminal-fonts
 compton
 dino
@@ -47,10 +48,11 @@ ttf-dejavu
 wpgtk-git`  
 Edit PKGBUILD of `i3status-rust-git` and change username of git repo to marzzzello (only if you want [terabyte disk space](https://github.com/marzzzello/i3status-rust/commit/e500745fae3cb486a094e5a6c09cdf1f7338d6ed). Also see [PR](https://github.com/greshake/i3status-rust/pull/392))
 2. If you want some fancy wallpaper images from the earth in almost realtime then also install `goes16-background-git` and `himawaripy-git`
-3. Install dotfiles like descriped further down.  
-4. Go to your wallpaper folder and generate colorscheme with `wpg -a *` or alternatively do it over the gui with `wpg`.
-5. Set GTK theme to `FlatColor` and icon theme to `FlattrColor`. E.g using `lxappearance`.
-6. Set colorscheme with `wpg -s [TAB]`. This also generates all the config files from the templates in `.config/wpg/templates`. So make sure no error message appears and the config files get generated.
+3. Install dotfiles like descriped further down.
+4. Set monitor layout with arandr. If you you want to save multiple different monitor setups have a look at autorandr. With `$mod+m` there is a script to set some basic layouts.
+5. Run `wpg-install.sh -ig` and then go to your wallpaper folder and generate colorscheme with `wpg -a *` or alternatively do it over the gui with `wpg`.
+6. Set GTK theme to `FlatColor` and icon theme to `FlattrColor`. E.g using `lxappearance`.
+7. Set colorscheme with `wpg -s [TAB]`. This also generates all the config files from the templates in `.config/wpg/templates`. So make sure no error message appears and the config files get generated.
 
 
 ## Starting from scratch 
