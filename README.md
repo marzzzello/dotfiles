@@ -53,6 +53,7 @@ Edit PKGBUILD of `i3status-rust-git` and change username of git repo to marzzzel
 5. Run `wpg-install.sh -ig` and then go to your wallpaper folder and generate colorscheme with `wpg -a *` or alternatively do it over the gui with `wpg`.
 6. Set GTK theme to `FlatColor` and icon theme to `FlattrColor`. E.g using `lxappearance`.
 7. Set colorscheme with `wpg -s [TAB]`. This also generates all the config files from the templates in `.config/wpg/templates`. So make sure no error message appears and the config files get generated.
+8. Run `systemctl --user enable --now dunst.service` to enable notifications.
 
 
 ## Starting from scratch 
