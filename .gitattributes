@@ -1,0 +1,8 @@
+.Xresources filter=head
+.config/dunst/dunstrc filter=head
+.config/i3/config filter=head
+.config/i3/toggle-title-bar.py filter=head
+.config/i3status-rust/config.toml filter=head
+.config/polybar/config filter=head
+.config/rofi/config.rasi filter=head
+.config/rofi/theme.rasi filter=head
