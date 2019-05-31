@@ -1,8 +1,8 @@
 # This file will get overwritten by wpgtk because there is a template file under ~/.config/wpg/templates/
 
 [colors]
-	background = "#33352b"
-	foreground = "#fffff7"
+	background = "#2f0744"
+	foreground = "#e8fff9"
 
 [global]
     ### Display ###
@@ -20,7 +20,7 @@
     horizontal_padding = 12
     frame_width = 3
 
-    frame_color = "#6f86b4"
+    frame_color = "#c115b5"
     separator_color = auto
     sort = yes
     idle_threshold = 120
@@ -91,6 +91,6 @@
 [urgency_critical]
     background = colors.background
     foreground = colors.foreground
-    frame_color = "#ab93ba"
+    frame_color = "#d1017d"
     timeout = 0
 
