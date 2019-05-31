@@ -45,7 +45,7 @@ spotify
 terminus-font
 ttf-dejavu
 wpgtk-git`  
-Edit PKGBUILD of `i3status-rust-git`and change username of git repo to marzzzello (only if you want [terabyte disk space](https://github.com/marzzzello/i3status-rust/commit/e500745fae3cb486a094e5a6c09cdf1f7338d6ed). Also see [PR](https://github.com/greshake/i3status-rust/pull/392))
+Edit PKGBUILD of `i3status-rust-git` and change username of git repo to marzzzello (only if you want [terabyte disk space](https://github.com/marzzzello/i3status-rust/commit/e500745fae3cb486a094e5a6c09cdf1f7338d6ed). Also see [PR](https://github.com/greshake/i3status-rust/pull/392))
 2. If you want some fancy wallpaper images from the earth in almost realtime then also install `goes16-background-git` and `himawaripy-git`
 3. Install dotfiles like descriped further down.  
 4. Go to your wallpaper folder and generate colorscheme with `wpg -a *` or alternatively do it over the gui with `wpg`.
