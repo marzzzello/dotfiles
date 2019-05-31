@@ -59,7 +59,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show
 bindsym $mod+q exec --no-startup-id rofi-surfraw
-bindsym $mod+m exec --no-startup-id ~/.config/rofi/monitor.sh
+bindsym $mod+m exec --no-startup-id ~/.config/i3/monitor.sh
 
 # change focus
 bindsym $mod+j focus left
@@ -284,7 +284,7 @@ exec --no-startup-id redshift-gtk
 exec --no-startup-id ~/.config/wpg/wp_init.sh
 
 exec --no-startup-id compton
-exec --no-startup-id bash -c 'secret-tool lookup keepassDB pws | keepassxc --pw-stdin /home/marcel/1+3/documents/pws.kdbx'
+exec --no-startup-id bash -c 'secret-tool lookup keepassDB pws | keepassxc --pw-stdin /home/marcel/1+3/pws.kdbx'
 exec --no-startup-id guake
 exec --no-startup-id light-locker --lock-after-screensaver=10
 exec_always --no-startup-id autorandr --change

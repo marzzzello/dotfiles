@@ -1,4 +1,5 @@
 set runtimepath+=~/.vim_runtime
+set ignorecase
 set hlsearch
 let g:powerline_pycmd="py3"
 source ~/.vim_runtime/vimrcs/basic.vim

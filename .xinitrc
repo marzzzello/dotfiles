@@ -36,7 +36,7 @@ fi
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
 
-# Make sure this is before the 'exec' command or it won't be sourced.
+# source xprofile if existend
 [ -f ~/.xprofile ] && . ~/.xprofile
 
 exec i3
