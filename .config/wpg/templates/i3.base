@@ -58,6 +58,7 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show
+bindsym $alt+Tab exec --no-startup-id rofi -show window
 bindsym $mod+q exec --no-startup-id rofi-surfraw
 bindsym $mod+m exec --no-startup-id ~/.config/i3/monitor.sh
 
