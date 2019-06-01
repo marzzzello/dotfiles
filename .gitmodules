@@ -1,0 +1,3 @@
+[submodule "/home/marcel/.vim_runtime"]
+	path = /home/marcel/.vim_runtime
+	url = git@github.com:amix/vimrc.git
