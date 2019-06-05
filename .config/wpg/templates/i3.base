@@ -265,6 +265,9 @@ for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Gajim"] move to workspace $ws8
 for_window [class="Dino"] move to workspace $ws8
 
+# audio mixer
+for_window [instance = "pavucontrol"] floating enable
+
 # RUBCard Manager -.-
 for_window [class="sun-awt-X11-XFramePeer"] floating enable
 for_window [class="de-rub-dez6a3-cardcertificatemanager-Main"] floating enable
