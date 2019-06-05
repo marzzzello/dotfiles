@@ -164,7 +164,7 @@ fsstud(){
 ### login to login.rub.de even when DNS is not (yet) working
 hirn(){
   local ip=$(curl -s --resolve login.rub.de:443:134.147.64.8 https://login.rub.de/cgi-bin/start \
-  | grep -Po "(?<=ipaddr\" value=\")[0-9\.]*"); 
+      | sed -n 's/.*ipaddr\" value=\"\([0-9\.]*\).*/\1/p');
   local user=$(secret-tool lookup loginID user)
   local password=$(secret-tool lookup loginID pw)
   #echo "ip=$ip, user=$user, password=$password"
