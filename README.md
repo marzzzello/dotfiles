@@ -95,7 +95,6 @@ spotify
 wpgtk-git                    
 xuserrun-dbus-git            
 `  
-Edit PKGBUILD of `i3status-rust-git` and change username of git repo to marzzzello (only if you want [terabyte disk space](https://github.com/marzzzello/i3status-rust/commit/e500745fae3cb486a094e5a6c09cdf1f7338d6ed). Also see [PR](https://github.com/greshake/i3status-rust/pull/392))
 2. If you want some fancy wallpaper images from the earth in almost realtime then also install `goes16-background-git` and `himawaripy-git`
 3. Install dotfiles like descriped further down.
 4. Set monitor layout with arandr. If you you want to save multiple different monitor setups have a look at autorandr. With `$mod+m` there is a script to set some basic layouts.
@@ -136,10 +135,10 @@ dotfiles push -u origin master
 ## Install dotfiles onto a new system
 ```
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-git clone --bare git@gitlab.com:marzzzello/dotfiles.git $HOME/.dotfiles
+git clone --recursive --bare git@gitlab.com:marzzzello/dotfiles.git $HOME/.dotfiles
 
 
-git clone --separate-git-dir=$HOME/.dotfiles git@gitlab.com:marzzzello/dotfiles.git $HOME/dotfiles-tmp
+git clone --recursive --separate-git-dir=$HOME/.dotfiles git@gitlab.com:marzzzello/dotfiles.git $HOME/dotfiles-tmp
 cp ~/dotfiles-tmp/.gitmodules ~  # If you use Git submodules
 rm -r ~/dotfiles-tmp/
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -147,7 +146,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 ### setup script
 ```
-git clone --bare git@gitlab.com:marzzzello/dotfiles.git $HOME/.dotfiles
+git clone --recursive  --bare git@gitlab.com:marzzzello/dotfiles.git $HOME/.dotfiles
 function dotfiles {
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
