@@ -34,6 +34,7 @@ lxsession               | main | Lightweight X11 session manager                
 network-manager-applet  | main | Applet for managing network connections                                                       | to choose network connection
 noto-fonts-emoji        | main | Google Noto emoji fonts                                                                       | emojis :P
 pamixer                 | main | Pulseaudio command-line mixer like amixer                                                     | make sound control keys working
+pavucontrol             | main | PulseAudio Volume Control                                                                     | Sound settings and mixer
 playerctl               | main | mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.    | make music control keys working
 powerline-fonts         | main | patched fonts for powerline                                                                   | more powerline fonts
 python-i3-py            | main | tools for i3 users and developers                                                             | for scripts
@@ -75,6 +76,7 @@ lxsession
 network-manager-applet  
 noto-fonts-emoji        
 pamixer                 
+pavucontrol             
 playerctl               
 powerline-fonts         
 python-i3-py            
