@@ -1,102 +1,109 @@
 # Dotfiles
 
-## To install
-- dunst
-- i3-gaps
-- i3status-rust
-- rofi
-- wpgtk
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/Built-By-hipsters.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/contains-Cat-GIFs.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/fuck-it-ship-it.svg)](https://forthebadge.com)
 
-Optional:
-- goes16-background
-- himawaripy
+
+[![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-fc6d26.svg?style=for-the-badge&logo=gitlab)](https://gitlab.com/marzzzello/dotfiles)
+[![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-4078c0.svg?style=for-the-badge&logo=github)](https://github.com/marzzzello/dotfiles)
+![GitHub](https://img.shields.io/github/license/marzzzello/dotfiles.svg?style=for-the-badge)
+![GitHub](https://img.shields.io/github/commit-activity/w/marzzzello/dotfiles.svg?style=for-the-badge)
+
+## To install
 
 <details>
   <summary>Package list with details</summary>
 
-Package name            | Repo | Package description                                                                           | Needed for
-------------------------|------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------
-arandr                  | main | Provide a simple visual front end for XRandR 1.2.                                             | to set monitor layout with GUI
-autorandr               | main | Auto-detect connected display hardware and load appropiate X11 setup using xrandr             | to set monitor layout automatically e.g. after reboot
-awesome-terminal-fonts  | main | fonts/icons for powerlines                                                                    | powerline font for i3status-rust
-compton                 | main | X compositor that may fix tearing issues                                                      | transparency and smooth transitions
-dunst                   | main | Customizable and lightweight notification-daemon                                              | notifications
-evolution               | main | Manage your email, contacts and schedule                                                      | autostart
-feh                     | main | Fast and light imlib2-based image viewer                                                      | to set wallpaper
-firefox                 | main | Standalone web browser from mozilla.org                                                       | autostart
-gajim                   | main | Full featured and easy to use XMPP (Jabber) client                                            | autostart
-guake                   | main | Drop-down terminal for GNOME                                                                  | autostart
-i3-gaps                 | main | A fork of i3wm tiling window manager with more features, including gaps                       | my window manager
-kdeconnect              | main | Adds communication between KDE and your smartphone                                            | autostart
-light-locker            | main | A simple session locker for LightDM                                                           | screen locker
-lxappearance            | main | Feature-rich GTK+ theme switcher of the LXDE Desktop                                          | to set GTK theme  and icon-set
-lxsession               | main | Lightweight X11 session manager                                                               | needed for programms like e.g. gparted
-network-manager-applet  | main | Applet for managing network connections                                                       | to choose network connection
-noto-fonts-emoji        | main | Google Noto emoji fonts                                                                       | emojis :P
-pamixer                 | main | Pulseaudio command-line mixer like amixer                                                     | make sound control keys working
-pavucontrol             | main | PulseAudio Volume Control                                                                     | Sound settings and mixer
-playerctl               | main | mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.    | make music control keys working
-powerline-fonts         | main | patched fonts for powerline                                                                   | more powerline fonts
-python-i3-py            | main | tools for i3 users and developers                                                             | for scripts
-redshift                | main | Adjusts the color temperature of your screen according to your surroundings.                  | night mode
-rofi                    | main | A window switcher, application launcher and dmenu replacement                                 | launcher, to set theme, to exit i3, for searching the web, ...
-rxvt-unicode            | main | Unicode enabled rxvt-clone terminal emulator (urxvt)                                          | very customizable terminal emulator
-seahorse                | main | GNOME application for managing PGP keys.                                                      | store WiFi and other passwords, includes gnome-keyring as dependency
-terminus-font           | main | Monospace bitmap font (for X11 and console)                                                   | another font
-ttf-dejavu              | main | Font family based on the Bitstream Vera Fonts with a wider range of characters                | main font
-xsettingsd              | main | Provides settings to X11 applications via the XSETTINGS specification                         | for wpgtk to live reload GTK+ theme
-dino                         | AUR | Modern XMPP (Jabber) chat client written in GTK+/Vala                                                                                                                | autostart
-gnome-terminal-transparency  | AUR | The GNOME Terminal Emulator, with background transparency                                                                                                            | terminal emulator
-i3status-rust-git            | AUR | Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust                              | status bar
-nerd-fonts-complete          | AUR | Iconic font aggregator, collection, and patcher. 40+ patched fonts, over 3,600 glyph/icons, includes popular collections such as Font Awesome & fonts such as Hack   | more fonts
-rofi-surfraw-git             | AUR | Universal tool to search the internet                                                                                                                                | web search with rofi
-rofimoji-git                 | AUR | A simple emoji picker for rofi                                                                                                                                       | emoji picker
-spotify                      | AUR | A proprietary music streaming service                                                                                                                                | autostart
-wpgtk-git                    | AUR | A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme                                                                                   | to generate and set themes based on wallpapers and to generate the configs from the templates
-xuserrun-dbus-git            | AUR | Run commands as the currently-active X11 user while also using his dbus-session                                                                                      | run cronjob command as X11 user
+Package name            | Repo | Needed for                                                              | Package description
+------------------------|------|-------------------------------------------------------------------------|-----------------------------------------------------------------------
+Package name            | Repo | Needed for                                                              | Package description
+arandr                  | main | to set monitor layout with GUI                                          | Provide a simple visual front end for XRandR 1.2.
+autorandr               | main | to set monitor layout automatically e.g. after reboot                   | Auto-detect connected display hardware and load appropiate X11 setup using xrandr
+awesome-terminal-fonts  | main | powerline font for i3status-rust                                        | fonts/icons for powerlines
+compton                 | main | transparency and smooth transitions                                     | X compositor that may fix tearing issues
+dunst                   | main | notifications                                                           | Customizable and lightweight notification-daemon
+evolution               | main | autostart                                                               | Manage your email, contacts and schedule
+feh                     | main | to set wallpaper                                                        | Fast and light imlib2-based image viewer
+firefox                 | main | autostart                                                               | Standalone web browser from mozilla.org
+gajim                   | main | autostart                                                               | Full featured and easy to use XMPP (Jabber) client
+guake                   | main | autostart                                                               | Drop-down terminal for GNOME
+i3-gaps                 | main | my window manager                                                       | A fork of i3wm tiling window manager with more features, including gaps
+kdeconnect              | main | autostart                                                               | Adds communication between KDE and your smartphone
+light-locker            | main | screen locker                                                           | A simple session locker for LightDM
+lxappearance            | main | to set GTK theme  and icon-set                                          | Feature-rich GTK+ theme switcher of the LXDE Desktop
+lxsession               | main | needed for programms like e.g. gparted                                  | Lightweight X11 session manager
+network-manager-applet  | main | to choose network connection                                            | Applet for managing network connections
+noto-fonts-emoji        | main | emojis :P                                                               | Google Noto emoji fonts
+pamixer                 | main | make sound control keys working                                         | Pulseaudio command-line mixer like amixer
+pavucontrol             | main | Sound settings and mixer                                                | PulseAudio Volume Control
+playerctl               | main | make music control keys working                                         | mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
+powerline-fonts         | main | more powerline fonts                                                    | patched fonts for powerline
+python-i3-py            | main | for scripts                                                             | tools for i3 users and developers
+redshift                | main | night mode                                                              | Adjusts the color temperature of your screen according to your surroundings.
+rofi                    | main | launcher, to set theme, to exit i3, for searching the web, ...          | A window switcher, application launcher and dmenu replacement
+rxvt-unicode            | main | very customizable terminal emulator                                     | Unicode enabled rxvt-clone terminal emulator (urxvt)
+seahorse                | main | store WiFi and other passwords, includes gnome-keyring as dependency    | GNOME application for managing PGP keys.
+terminus-font           | main | another font                                                            | Monospace bitmap font (for X11 and console)
+ttf-dejavu              | main | main font                                                               | Font family based on the Bitstream Vera Fonts with a wider range of characters
+xsettingsd              | main | for wpgtk to live reload GTK+ theme                                     | Provides settings to X11 applications via the XSETTINGS specification
+dino                         | AUR | autostart                                                           | Modern XMPP (Jabber) chat client written in GTK+/Vala
+gnome-terminal-transparency  | AUR | terminal emulator                                                   | The GNOME Terminal Emulator, with background transparency
+goes16-background-git        | AUR | live earth wallpaper                                                | Put near-realtime picture of Earth as your desktop background.
+himawaripy-git               | AUR | live earth wallpaper (different satellite)                          | Put near-realtime picture of Earth as your desktop background.
+i3status-rust-git            | AUR | status bar                                                          | Very resourcefriendly and feature-rich replacement for i3status to use with bar programs, written in pure Rust
+nerd-fonts-complete          | AUR | more fonts                                                          | Iconic font aggregator, collection, and patcher. 40+ patched fonts, over 3,600 glyph/icons
+rofi-surfraw-git             | AUR | web search with rofi                                                | Universal tool to search the internet
+rofimoji-git                 | AUR | emoji picker                                                        | A simple emoji picker for rofi
+spotify                      | AUR | autostart                                                           | A proprietary music streaming service
+wpgtk-git                    | AUR | generate and set themes based on wallpapers and to generate the configs from the templates | A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme
+xuserrun-dbus-git            | AUR | run cronjob command as X11 user                                     | Run commands as the currently-active X11 user while also using his dbus-session
 
 </details>
 
 1. Install all: `$aurhelper
-arandr                  
-autorandr               
-awesome-terminal-fonts  
-compton                 
-dunst                   
-evolution               
-feh                     
-firefox                 
-gajim                   
-guake                   
-i3-gaps                 
-kdeconnect              
-light-locker            
-lxappearance            
-lxsession               
-network-manager-applet  
-noto-fonts-emoji        
-pamixer                 
-pavucontrol             
-playerctl               
-powerline-fonts         
-python-i3-py            
-redshift                
-rofi                    
-rxvt-unicode            
-seahorse                
-terminus-font           
-ttf-dejavu              
-xsettingsd              
-dino                         
-gnome-terminal-transparency  
-i3status-rust-git            
-nerd-fonts-complete          
-rofi-surfraw-git             
-rofimoji-git                 
-spotify                      
-wpgtk-git                    
-xuserrun-dbus-git            
-`  
+arandr
+autorandr
+awesome-terminal-fonts
+compton
+dunst
+evolution
+feh
+firefox
+gajim
+guake
+i3-gaps
+kdeconnect
+light-locker
+lxappearance
+lxsession
+network-manager-applet
+noto-fonts-emoji
+pamixer
+pavucontrol
+playerctl
+powerline-fonts
+python-i3-py
+redshift
+rofi
+rxvt-unicode
+seahorse
+terminus-font
+ttf-dejavu
+xsettingsd
+dino
+gnome-terminal-transparency
+goes16-background-git
+himawaripy-git
+i3status-rust-git
+nerd-fonts-complete
+rofi-surfraw-git
+rofimoji-git
+spotify
+wpgtk-git
+xuserrun-dbus-git
+`
 2. If you want some fancy wallpaper images from the earth in almost realtime then also install `goes16-background-git` and `himawaripy-git`
 3. Install dotfiles like descriped further down.
 4. Set monitor layout with arandr. If you you want to save multiple different monitor setups have a look at autorandr. With `$mod+m` there is a script to set some basic layouts.
@@ -109,7 +116,7 @@ xuserrun-dbus-git
 00  *   *   *   *  xuserrun $HOME/.config/wpg/scripted_themes/cron.sh >> $HOME/.config/wpg/scripted_themes/cron.log 2>&1
 ```
 
-## Starting from scratch 
+## Starting from scratch
 ```
 git init --bare $HOME/.dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -129,7 +136,7 @@ dotfiles commit -m "Add bashrc"
 
 ### Add remote repo
 ```
-dotfiles remote add gitlab git@gitlab.com:marzzzello/dotfiles.git 
+dotfiles remote add gitlab git@gitlab.com:marzzzello/dotfiles.git
 dotfiles remote add github git@github.com:marzzzello/dotfiles.git
 dotfiles push -u origin master
 ```
