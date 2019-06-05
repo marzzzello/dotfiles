@@ -98,6 +98,8 @@ format = "{{1m}}"
 
 [[block]]
 block = "sound"
+show_volume_when_muted = true
+on_click = "pavucontrol"
 
 [[block]]
 block = "net"
