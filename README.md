@@ -7,8 +7,8 @@
 
 [![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-fc6d26.svg?style=for-the-badge&logo=gitlab)](https://gitlab.com/marzzzello/dotfiles)
 [![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-4078c0.svg?style=for-the-badge&logo=github)](https://github.com/marzzzello/dotfiles)
-[![GitHub](https://img.shields.io/github/license/marzzzello/dotfiles.svg?style=for-the-badge)]()
-[![GitHub](https://img.shields.io/github/commit-activity/w/marzzzello/dotfiles.svg?style=for-the-badge)](commits)
+[![GitHub](https://img.shields.io/github/license/marzzzello/dotfiles.svg?style=for-the-badge)]( 	LICENSE.md)
+[![GitHub](https://img.shields.io/github/commit-activity/w/marzzzello/dotfiles.svg?style=for-the-badge)]()
 
 ## To install
 
