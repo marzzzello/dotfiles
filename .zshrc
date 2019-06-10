@@ -18,7 +18,7 @@ printFails() { local choicefile="$HOME/.cache/printNoFails";
                if [ "$ans" = "yes" ]; then touch "$choicefile"; fi
                fi
              }
-include ()   { [[ -f "$1" ]] && source "$1" || fails+=("$1") return 1}
+include ()   { [[ -f "$1" ]] && source "$1" || { fails+=("$1"); return 1} }
 exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 
 #get emacs tramp working with zsh
@@ -120,7 +120,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 
 # Auto-close and delete matching delimiters
-# antigen bundle hlissner/zsh-autopair
+antigen bundle hlissner/zsh-autopair
 
 # Load the theme
 antigen theme romkatv/powerlevel10k
