@@ -1,3 +1,4 @@
+ANTIGEN_LOG=$HOME/antigen.log
 ############ To install ############
 # antigen:              trizen -S antigen-git            ## https://github.com/zsh-users/antigen
 # purepower:                                             ## https://github.com/romkatv/dotfiles-public/blob/master/.purepower
@@ -80,9 +81,7 @@ else
 fi
 
 ############ Plugins ############
-# Some nice functions 
-include "$HOME/.zshfunc.zsh"
-includeNoFail "/usr/share/zsh-antigen/antigen.zsh" || includeNoFail "/usr/share/zsh/share/antigen.zsh" || includeNoFail "$HOME/.antigen.zsh" || curl -L git.io/antigen > .antigen.zsh && source .antigen.zsh
+includeNoFail "/usr/share/zsh/share/antigen.zsh" # || includeNoFail "/usr/share/zsh-antigen/antigen.zsh"  || includeNoFail "$HOME/.antigen.zsh" || (curl -L git.io/antigen > .antigen.zsh && source .antigen.zsh)
 
 # Load the oh-my-zsh's library
 antigen use oh-my-zsh
@@ -106,13 +105,20 @@ antigen bundle zsh-users/zsh-autosuggestions
 # Extra zsh completions
 antigen bundle zsh-users/zsh-completions
 
+# Auto-close and delete matching delimiters
+# antigen bundle hlissner/zsh-autopair
+
 # Load the theme
 antigen theme romkatv/powerlevel10k
+# Load theme settings
 include ~/.purepower
 
 # Tell antigen that you're done
 antigen apply
 
+
+# Some nice functions 
+include "$HOME/.zshfunc.zsh"
 
 ############ FZF ############
 export FZF_CTRL_T_OPTS="--height 80% --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200' --bind 'shift-left:preview-page-up,shift-right:preview-page-down,?:toggle-preview,alt-w:toggle-preview-wrap,alt-e:execute($EDITOR {})'"
@@ -192,7 +198,7 @@ alias -s tar='tar tf'
 alias -g ES="2>&1"
 
 # use real fd ;)
-if which fd > /dev/null; then
+if [[ $(which fd) == *aliased* ]]; then
   unalias fd
 fi
 
