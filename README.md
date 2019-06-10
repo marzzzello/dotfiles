@@ -143,10 +143,10 @@ dotfiles push -u origin master
 ## Install dotfiles onto a new system
 ```
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-git clone --recursive --bare git@gitlab.com:marzzzello/dotfiles.git $HOME/.dotfiles
+git clone --recursive --bare https://gitlab.com/marzzzello/dotfiles.git $HOME/.dotfiles
 
 
-git clone --recursive --separate-git-dir=$HOME/.dotfiles git@gitlab.com:marzzzello/dotfiles.git $HOME/dotfiles-tmp
+git clone --recursive --separate-git-dir=$HOME/.dotfiles https://gitlab.com/marzzzello/dotfiles.git $HOME/dotfiles-tmp
 cp ~/dotfiles-tmp/.gitmodules ~  # If you use Git submodules
 rm -r ~/dotfiles-tmp/
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -154,7 +154,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 ### setup script
 ```
-git clone --recursive  --bare git@gitlab.com:marzzzello/dotfiles.git $HOME/.dotfiles
+git clone --recursive  --bare https://gitlab.com/marzzzello/dotfiles.git $HOME/.dotfiles
 function dotfiles {
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
