@@ -33,8 +33,9 @@ exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 eval $(thefuck --alias)
 
 # Import colorscheme from wpgtk
-(cat $HOME/.config/wpg/sequences &)
-
+if which wpg > /dev/null; then
+  (cat $HOME/.config/wpg/sequences &)
+fi
 
 ############ Set shell options ############
 
@@ -190,7 +191,11 @@ alias -s tar='tar tf'
 # global alias
 alias -g ES="2>&1"
 
-unalias fd # use real fd ;)
+# use real fd ;)
+if which fd > /dev/null; then
+  unalias fd
+fi
+
 alias fh="fd -HI" # fd with hidden and ignored files
 # if lsd is installed use it, if not use ls
 which lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
