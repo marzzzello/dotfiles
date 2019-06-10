@@ -19,7 +19,6 @@ printFails() { local choicefile="$HOME/.cache/printNoFails";
                fi
              }
 include ()   { [[ -f "$1" ]] && source "$1" || fails+=("$1") return 1}
-includeNoFail ()   { [[ -f "$1" ]] && source "$1" || return 1}
 exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 
 #get emacs tramp working with zsh
@@ -81,7 +80,22 @@ else
 fi
 
 ############ Plugins ############
-includeNoFail "/usr/share/zsh/share/antigen.zsh" # || includeNoFail "/usr/share/zsh-antigen/antigen.zsh"  || includeNoFail "$HOME/.antigen.zsh" || (curl -L git.io/antigen > .antigen.zsh && source .antigen.zsh)
+local a1="/usr/share/zsh/share/antigen.zsh"
+local a2="/usr/share/zsh-antigen/antigen.zsh"
+local a3="$HOME/.antigen.zsh"
+if [[ -f $a1 ]]; then
+	ANTIGEN=$a1;
+elif [[ -f $a2 ]]; then
+	ANTIGEN=$a2;
+elif [[ -f $a3 ]]; then
+	ANTIGEN=$a3;
+else
+	echo "Downloading Antigen to $a3"
+	curl -L git.io/antigen > $a3 \
+	&& ANTIGEN=$a3
+fi
+
+source $ANTIGEN
 
 # Load the oh-my-zsh's library
 antigen use oh-my-zsh
