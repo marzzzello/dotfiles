@@ -164,11 +164,11 @@ fi
     function _pp_s() { echo -E $1 }
   fi
 
-  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-      dir_writable dir vcs)
+  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( 
+      context dir_writable dir vcs)
 
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-      status command_execution_time background_jobs custom_rprompt context)
+      status command_execution_time background_jobs custom_rprompt)
 
   local ins=$(_pp_s '>' '❯')
   local cmd=$(_pp_s '<' '❮')
@@ -244,8 +244,8 @@ fi
   typeset -g POWERLEVEL9K_CUSTOM_RPROMPT_FOREGROUND=$(_pp_c 004 012)
 
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,REMOTE_SUDO,REMOTE,SUDO}_BACKGROUND=none
-  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,REMOTE_SUDO,REMOTE,SUDO}_FOREGROUND=$(_pp_c 007 244)
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=$(_pp_c 003 011)
+  typeset -g POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND=none # $(_pp_c 007 244)
+  typeset -g POWERLEVEL9K_CONTEXT_{ROOT,REMOTE_SUDO,REMOTE,SUDO}_FOREGROUND=$(_pp_c 003 011)
 
   function custom_rprompt() {}  # redefine this to show stuff in custom_rprompt segment
 
