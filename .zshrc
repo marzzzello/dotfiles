@@ -15,7 +15,7 @@ printFails() { local choicefile="$HOME/.cache/printNoFails";
                getFails;
                local compcontext='y:yes:(yes)';
                vared -cp 'Hide fails (yes)? ' ans; 
-               if [ "$ans" = "yes" ]; then touch "$choicefile"; fi
+               [[ "$ans" = "yes" ]] && touch "$choicefile";
                fi
              }
 include ()   { [[ -f "$1" ]] && source "$1" || { fails+=("$1"); return 1} }
@@ -34,9 +34,8 @@ exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 eval $(thefuck --alias)
 
 # Import colorscheme from wpgtk
-if which wpg > /dev/null; then
-  (cat $HOME/.config/wpg/sequences &)
-fi
+[[ -f "$HOME/.config/wpg/sequences" ]] && (cat $HOME/.config/wpg/sequences &)
+
 
 ############ Set shell options ############
 
@@ -79,7 +78,9 @@ else
   export EDITOR='subl'  # non ssh and non root
 fi
 
-# DEFAULT_USER=$USER
+# Display context under sudo -i
+[[ $USER != root ]] && DEFAULT_USER=$USER
+
 
 ############ Plugins ############
 local a1="/usr/share/zsh/share/antigen.zsh"
@@ -132,9 +133,9 @@ include ~/.purepower
 # Tell antigen that you're done
 antigen apply
 
-
 # Some nice functions 
 include "$HOME/.zshfunc.zsh"
+
 
 ############ FZF ############
 export FZF_CTRL_T_OPTS="--height 80% --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200' --bind 'shift-left:preview-page-up,shift-right:preview-page-down,?:toggle-preview,alt-w:toggle-preview-wrap,alt-e:execute($EDITOR {})'"
@@ -214,9 +215,7 @@ alias -s tar='tar tf'
 alias -g ES="2>&1"
 
 # use real fd ;)
-if [[ $(which fd) == *aliased* ]]; then
-  unalias fd
-fi
+[[ $(which fd) == *aliased* ]] && unalias fd
 
 alias fh="fd -HI" # fd with hidden and ignored files
 # if lsd is installed use it, if not use ls
