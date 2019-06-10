@@ -116,7 +116,7 @@ xuserrun-dbus-git
 ```
 
 ## Starting from scratch
-```
+```bash
 git init --bare $HOME/.dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
@@ -125,7 +125,7 @@ echo "alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOM
 ```
 
 ### Add files
-```
+```bash
 dotfiles status
 dotfiles add .vimrc
 dotfiles commit -m "Add vimrc"
@@ -134,14 +134,14 @@ dotfiles commit -m "Add bashrc"
 ```
 
 ### Add remote repo
-```
+```bash
 dotfiles remote add gitlab git@gitlab.com:marzzzello/dotfiles.git
 dotfiles remote add github git@github.com:marzzzello/dotfiles.git
 dotfiles push -u origin master
 ```
 
 ## Install dotfiles onto a new system
-```
+```bash
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 git clone --recursive --bare https://gitlab.com/marzzzello/dotfiles.git $HOME/.dotfiles
 
@@ -153,7 +153,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
 ### setup script
-```
+```bash
 git clone --recursive  --bare https://gitlab.com/marzzzello/dotfiles.git $HOME/.dotfiles
 function dotfiles {
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
