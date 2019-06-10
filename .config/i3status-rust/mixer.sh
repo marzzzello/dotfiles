@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 toggle(){
-  xdotool search Pavucontrol && i3-msg '[class="Pavucontrol"] kill' || i3-msg exec pavucontrol
+  xdotool search "$1" && i3-msg '[instance='"$1"'] kill' || i3-msg exec "$1"
 
   # laggy when closing?!:
-  # killall pavucontrol || i3-msg exec pavucontrol
+  # killall "$1" || i3-msg exec "$1"
 }
 
-toggle > /dev/null 2>&1
+toggle pavucontrol > /dev/null 2>&1
