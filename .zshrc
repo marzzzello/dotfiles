@@ -79,6 +79,8 @@ else
   export EDITOR='subl'  # non ssh and non root
 fi
 
+# DEFAULT_USER=$USER
+
 ############ Plugins ############
 local a1="/usr/share/zsh/share/antigen.zsh"
 local a2="/usr/share/zsh-antigen/antigen.zsh"
