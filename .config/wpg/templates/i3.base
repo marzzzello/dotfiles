@@ -256,17 +256,22 @@ bindsym XF86Tools workspace $ws10
 bindsym $mod+c exec ~/.config/i3/cycle-workspace.py
 
 bindsym $mod+p exec rofimoji
+bindsym $mod+n exec networkmanager_dmenu
 
 ###### Autostart ########
 
-assign [class="Firefox"] $ws2
-assign [class="Evolution"] $ws9
-for_window [class="Spotify"] move to workspace $ws10
-for_window [class="Gajim"] move to workspace $ws8
-for_window [class="Dino"] move to workspace $ws8
+assign [class="Firefox"]      $ws2
+assign [instance="evolution"] $ws9
+assign [instance="spotify"]   $ws10
+assign [instance="gajim"]     $ws8
+assign [instance="dino"]      $ws8
+
 
 # audio mixer
-for_window [instance = "pavucontrol"] floating enable
+for_window [instance = "pavucontrol"]      floating enable
+for_window [instance = "gnome-calendar"]   floating enable
+for_window [instance = "gnome-calculator"] floating enable
+
 
 # RUBCard Manager -.-
 for_window [class="sun-awt-X11-XFramePeer"] floating enable
