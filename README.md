@@ -115,44 +115,7 @@ xuserrun-dbus-git
 00  *   *   *   *  xuserrun $HOME/.config/wpg/scripted_themes/cron.sh >> $HOME/.config/wpg/scripted_themes/cron.log 2>&1
 ```
 
-## Starting from scratch
-```bash
-git init --bare $HOME/.dotfiles
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-dotfiles config --local status.showUntrackedFiles no
-dotfiles config --local status.showUntrackedFiles no
-echo "alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
-```
-
-### Add files
-```bash
-dotfiles status
-dotfiles add .vimrc
-dotfiles commit -m "Add vimrc"
-dotfiles add .bashrc
-dotfiles commit -m "Add bashrc"
-```
-
-### Add remote repo
-```bash
-dotfiles remote add gitlab git@gitlab.com:marzzzello/dotfiles.git
-dotfiles remote add github git@github.com:marzzzello/dotfiles.git
-dotfiles push -u origin master
-```
-
 ## Install dotfiles onto a new system
-```bash
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-git clone --recursive --bare https://gitlab.com/marzzzello/dotfiles.git $HOME/.dotfiles
-
-
-git clone --recursive --separate-git-dir=$HOME/.dotfiles https://gitlab.com/marzzzello/dotfiles.git $HOME/dotfiles-tmp
-cp ~/dotfiles-tmp/.gitmodules ~  # If you use Git submodules
-rm -r ~/dotfiles-tmp/
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-```
-
-### setup script
 ```bash
 git clone --recursive --bare https://gitlab.com/marzzzello/dotfiles.git $HOME/.dotfiles
 function dotfiles {
@@ -162,13 +125,26 @@ mkdir -p .dotfiles-backup
 dotfiles checkout
 if [ $? = 0 ]; then
   echo "Checked out dotfiles.";
-  else
-    echo "Backing up pre-existing dot files.";
-    dotfiles checkout 2>&1 | awk -F '\t' '/\t/ {print $2}' | xargs -I{} dirname .dotfiles-backup/{} | xargs -I{} mkdir -p {}
-    dotfiles checkout 2>&1 | awk -F '\t' '/\t/ {print $2}' | xargs -I{} mv {} .dotfiles-backup/{}
+else
+  echo "Backing up pre-existing dot files.";
+  dotfiles checkout 2>&1 | awk -F '\t' '/\t/ {print $2}' | xargs -I{} dirname .dotfiles-backup/{} | xargs -I{} mkdir -p {}
+  dotfiles checkout 2>&1 | awk -F '\t' '/\t/ {print $2}' | xargs -I{} mv {} .dotfiles-backup/{}
 fi;
 dotfiles checkout
 dotfiles submodule update --init
 dotfiles config status.showUntrackedFiles no
 dotfiles config filter.head.clean 'head -n 2'
 ```
+
+As single command: 
+```
+curl 'https://gitlab.com/marzzzello/dotfiles/raw/master/setup.sh' | zsh 
+```
+
+or even shorter
+```
+curl -L 'https://git.io/marzzzello' | zsh
+```
+
+## Starting from scratch
+I started with [this tutorial](https://de.atlassian.com/git/tutorials/dotfiles) on how to store your dotfiles
