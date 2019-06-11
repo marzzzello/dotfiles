@@ -13,7 +13,7 @@
 ## To install
 
 <details>
-  <summary>Package list with details</summary>
+  <summary><b>Package list with details</b></summary>
 
 Package name            | Repo | Needed for                                                              | Package description
 ------------------------|------|-------------------------------------------------------------------------|-----------------------------------------------------------------------
