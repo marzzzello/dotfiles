@@ -150,7 +150,7 @@ fzf-history-widget-accept() {
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
 
-# fzf keybindings
+# fzf keybindings for Arch + Ubuntu
 include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh
 include /usr/share/fzf/completion.zsh   /usr/share/zsh/vendor-completions/_fzf
 
