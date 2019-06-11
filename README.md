@@ -154,7 +154,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 ### setup script
 ```bash
-git clone --recursive  --bare https://gitlab.com/marzzzello/dotfiles.git $HOME/.dotfiles
+git clone --recursive --bare https://gitlab.com/marzzzello/dotfiles.git $HOME/.dotfiles
 function dotfiles {
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
@@ -168,5 +168,7 @@ if [ $? = 0 ]; then
     dotfiles checkout 2>&1 | awk -F '\t' '/\t/ {print $2}' | xargs -I{} mv {} .dotfiles-backup/{}
 fi;
 dotfiles checkout
+dotfiles submodule update --init
 dotfiles config status.showUntrackedFiles no
+dotfiles config filter.head.clean 'head -n 2'
 ```
