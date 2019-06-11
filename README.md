@@ -17,7 +17,6 @@
 
 Package name            | Repo | Needed for                                                              | Package description
 ------------------------|------|-------------------------------------------------------------------------|-----------------------------------------------------------------------
-Package name            | Repo | Needed for                                                              | Package description
 arandr                  | main | to set monitor layout with GUI                                          | Provide a simple visual front end for XRandR 1.2.
 autorandr               | main | to set monitor layout automatically e.g. after reboot                   | Auto-detect connected display hardware and load appropiate X11 setup using xrandr
 awesome-terminal-fonts  | main | powerline font for i3status-rust                                        | fonts/icons for powerlines
