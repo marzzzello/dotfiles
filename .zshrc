@@ -18,7 +18,7 @@ printFails() { local choicefile="$HOME/.cache/printNoFails";
                [[ "$ans" = "yes" ]] && touch "$choicefile";
                fi
              }
-include ()   { [[ -f "$1" ]] && source "$1" || { fails+=("$1"); return 1} }
+include ()   { [[ -f "$1" ]] && source "$1" || { [[ -f "$2" ]] && source "$2" || fails+=("$2") } || { fails+=("$1"); return 1} }
 exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 
 #get emacs tramp working with zsh
@@ -151,8 +151,8 @@ zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
 
 # fzf keybindings
-include /usr/share/fzf/key-bindings.zsh
-include /usr/share/fzf/completion.zsh
+include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh
+include /usr/share/fzf/completion.zsh   /usr/share/zsh/vendor-completions/_fzf
 
 
 ############ Aliases (more special ones first) ############
