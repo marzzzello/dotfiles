@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 git clone --recursive --bare https://gitlab.com/marzzzello/dotfiles.git $HOME/.dotfiles
 function dotfiles {
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
