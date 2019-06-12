@@ -8,8 +8,8 @@ Power off
 Suspend
 Hibernate"
 
-selection=`echo -e $OPTIONS | rofi -dmenu -i -p "power-menu"`
-lock=(light-locker-command -l)
+selection=$(echo -e "$OPTIONS" | rofi -dmenu -i -p "power-menu")
+lock="light-locker-command -l"
 
 case "$selection" in
     Lock)         $lock;;

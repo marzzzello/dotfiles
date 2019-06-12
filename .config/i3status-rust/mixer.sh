@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 toggle(){
   xdotool search "$1" && i3-msg '[instance='"$1"'] kill' || i3-msg exec "$1"

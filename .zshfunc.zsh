@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 ### Freeze and unfreeze processes (for example: stop firefox)
 stop(){
   if [ $# -ne 1 ]; then
@@ -110,6 +112,7 @@ cudockervol(){
 }
 cudocker(){
   if systemctl status docker.service | grep " Active: " | grep " active"; then
+    :
   else 
     case "$1" in 
       -[fF]|-force) DockerStop=true;;
