@@ -9,16 +9,26 @@ ANTIGEN_LOG=$HOME/antigen.log
 
 ############ Important Functions ############
 fails=()
-getFails()   { for fail in $fails; do echo $fail; done;}
-printFails() { local choicefile="$HOME/.cache/printNoFails"; 
-               if ! [ -f "$choicefile" ] && [ "${#fails[@]}" != 0 ]; then
-               getFails;
-               local compcontext='y:yes:(yes)';
-               vared -cp 'Hide fails (yes)? ' ans; 
-               [[ "$ans" = "yes" ]] && touch "$choicefile";
-               fi
-             }
-include ()   { [[ -f "$1" ]] && source "$1" || { [[ -f "$2" ]] && source "$2" || fails+=("$2") } || { fails+=("$1"); return 1} }
+getFails()   {  for fail in $fails; do echo $fail; done; }
+printFails() {  
+	local choicefile="$HOME/.cache/printNoFails"; 
+    if ! [ -f "$choicefile" ] && [ "${#fails[@]}" != 0 ]; then
+    getFails;
+    local compcontext='y:yes:(yes)';
+    vared -cp 'Hide fails (yes)? ' ans; 
+    [[ "$ans" = "yes" ]] && touch "$choicefile";
+    fi
+}
+include ()   { 
+    if [[ -f "$1" ]]; then
+        source "$1";
+    elif [[ -f "$2" ]]; then
+        source "$2";
+    else
+        fails+=("One of these: $1 || $2");
+        return 1;
+    fi
+}
 exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 
 #get emacs tramp working with zsh
@@ -87,15 +97,15 @@ local a1="/usr/share/zsh/share/antigen.zsh"
 local a2="/usr/share/zsh-antigen/antigen.zsh"
 local a3="$HOME/.antigen.zsh"
 if [[ -f $a1 ]]; then
-	ANTIGEN=$a1;
+    ANTIGEN=$a1;
 elif [[ -f $a2 ]]; then
-	ANTIGEN=$a2;
+    ANTIGEN=$a2;
 elif [[ -f $a3 ]]; then
-	ANTIGEN=$a3;
+    ANTIGEN=$a3;
 else
-	echo "Downloading Antigen to $a3"
-	curl -L git.io/antigen > $a3 \
-	&& ANTIGEN=$a3
+    echo "Downloading Antigen to $a3"
+    curl -L git.io/antigen > $a3 \
+    && ANTIGEN=$a3
 fi
 
 source $ANTIGEN
