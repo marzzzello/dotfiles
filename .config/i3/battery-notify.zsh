@@ -10,6 +10,8 @@ CRITICAL_PERCENTAGE='WARNING_PERCENTAGE / 2'
 CRITICAL_TEXT='Battery really low $p%'
 VERBOSE=false
 STATUS="OK"
+#SOUND_FILE
+VOLUME=100
 
 colors(){
     red=$(tput setaf 1)
@@ -41,12 +43,16 @@ print_help(){
             ${cyan}Default: ${red}$INTERVAL${reset}
  -r     repeat notifications every interval                             
             ${cyan}Default: ${red}$REPEAT_WARNING${reset}
+ -s     path to sound file (uses paplay)
+            ${cyan}Default: ${red}$SOUND_FILE${reset}
+ -V     sound volume (0-100)
+            ${cyan}Default: ${red}$VOLUME${reset}
  -h     show this help message and exit
  -v     turn on verbosity
             ${cyan}Default: ${red}$VERBOSE${reset}"
 }
 
-while getopts 'p:k:w:c:d:i:t:rp:w:vh' opt; do
+while getopts 'p:k:w:c:d:i:t:rp:w:s:V:hv' opt; do
     case "$opt" in
         p) WARNING_PERCENTAGE=$OPTARG;;            
         k) CRITICAL_PERCENTAGE=$OPTARG;;
@@ -56,6 +62,8 @@ while getopts 'p:k:w:c:d:i:t:rp:w:vh' opt; do
         i) ICON=$OPTARG;;
         t) INTERVAL=$OPTARG;;
         r) REPEAT_WARNING=true;;                   
+        s) SOUND_FILE=$OPTARG;;
+        V) VOLUME=$OPTARG;;
         h) print_help && exit 1;;
         v) VERBOSE=true;;
         *) echo "Unknown option $OPTARG"; echo "Use -h to see usage" ;;
@@ -67,15 +75,18 @@ CRITICAL_PERCENTAGE="$(eval echo "$(( $CRITICAL_PERCENTAGE ))" )"
 
 
 if [[ $VERBOSE = true ]]; then
-    echo -e "WARNING_PERCENTAGE:\t$WARNING_PERCENTAGE";
-    echo -e "CRITICAL_PERCENTAGE_NE:\t$CRITICAL_PERCENTAGE_NE";
-    echo -e "CRITICAL_PERCENTAGE:\t$CRITICAL_PERCENTAGE";
-    echo -e "WARNING_TEXT:\t\t$WARNING_TEXT";
-    echo -e "CRITICAL_TEXT:\t\t$CRITICAL_TEXT";
-    echo -e "DBUS:\t\t\t$DBUS";
-    echo -e "ICON:\t\t\t$ICON";
-    echo -e "INTERVAL:\t\t$INTERVAL";
-    echo -e "REPEAT_WARNING:\t\t$REPEAT_WARNING";
+    echo -e "WARNING_PERCENTAGE:${red}\t$WARNING_PERCENTAGE${reset}";
+    echo -e "CRITICAL_PERCENTAGE_NE:${red}\t$CRITICAL_PERCENTAGE_NE${reset}";
+    echo -e "CRITICAL_PERCENTAGE:${red}\t$CRITICAL_PERCENTAGE${reset}";
+    echo -e "WARNING_TEXT:${red}\t\t$WARNING_TEXT${reset}";
+    echo -e "CRITICAL_TEXT:${red}\t\t$CRITICAL_TEXT${reset}";
+    echo -e "DBUS:${red}\t\t\t$DBUS${reset}";
+    echo -e "ICON:${red}\t\t\t$ICON${reset}";
+    echo -e "INTERVAL:${red}\t\t$INTERVAL${reset}";
+    echo -e "REPEAT_WARNING:${red}\t\t$REPEAT_WARNING${reset}";
+    echo -e "SOUND_FILE:${red}\t\t$SOUND_FILE${reset}";
+    echo -e "VOLUME:${red}\t\t\t$VOLUME${reset}";
+    echo -e "VERBOSE:${red}\t\t$VERBOSE${reset}";
     echo
 fi;
 
@@ -112,18 +123,27 @@ get_status(){
 loop(){
     OLDSTATUS=$STATUS;
     get_status;
-    [[ $VERBOSE = true ]] && printf "Battery level:\t\t%.2f%%\n" "$percent"
-    [[ $VERBOSE = true ]] && echo -e "OLDSTATUS:\t\t$OLDSTATUS\nSTATUS:\t\t\t$STATUS"
+    [[ $VERBOSE = true ]] && printf "Battery level:${red}\t\t%.2f%%\n${reset}" "$percent"
+    [[ $VERBOSE = true ]] && echo -e "OLDSTATUS:${red}\t\t$OLDSTATUS${reset}\nSTATUS:${red}\t\t\t$STATUS${reset}"
     notify;
     sleep "$INTERVAL";
 }
 
 warning(){
     notify-send -i "$ICON" "$(eval echo "$WARNING_TEXT")"; 
+    sound;
 }
 
 critical(){
     notify-send -i "$ICON" "$(eval echo "$CRITICAL_TEXT")"; 
+    sound;
+}
+
+sound(){
+    if [[ -n $SOUND_FILE ]]; then
+        VOLUME=$(( VOLUME * 65536 / 100 ))
+        paplay "$SOUND_FILE" --volume $VOLUME &
+    fi
 }
 
 notify(){
