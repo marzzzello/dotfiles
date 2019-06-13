@@ -138,8 +138,11 @@ include "$HOME/.zshfunc.zsh"
 
 
 ############ FZF ############
+# CTRL-T - Paste the selected files and directories onto the command-line 
 export FZF_CTRL_T_OPTS="--height 80% --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200' --bind 'shift-left:preview-page-up,shift-right:preview-page-down,?:toggle-preview,alt-w:toggle-preview-wrap,alt-e:execute($EDITOR {})'"
+# CTRL-R - Paste the selected command from history onto the command-line 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+# ALT-C - cd into the selected directory 
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 # Directly executing the command (CTRL-X CTRL-R)
@@ -153,7 +156,18 @@ bindkey '^X^R' fzf-history-widget-accept
 # fzf keybindings for Arch + Ubuntu
 include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh
 include /usr/share/fzf/completion.zsh   /usr/share/zsh/vendor-completions/_fzf
+# export FZF_DEFAULT_OPTS='--bind tab:down --cycle'
+# export FZF_COMPLETION_TRIGGER=''
 
+# Defaults:
+# bindkey '^T' fzf-file-widget
+# bindkey '\ec' fzf-cd-widget
+# bindkey '^R' fzf-history-widget
+
+#bindkey '^F' fzf-file-widget
+#bindkey '^X' fzf-cd-widget
+#bindkey '^Y' fzf-completion
+#bindkey '^I' $fzf_default_completion
 
 ############ Aliases (more special ones first) ############
 
