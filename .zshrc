@@ -11,7 +11,7 @@ ANTIGEN_LOG=$HOME/antigen.log
 fails=()
 getFails()   {  for fail in $fails; do echo $fail; done; }
 printFails() {  
-	local choicefile="$HOME/.cache/printNoFails"; 
+    local choicefile="$HOME/.cache/printNoFails"; 
     if ! [ -f "$choicefile" ] && [ "${#fails[@]}" != 0 ]; then
     getFails;
     local compcontext='y:yes:(yes)';
@@ -19,13 +19,21 @@ printFails() {
     [[ "$ans" = "yes" ]] && touch "$choicefile";
     fi
 }
-include ()   { 
-    if [[ -f "$1" ]]; then
-        source "$1";
-    elif [[ -f "$2" ]]; then
-        source "$2";
-    else
-        fails+=("One of these: $1 || $2");
+include ()   {
+    for arg in "$@"; do
+        [[ -z $l ]] && local list="$arg" || list+=", $arg"
+        if [[ -f "$arg" ]]; then
+            source "$arg";
+            local SUCCESS=true;
+            break;
+        fi
+    done
+    if [[ -z $SUCCESS ]]; then
+        if [[ "${#[@]}" > 1 ]]; then 
+            fails+=("One of these: $list") 
+        else 
+            fails+=("$1");
+    fi
         return 1;
     fi
 }
@@ -36,7 +44,6 @@ exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 
 
 ############ Includes ############
-
 # FZF
 # => see under FZF
 
