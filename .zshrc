@@ -1,11 +1,11 @@
 ANTIGEN_LOG=$HOME/antigen.log
 ############ To install ############
-# antigen:              trizen -S antigen-git            ## https://github.com/zsh-users/antigen
+# antigen:              yay -S antigen-git            ## https://github.com/zsh-users/antigen
 # purepower:                                             ## https://github.com/romkatv/dotfiles-public/blob/master/.purepower
 # fzf:                  pacman -S fzf                    ## https://github.com/junegunn/fzf#installation
 # .zshfunc.zsh
 # thefuck:              pacman -S thefuck                ## https://github.com/nvbn/thefuck
-# wpgtk:                trizen -S wpgtk-git              ## https://github.com/deviantfero/wpgtk
+# wpgtk:                yay -S wpgtk-git              ## https://github.com/deviantfero/wpgtk
 
 ############ Important Functions ############
 fails=()
@@ -218,8 +218,8 @@ alias duply=~/projects/Dubly/src/dubly.py
 ##
 
 
-# pm -> trizen if it is installed, if not pm -> pacman
-type trizen >/dev/null 2>&1 && alias pm="trizen" || alias pm="pacman"
+# pm -> yay if it is installed, if not pm -> pacman
+type yay >/dev/null 2>&1 && alias pm="yay" || alias pm="pacman"
 
 # Clipboard
 alias xclip="xclip -selection c"
