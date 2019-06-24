@@ -170,9 +170,16 @@ fzf-history-widget-accept() {
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
 
-# fzf keybindings for Arch + Ubuntu
-include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh
-include /usr/share/fzf/completion.zsh   /usr/share/zsh/vendor-completions/_fzf
+# fzf keybindings for Arch + Ubuntu + others
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh $HOME/.fzf/shell/completion.zsh
+if [[ $? == 1 ]]; then
+    echo "Installing fzf..."
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
+    && { echo "Updating .zshrc is not needed!"; $HOME/.fzf/install }
+fi
+include /usr/share/fzf/completion.zsh /usr/share/zsh/vendor-completions/_fzf $HOME/.fzf/shell/key-bindings.zsh
+
 # export FZF_DEFAULT_OPTS='--bind tab:down --cycle'
 # export FZF_COMPLETION_TRIGGER=''
 
