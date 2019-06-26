@@ -1,0 +1,4 @@
+cl_overlay_entities 35
+bind mousewheelup exec b/es/es040
+bind mousewheeldown exec b/es/es030
+

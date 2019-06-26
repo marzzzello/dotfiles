@@ -1,0 +1,3 @@
+bind mouse1 "+fire; say /emote angry 1"
+echo "DeepFly off"
+bind g "exec b/df/on"
