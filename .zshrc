@@ -253,11 +253,14 @@ alias -s tar='tar tf'
 alias -g ES="2>&1"
 
 # use real fd ;)
-[[ $(which fd) == *aliased* ]] && unalias fd
+[[ $(command -v fd) == *aliased* ]] && unalias fd
 
 alias fh="fd -HI" # fd with hidden and ignored files
 # if lsd is installed use it, if not use ls
-which lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
+command -v lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
+
+# if bat is installed use it, if not use cat
+command -v bat > /dev/null && alias cat="bat" 
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 

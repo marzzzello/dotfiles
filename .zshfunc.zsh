@@ -24,7 +24,7 @@ cont(){
 ### 
 
 # if in home directory, than manage dotfiles with extra parameters 
-git=$(which git)
+git=$(command -v git)
 git(){
     if [ $PWD = "$HOME" ]; then
 		#echo home
@@ -270,7 +270,7 @@ gitua(){
 
 ### pacman specific stuff
   # check if pacman is installed
-if which pacman > /dev/null; then
+if command -v pacman > /dev/null; then
   function paclist() {
     # Source: https://bbs.archlinux.org/viewtopic.php?id=93683
     LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
