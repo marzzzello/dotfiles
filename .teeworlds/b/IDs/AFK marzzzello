@@ -15,4 +15,4 @@ dummy_use_custom_color 0
 dummy_color_body 65408
 dummy_color_feet 65408
 
-exec b/menu_close_ID
+exec b/IDs/menu_close
