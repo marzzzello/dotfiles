@@ -23,10 +23,10 @@ cont(){
 
 ### 
 
-# if in home directory, than manage dotfiles with extra parameters 
+# if in home directory and interactive shell, than manage dotfiles with extra parameters 
 git=$(command -v git)
 git(){
-    if [ $PWD = "$HOME" ]; then
+    if [ $PWD = "$HOME" ] && [ -t 1 ]; then
 		#echo home
 		$git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
 	else
