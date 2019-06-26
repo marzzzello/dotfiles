@@ -26,7 +26,8 @@ cont(){
 # if in home directory and interactive shell, than manage dotfiles with extra parameters 
 git=$(command -v git)
 git(){
-  if [ $PWD = "$HOME" ] && [[ $- =~ 's' ]]; then		#echo home
+  if [ $PWD = "$HOME" ] && [[ $- =~ 's' ]]; then		
+    #echo home
 		$git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
 	else
 		#echo nonhome
