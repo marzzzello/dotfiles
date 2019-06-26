@@ -100,6 +100,7 @@ fi
 
 
 ############ Plugins ############
+# find antigen or install antigen
 local a1="/usr/share/zsh/share/antigen.zsh"
 local a2="/usr/share/zsh-antigen/antigen.zsh"
 local a3="$HOME/.antigen.zsh"
@@ -170,14 +171,17 @@ fzf-history-widget-accept() {
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
 
-# fzf keybindings for Arch + Ubuntu + others
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh $HOME/.fzf/shell/completion.zsh
-if [[ $? == 1 ]]; then
-    echo "Installing fzf..."
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
-    && { echo "Updating .zshrc is not needed!"; $HOME/.fzf/install }
+# install fzf if not already installed
+if ! command -v fzf > /dev/null; then
+    export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+    if [[ ! -d "$HOME/.fzf/bin" ]]; then
+        echo "Installing fzf..."
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
+        && $HOME/.fzf/install --bin
+    fi
 fi
+# fzf keybindings for Arch + Ubuntu + others
+include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh $HOME/.fzf/shell/completion.zsh
 include /usr/share/fzf/completion.zsh /usr/share/zsh/vendor-completions/_fzf $HOME/.fzf/shell/key-bindings.zsh
 
 # export FZF_DEFAULT_OPTS='--bind tab:down --cycle'
