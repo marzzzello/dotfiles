@@ -1,0 +1,8 @@
+unbind kp_7
+bind 6 "say /ninja"
+bind right "say /right"
+bind left "say /left"
+bind down "say /down"
+bind up "say /up"
+echo "City Binds aktiviert"
+bind home "exec b/t/inf"

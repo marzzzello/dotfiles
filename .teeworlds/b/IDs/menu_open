@@ -1,0 +1,21 @@
+echo ß: cancel/close 
+bind minus exec "b/IDs/menu_close"
+
+echo 1: marzzzello 
+bind 1 exec "b/IDs/marzzzello"
+
+echo 2: AFK marzzzello
+bind 2 exec "b/IDs/AFK marzzzello" 
+
+echo 3: RAGEmarzzzello 
+bind 3 exec "b/IDs/RAGEmarzzzello"
+
+echo 4: Cpt. marzzzello 
+bind 4 exec "b/IDs/Cpt. marzzzello"
+
+echo 5: Cpt. wuseltier 
+bind 5 exec "b/IDs/Cpt. wuseltier"
+
+echo 6: nameless 
+bind 6 exec "b/IDs/nameless"
+
