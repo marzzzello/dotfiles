@@ -62,10 +62,6 @@ COMPLETION_WAITING_DOTS="true"
 # command execution timestamp shown in the history command output.
 HIST_STAMPS="yyyy-mm-dd"
 
-HISTSIZE=1000000
-SAVEHIST=1000000
-HISTFILE="$HOME/.zsh_history"
-
 # The list (hash) of commands will be updated for each search by issuing the rehash command. 
 # Disable if file access is slow 
 zstyle ":completion:*:commands" rehash 1
@@ -150,6 +146,10 @@ include ~/.purepower
 
 # Tell antigen that you're done
 antigen apply
+
+# After oh-my-zsh
+HISTSIZE=1000000
+SAVEHIST=1000000
 
 # Some nice functions 
 include "$HOME/.zshfunc.zsh"
