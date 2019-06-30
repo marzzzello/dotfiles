@@ -257,7 +257,7 @@ alias -s tar='tar tf'
 alias -g ES="2>&1"
 
 # use real fd ;)
-[[ $(command -v fd) == *aliased* ]] && unalias fd
+[[ $(command -v fd) == *alias* ]] && unalias fd
 
 alias fh="fd -HI" # fd with hidden and ignored files
 # if lsd is installed use it, if not use ls
