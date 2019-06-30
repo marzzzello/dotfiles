@@ -258,7 +258,8 @@ alias -g ES="2>&1"
 
 # use real fd ;)
 [[ $(command -v fd) == *alias* ]] && unalias fd
-
+# For Ubuntu: If fdfind exists and fd is not used then alias fd
+{ command -v fdfind && ! command -v fd } > /dev/null && alias fd="fdfind"
 alias fh="fd -HI" # fd with hidden and ignored files
 # if lsd is installed use it, if not use ls
 command -v lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
