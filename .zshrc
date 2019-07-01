@@ -99,7 +99,7 @@ fi
 # find antigen or install antigen
 local a1="/usr/share/zsh/share/antigen.zsh"
 local a2="/usr/share/zsh-antigen/antigen.zsh"
-local a3="$HOME/.antigen.zsh"
+local a3="$HOME/antigen.zsh"
 if [[ -f $a1 ]]; then
     ANTIGEN=$a1;
 elif [[ -f $a2 ]]; then
