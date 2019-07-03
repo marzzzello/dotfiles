@@ -54,6 +54,7 @@ i3status-rust-git            | AUR | status bar                                 
 nerd-fonts-complete          | AUR | more fonts                                                          | Iconic font aggregator, collection, and patcher. 40+ patched fonts, over 3,600 glyph/icons
 rofi-surfraw-git             | AUR | web search with rofi                                                | Universal tool to search the internet
 rofimoji-git                 | AUR | emoji picker                                                        | A simple emoji picker for rofi
+shadowfox-updater            | AUR | dark firefox theme                                                  | An auto-updater for ShadowFox
 spotify                      | AUR | autostart                                                           | A proprietary music streaming service
 wpgtk-git                    | AUR | generate and set themes based on wallpapers and to generate the configs from the templates | A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme
 xuserrun-dbus-git            | AUR | run cronjob command as X11 user                                     | Run commands as the currently-active X11 user while also using his dbus-session
@@ -98,6 +99,7 @@ i3status-rust-git
 nerd-fonts-complete
 rofi-surfraw-git
 rofimoji-git
+shadowfox-updater
 spotify
 wpgtk-git
 xuserrun-dbus-git
@@ -113,6 +115,9 @@ xuserrun-dbus-git
 ```
 00  *   *   *   *  xuserrun $HOME/.config/wpg/scripted_themes/cron.sh >> $HOME/.config/wpg/scripted_themes/cron.log 2>&1
 ```
+10. Run the Firefox profile manager `firefox -ProfileManager -no-remote` and add a profile with the name `user.js` and set the path to `~/.mozilla/firefox/user.js`. Install your addons and then run ShadowFox (also themes some addons) with this command:  
+`shadowfox-updater -generate-uuids -profile-name user.js -set-dark-theme`
+
 
 ## Install dotfiles onto a new system
 ```bash
