@@ -297,7 +297,7 @@ user_pref("security.mixed_content.block_display_content",	true);
 
 // PREF: Disable JAR from opening Unsafe File Types
 // http://kb.mozillazine.org/Network.jar.open-unsafe-types
-// CIS Mozilla Firefox 24 ESR v1.0.0 - 3.7 
+// CIS Mozilla Firefox 24 ESR v1.0.0 - 3.7
 user_pref("network.jar.open-unsafe-types",			false);
 
 // CIS 2.7.4 Disable Scripting of Plugins by JavaScript
@@ -311,7 +311,7 @@ user_pref("security.fileuri.strict_origin_policy",		true);
 
 // PREF: Disable Displaying Javascript in History URLs
 // http://kb.mozillazine.org/Browser.urlbar.filter.javascript
-// CIS 2.3.6 
+// CIS 2.3.6
 user_pref("browser.urlbar.filter.javascript",			true);
 
 // PREF: Disable asm.js
@@ -1184,7 +1184,7 @@ user_pref("security.ssl3.rsa_aes_256_sha",			true); // 0x35
 user_pref("security.ssl3.rsa_aes_128_sha",			true); // 0x2f
 
 //Own prefs
-user_pref("general.warnOnAboutConfig", false)
+user_pref("general.warnOnAboutConfig", false);
 user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org");
 //user_pref("privacy.spoof_english", 2); //changes nothing
 user_pref("lightweightThemes.persisted.headerURL", false);
