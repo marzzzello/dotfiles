@@ -142,7 +142,7 @@ dotfiles config filter.head.clean 'head -n 2'
 
 As single command: 
 ```
-curl 'https://gitlab.com/marzzzello/dotfiles/raw/master/setup.sh' | zsh 
+curl 'https://gitlab.com/marzzzello/dotfiles/raw/master/setup.zsh' | zsh 
 ```
 
 or even shorter
