@@ -1,4 +1,18 @@
 #!/usr/bin/env zsh
+dkim(){
+  s="$1"
+  [[ $2 ]] && n="$2" || n=85
+  echo "len: $n" > /dev/stderr
+
+  # inster space after ';'
+  s=$(echo -n "$s" | sed 's/;/; /g')
+  echo -e "dkim._domainkey\t\tTXT ("
+  while [ ${#s} -gt $n ]; do
+    echo "\"${s:0:$n}\"" # print first n characters
+    s="${s:$n}" # save remaining characters
+  done
+  echo "\"${s:0:$n}\" )"
+}
 
 ### Freeze and unfreeze processes (for example: stop firefox)
 stop(){
