@@ -253,7 +253,7 @@ bindsym XF86AudioPrev exec playerctl previous -i vlc
 # Music sign
 bindsym XF86Tools workspace $ws10
 
-bindsym $mod+c exec ~/.config/i3/cycle-workspace.py
+bindsym $mod+c move workspace to output left
 
 bindsym $mod+p exec rofimoji
 bindsym $mod+n exec networkmanager_dmenu
