@@ -50,7 +50,7 @@ git(){
 	
 }
 
-
+# copys the main identidy to server (~/.ssh/main.pub) and removes old ssh keys from server (see next function)
 ssh-update-key(){
   ssh "$@" "cat ~/.ssh/authorized_keys" > /tmp/authorized_keys_before
   ssh-copy-id -i $HOME/.ssh/main.pub "$@"
@@ -61,6 +61,7 @@ ssh-update-key(){
   rm /tmp/authorized_keys_{before,after}
 }
 
+# removes all public keys from servers which are under ~/.ssh/old/*.pub
 ssh-remove-old-keys(){
   sed="sed -i '"
   for file in $HOME/.ssh/old/*.pub; do 
