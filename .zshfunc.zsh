@@ -52,6 +52,10 @@ git(){
 
 # copys the main identidy to server (~/.ssh/main.pub) and removes old ssh keys from server (see next function)
 ssh-update-key(){
+  if grep 'SSH2 PUBLIC KEY' -q $HOME/.ssh/main.pub; then 
+      echo "Please use OpenSSH format"
+      return 1; 
+  fi
   ssh "$@" "cat ~/.ssh/authorized_keys" > /tmp/authorized_keys_before
   ssh-copy-id -i $HOME/.ssh/main.pub "$@"
   ssh-remove-old-keys "$@"
@@ -65,6 +69,10 @@ ssh-update-key(){
 ssh-remove-old-keys(){
   sed="sed -i '"
   for file in $HOME/.ssh/old/*.pub; do 
+     if grep 'SSH2 PUBLIC KEY' -q $file; then 
+         echo "Please use OpenSSH format for $file"
+         return 1; 
+     fi
     #echo "file: $file"
     fingerprint=`sed -e 's/\(ssh[a-z0-9-]*\)\W\+\(AAAA[0-9A-Za-z+/]\+[=]\{0,3\}\)\W\+\(.*\)/\2/' $file`
     sed+="\~$fingerprint~d; " # use tilde (~) as delemiter
