@@ -1194,4 +1194,5 @@ user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
 user_pref("browser.newtabpage.activity-stream.prerender", false);
 user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
 user_pref("browser.tabs.warnOnClose", false);
-
+// open popup windows as new tab
+user_pref("browser.link.open_newwindow.restriction", 2);
