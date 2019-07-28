@@ -1,0 +1,3 @@
+cl_dummy_hammer 0
+echo "Dummy hammer off"
+bind v "exec b/d/hf_on"
