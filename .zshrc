@@ -47,9 +47,6 @@ exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 # FZF
 # => see under FZF
 
-# thefuck
-eval $(thefuck --alias)
-
 # Import colorscheme from wpgtk
 [[ -f "$HOME/.config/wpg/sequences" ]] && (cat $HOME/.config/wpg/sequences &)
 
@@ -124,7 +121,8 @@ antigen bundle common-aliases
 antigen bundle git
 antigen bundle gradle
 antigen bundle npm
-antigen bundle pip
+antigen bundle pip!
+antigen bundle thefuck
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
