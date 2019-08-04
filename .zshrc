@@ -267,7 +267,6 @@ command -v bat > /dev/null && alias cat="bat"
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias firefox="env GTK_THEME=Adwaita:light firefox"
 alias diff='diff --color=auto'
 
 alias week='date +%V' #week number
