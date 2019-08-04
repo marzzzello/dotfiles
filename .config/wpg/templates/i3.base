@@ -261,7 +261,7 @@ bindsym $mod+n exec networkmanager_dmenu
 ###### Autostart ########
 
 assign [class="Firefox"]      $ws2
-assign [instance="evolution"] $ws9
+assign [instance="evolution" title="(?<!(K|C)alend(e|a)r) – Evolution"] $ws9
 assign [instance="spotify"]   $ws10
 assign [instance="gajim"]     $ws8
 assign [instance="dino"]      $ws8
@@ -272,6 +272,8 @@ for_window [instance = "pavucontrol"]      floating enable
 for_window [instance = "gnome-calendar"]   floating enable
 for_window [instance = "gnome-calculator"] floating enable
 
+# evolution calendar
+for_window [title="(K|C)alend(e|a)r – Evolution"] floating enable, resize set 70ppt 70ppt, move position center
 
 # RUBCard Manager -.-
 for_window [class="sun-awt-X11-XFramePeer"] floating enable
@@ -292,7 +294,7 @@ exec --no-startup-id redshift-gtk
 # notifications on low battery:
 exec --no-startup-id ~/.config/i3/battery-notify.zsh
 
-exec --no-startup-id evolution
+exec --no-startup-id evolution -c mail
 exec --no-startup-id firefox
 exec --no-startup-id dino
 exec --no-startup-id gajim
