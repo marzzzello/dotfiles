@@ -99,7 +99,7 @@ format = "{{1m}}"
 [[block]]
 block = "sound"
 show_volume_when_muted = true
-on_click = ".config/i3status-rust/mixer.sh"
+on_click = ".config/i3status-rust/toggle-pavucontrol.py"
 
 [[block]]
 block = "net"
@@ -127,6 +127,7 @@ interval = 1
 block = "time"
 interval = 1
 format = "%a %d-%m %H:%M:%S"
+on_click = ".config/i3status-rust/toggle-calendar.py"
 
 [[block]]
 block = "pacman"
