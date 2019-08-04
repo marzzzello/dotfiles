@@ -1,5 +1,6 @@
-#export QT_SCALE_FACTOR=0.7
-export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_SCALE_FACTOR=0.7
+# export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=gtk2
 export GDK_BACKEND=x11
 
 export GTK_IM_MODULE=ibus
