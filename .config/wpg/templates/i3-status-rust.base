@@ -126,7 +126,7 @@ interval = 1
 [[block]]
 block = "time"
 interval = 1
-format = "%m-%d %a %H:%M:%S"
+format = "%a %d-%m %H:%M:%S"
 
 [[block]]
 block = "pacman"
