@@ -277,9 +277,9 @@ alias rmlh=" tail -3 ~/.zsh_history ; head -n -1 ~/.zsh_history > ~/.zsh_history
 alias searchsploit='/usr/share/exploit-db/searchsploit'
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 
-
 alias teamV="sudo systemctl start teamviewerd.service && teamviewer"
 
+alias ap="ansible-playbook"
 
 # mass renaming files 
 autoload zmv
