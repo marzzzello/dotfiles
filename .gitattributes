@@ -7,4 +7,3 @@
 .config/rofi/config.rasi filter=head
 .config/rofi/theme.rasi filter=head
 .teeworlds/settings_ddnet.cfg filter=teeworlds
-.teeworlds/b/IDs/menu_open filter=tw-menu
