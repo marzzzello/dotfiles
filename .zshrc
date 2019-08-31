@@ -280,6 +280,7 @@ alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias teamV="sudo systemctl start teamviewerd.service && teamviewer"
 
 alias ap="ansible-playbook"
+alias ip="ip -c"
 
 # mass renaming files 
 autoload zmv
