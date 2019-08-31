@@ -1,4 +1,8 @@
 #!/usr/bin/env zsh
+mkcd(){
+    mkdir "$@" && cd "$@"; 
+}
+
 dkim(){
   s="$1"
   [[ $2 ]] && n="$2" || n=85
