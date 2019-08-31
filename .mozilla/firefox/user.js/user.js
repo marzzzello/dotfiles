@@ -1185,10 +1185,11 @@ user_pref("security.ssl3.rsa_aes_128_sha",			true); // 0x2f
 
 //Own prefs
 user_pref("general.warnOnAboutConfig", false);
-user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org");
-//user_pref("privacy.spoof_english", 2); //changes nothing
+// user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org");
+// user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org");
 user_pref("lightweightThemes.persisted.headerURL", false);
-user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org");
+
+// user_pref("privacy.spoof_english", 2); //changes nothing
 user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
 user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
 user_pref("browser.newtabpage.activity-stream.prerender", false);
@@ -1196,3 +1197,7 @@ user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
 user_pref("browser.tabs.warnOnClose", false);
 // open popup windows as new tab
 user_pref("browser.link.open_newwindow.restriction", 2);
+
+user_pref("ui.systemUsesDarkTheme",1);
+user_pref("widget.content.allow-gtk-dark-theme",true);
+user_pref("widget.content.gtk-theme-override","Adwaita:light");
