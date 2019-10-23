@@ -97,6 +97,11 @@ interval = 1
 format = "{{1m}}"
 
 [[block]]
+block = "custom"
+interval = 1
+command = "cat /proc/pressure/cpu | sed 's/some avg10=\\([^ ]*\\) avg60=\\([^ ]*\\) avg300=\\([^ ]*\\) total=\\([0-9]*\\)/\\1/g'"
+
+[[block]]
 block = "sound"
 show_volume_when_muted = true
 on_click = ".config/i3status-rust/toggle-pavucontrol.py"
