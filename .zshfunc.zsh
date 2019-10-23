@@ -106,10 +106,10 @@ function notify {
 }
 
 ### pdf fuzzy searcher ## go get github.com/bellecp/fast-p
-pdf () {
+pdf() {
     open=xdg-open   # this will open pdf file withthe default PDF viewer on KDE, xfce, LXDE and perhaps on other desktops.
 
-    fd ".pdf$" \
+    find . -type f -iname '*.pdf' \
     | fast-p \
     | fzf --read0 --reverse -e -d $'\t'  \
         --preview-window down:80% --preview '
