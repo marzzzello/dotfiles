@@ -10,11 +10,11 @@ set $coloract "{active}"
 set $colorin "{inactive}"
 set $borderSize {borderSize}
 set $terminal urxvtc
-set_from_resource $color15 i3wm.color15 "{color15}"
-set_from_resource $split i3wm.color10 "{color10}"
-set_from_resource $coloru i3wm.color7 "{color7}"
-set_from_resource $color0 i3wm.color0 "{color0}"
-set_from_resource $color8 i3wm.color8 "{color8}"
+set $color15 "{color15}"
+set $split "{color10}"
+set $coloru "{color7}"
+set $color0 "{color0}"
+set $color8 "{color8}"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {{}} block below.
@@ -261,7 +261,7 @@ bindsym $mod+n exec networkmanager_dmenu
 ###### Autostart ########
 
 assign [class="Firefox"]      $ws2
-assign [instance="evolution" title="(?<!(K|C)alend(e|a)r) – Evolution"] $ws9
+assign [instance="evolution"] $ws9
 assign [instance="spotify"]   $ws10
 assign [instance="dino"]      $ws8
 assign [instance="gajim"]     $ws8
@@ -272,8 +272,6 @@ for_window [instance = "pavucontrol"]      floating enable
 for_window [instance = "gnome-calendar"]   floating enable
 for_window [instance = "gnome-calculator"] floating enable
 
-# evolution calendar
-for_window [title="(K|C)alend(e|a)r – Evolution"] floating enable, resize set 70ppt 70ppt, move position center
 
 # RUBCard Manager -.-
 for_window [class="sun-awt-X11-XFramePeer"] floating enable
@@ -294,7 +292,7 @@ exec --no-startup-id redshift-gtk
 # notifications on low battery:
 exec --no-startup-id ~/.config/i3/battery-notify.zsh
 
-exec --no-startup-id evolution -c mail
+exec --no-startup-id evolution
 exec --no-startup-id firefox
 exec --no-startup-id dino
 exec --no-startup-id spotify
@@ -302,9 +300,9 @@ exec --no-startup-id spotify
  # wallpaper + theme
 exec --no-startup-id ~/.config/wpg/wp_init.sh
 # compositor
-exec --no-startup-id compton
+## exec --no-startup-id compton
 exec --no-startup-id bash -c 'secret-tool lookup keepassDB pws | keepassxc --pw-stdin /home/marcel/1+3/pws.kdbx'
 exec --no-startup-id guake
 exec --no-startup-id light-locker --lock-after-screensaver=10
 # set monitor layout
-exec_always --no-startup-id autorandr --change
+exec --no-startup-id kanshi
