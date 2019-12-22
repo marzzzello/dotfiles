@@ -1,8 +1,2 @@
-unbind kp_7
-unbind 6
-unbind right
-unbind left
-unbind down
-unbind up
 echo "Infection Binds aktiviert"
 bind home "exec b/t/ddnet"

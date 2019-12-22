@@ -1,22 +1,4 @@
-unbind kp_7
-unbind 0 42"
-unbind 6
-unbind l
-unbind p
-bind q "zoom-"
-unbind pause
-unbind kp_1
-unbind kp_2
-unbind kp_3
-unbind kp_4
-unbind kp_5
-unbind kp_0
 bind mouse1 "+fire"
 bind mouse2 "+hook"
-bind mouse4 "emote 2"
-unbind right
-unbind left
-unbind down
-unbind up
 echo "Default Binds aktiviert"
 bind home "exec b/t/city"
