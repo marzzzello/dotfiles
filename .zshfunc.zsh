@@ -109,7 +109,8 @@ function notify {
 pdf() {
     open=xdg-open   # this will open pdf file withthe default PDF viewer on KDE, xfce, LXDE and perhaps on other desktops.
 
-    find . -type f -iname '*.pdf' \
+    # find . -type f -iname '*.pdf' \
+    /usr/bin/fd ".pdf$" \
     | fast-p \
     | fzf --read0 --reverse -e -d $'\t'  \
         --preview-window down:80% --preview '
