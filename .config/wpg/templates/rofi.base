@@ -5,14 +5,23 @@
 configuration {{
 	// Border width: 
 	bw: 				5;
+	modi: 				"drun,run,window,combi";
 	combi-modi: 		"window,drun,run";
 	font: 				"System San Francisco Display 12";
-	kb-mode-next: 		"Shift+Right,Control+Tab,Alt+l";
-	kb-mode-previous: 	"Shift+Left,Control+Shift+Tab,Alt+h";
-	kb-row-down: 		"Down,Control+n,Alt+j";
-	kb-row-up: 			"Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab,Alt+k";
-	modi: 				"drun,run,window,combi";
+
+	/*
+	 * kb-mode-next: 		"Shift+Right,Control+Tab,Alt+l";
+	 * kb-mode-previous: 	"Shift+Left,Control+Shift+Tab,Alt+h";
+	 * kb-row-down: 		"Down,Control+n,Alt+j";
+	 * kb-row-up: 			"Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab,Alt+k";
+	 */
+
 	// Parse the /etc/hosts file for entries:
 	parse-hosts: 		true; 
+
+	scroll-method:      1;
+	show-icons:         true;
+	sidebar-mode:		true;
+	
 	theme: 				"~/.config/rofi/theme.rasi";
 }}
