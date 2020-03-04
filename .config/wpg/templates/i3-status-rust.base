@@ -35,6 +35,7 @@ max_width = 21
 
 [[block]]
 block = "music"
+on_collapsed_click = "spotify"
 max_width = 16
  ## buttons = ["play", "next"]
 marquee_interval = 5
