@@ -137,6 +137,9 @@ antigen bundle zsh-users/zsh-completions
 # Auto-close and delete matching delimiters
 antigen bundle hlissner/zsh-autopair
 
+# Randomly insults the user when typing wrong command.
+antigen bundle matmutant/zsh-insulter src/zsh.command-not-found
+
 # Load the theme
 antigen theme romkatv/powerlevel10k
 # Load theme settings
@@ -200,8 +203,8 @@ include /usr/share/fzf/completion.zsh /usr/share/zsh/vendor-completions/_fzf $HO
 # fix emulator
 alias emulator='/opt/android-sdk/tools/emulator'
 
-# start & unlock KeepassXC/Hibiscus with secret-tool
-alias kxc="(secret-tool lookup keepassDB pws | keepassxc --pw-stdin ~/1+3/pws.kdbx &)"
+# start & unlock KeePassXC with secret-tool
+alias kxc="(secret-tool lookup keepassDB pws | keepassxc --pw-stdin ~/1+3/pws.kdbx &>/dev/null &)"
 
 
 ## Projects/Helpers
