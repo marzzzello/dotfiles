@@ -1,0 +1,11 @@
+echo "ID: AFK wuseltier"
+
+dummy_name "AFK wuseltier"
+dummy_clan "[LG]"
+dummy_country 905
+dummy_skin "hammie-chew"
+dummy_use_custom_color 0
+dummy_color_body 65408
+dummy_color_feet 65408
+
+exec b/IDs/menu_close

@@ -1,16 +1,16 @@
-echo "ID: RAGEmarzzzello"
-player_name "RAGEmarzzzello"
+echo "ID: Cpt (both)"
+player_name "Cpt. marzzzello"
 player_clan "[LG]"
-player_country 276
-player_skin "evil"
+player_country 905
+player_skin "napoleon"
 player_use_custom_color 0
 player_color_body 16776960
 player_color_feet 29
 
-dummy_name "wuseltier"
+dummy_name "Cpt. wuseltier"
 dummy_clan "[LG]"
-dummy_country 276
-dummy_skin "hammie-chew"
+dummy_country 905
+dummy_skin "napoleon"
 dummy_use_custom_color 0
 dummy_color_body 65408
 dummy_color_feet 65408
