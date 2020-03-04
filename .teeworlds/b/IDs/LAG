@@ -1,15 +1,15 @@
-echo "ID: RAGEmarzzzello"
-player_name "RAGEmarzzzello"
+echo "ID: LAG both"
+player_name "LAG marzzzello"
 player_clan "[LG]"
-player_country 276
-player_skin "evil"
+player_country 905
+player_skin "hammie"
 player_use_custom_color 0
 player_color_body 16776960
 player_color_feet 29
 
-dummy_name "wuseltier"
+dummy_name "LAG wuseltier"
 dummy_clan "[LG]"
-dummy_country 276
+dummy_country 905
 dummy_skin "hammie-chew"
 dummy_use_custom_color 0
 dummy_color_body 65408

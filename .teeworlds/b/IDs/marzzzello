@@ -2,7 +2,7 @@ echo "ID: marzzzello"
 player_name "marzzzello"
 player_clan "[LG]"
 player_country 905
-player_skin "hammie-whis"
+player_skin "hammie"
 player_use_custom_color 0
 player_color_body 16776960
 player_color_feet 29
