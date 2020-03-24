@@ -283,8 +283,6 @@ for_window [class="de-rub-dez6a3-cardcertificatemanager-Main"] floating enable
 exec --no-startup-ud wpg -s `wpg -c`  
 # run kde connect daemon:
 exec --no-startup-id /usr/lib/kdeconnectd
-# screen locker:
-exec --no-startup-id light-locker --lock-after-screensaver=20
 # X11 session manager:
 exec --no-startup-id lxpolkit
 # manage network connections:
@@ -303,8 +301,7 @@ exec --no-startup-id spotify
 exec --no-startup-id ~/.config/wpg/wp_init.sh
 # compositor
 exec --no-startup-id compton
-# exec --no-startup-id bash -c 'secret-tool lookup keepassDB pws | keepassxc --pw-stdin /home/marcel/1+3/pws.kdbx'
+exec --no-startup-id keepassxc
 exec --no-startup-id guake
-exec --no-startup-id light-locker --lock-after-screensaver=10
 # set monitor layout
 exec_always --no-startup-id autorandr --change
