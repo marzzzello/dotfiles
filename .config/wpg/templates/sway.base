@@ -292,7 +292,7 @@ exec --no-startup-id redshift-gtk
 # notifications on low battery:
 exec --no-startup-id ~/.config/i3/battery-notify.zsh
 
-exec --no-startup-id evolution
+exec --no-startup-id evolution -c mail
 exec --no-startup-id firefox
 exec --no-startup-id dino
 exec --no-startup-id spotify
@@ -301,7 +301,7 @@ exec --no-startup-id spotify
 exec --no-startup-id ~/.config/wpg/wp_init.sh
 # compositor
 ## exec --no-startup-id compton
-exec --no-startup-id bash -c 'secret-tool lookup keepassDB pws | keepassxc --pw-stdin /home/marcel/1+3/pws.kdbx'
+exec --no-startup-id keepassxc
 exec --no-startup-id guake
 exec --no-startup-id light-locker --lock-after-screensaver=10
 # set monitor layout
