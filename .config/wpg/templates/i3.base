@@ -260,12 +260,13 @@ bindsym $mod+n exec networkmanager_dmenu
 
 ###### Autostart ########
 
-assign [class="Firefox"]      $ws2
+# xprop | grep WM_CLASS
+# first part of the WM_CLASS is the instance, the second part is the class
+assign [class="firefox"]      $ws2
 assign [instance="evolution" title="(?<!(K|C)alend(e|a)r) – Evolution"] $ws9
-assign [instance="spotify"]   $ws10
 assign [instance="dino"]      $ws8
 assign [instance="gajim"]     $ws8
-
+for_window [class="Spotify"] move to workspace $ws10
 
 # audio mixer
 for_window [instance = "pavucontrol"]      floating enable
