@@ -300,7 +300,7 @@ exec --no-startup-id spotify
  # wallpaper + theme
 exec --no-startup-id ~/.config/wpg/wp_init.sh
 # compositor
-exec --no-startup-id compton
+exec --no-startup-id picom
 exec --no-startup-id keepassxc
 exec --no-startup-id guake
 # set monitor layout
