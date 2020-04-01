@@ -1,15 +1,14 @@
 #!/usr/bin/env zsh
 
 # Useful for logs
-
-DESKTOP=$(loginctl show-session 2 -p Desktop | awk -F= '{print $2}')
-
 date +%FT%T%:z
 
-source $HOME/.config/wpg/scripted_themes/theme_func.sh
+RESPONSE="$(i3-msg nop)"
+# echo "Response: $RESPONSE"
 
-case $choice in
-  i3|sway) renew;;
-  *)       echo "Desktop not supported";;
-esac
-
+if [[ "$RESPONSE" == '[{"success":true}]' ]]; then
+  source $HOME/.config/wpg/scripted_themes/theme_func.sh
+  renew
+else
+  echo "Desktop not supported"
+fi
