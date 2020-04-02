@@ -1,0 +1,49 @@
+#!/usr/bin/env zsh
+
+
+MODI="$HOME/.config/rofi/modi"
+
+addmenu(){
+  echo "files
+monitor
+quit
+theme" | addspan "menu"
+  echo -e "\0markup-rows\x1ftrue"
+  echo -e "\x00prompt\x1fmenu"
+  echo -e "\0message\x1fHi $USER!"
+}
+
+add(){
+  echo "<b>back</b>" | addspan "back"
+  "$MODI/$@"        | addspan "$1"
+
+  echo -e "\0markup-rows\x1ftrue"
+  echo -e "\x00prompt\x1f$1"
+  
+}
+
+addspan(){
+  # If the line consists only of printable characters, the span tag is added around the line
+  # the lang parameter is set to $1  
+  sed "s/^\([[:print:]]*\)$/<span lang=\"$1\">\1<\/span>/"
+}
+
+parse(){
+  # reverse addspan
+  # MENU_ID is the lang parameter and the line itself is the SUBCMD
+  MENU_ID=$(echo "$1" | sed "s/<span lang=\"\([^\"]*\)\">\(.*\)<\/span>/\1/")
+   SUBCMD=$(echo "$1" | sed "s/<span lang=\"\([^\"]*\)\">\(.*\)<\/span>/\2/")
+  echo "M:$MENU_ID,C:$SUBCMD">/dev/stderr
+  case "$MENU_ID" in
+    menu)  [[ "$SUBCMD" == "theme" ]] && add "$SUBCMD" "nop" "1" || add "$SUBCMD";;
+    back)  addmenu;;
+    *)     add "$MENU_ID" "$SUBCMD";;
+  esac
+}
+
+
+if [ "$@" ]; then
+  parse "$@"
+else
+  addmenu
+fi

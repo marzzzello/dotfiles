@@ -1,18 +1,10 @@
 #!/usr/bin/env zsh
 
-OPTIONS="\
-Lock
-Logout
-Reboot
-Power off
-Suspend
-Hibernate
-Hibernate and suspend"
 
-selection=$(echo -e "$OPTIONS" | rofi -dmenu -i -p "power-menu")
-lock=(dm-tool lock)
-
-case "$selection" in
+if [[ "$@" ]]
+then
+  lock=(dm-tool lock)
+  case "$@" in
     Lock)                       $lock;;
     Logout)                     i3-msg exit;;
     Reboot)                     reboot;;
@@ -21,5 +13,17 @@ case "$selection" in
     Hibernate)                  $lock; systemctl hibernate;;
     "Hibernate and suspend")    $lock; systemctl hybrid-sleep;;
     *)                          echo "what is that?";;
-esac
-exit 0
+  esac
+else
+  OPTIONS="\
+Lock
+Logout
+Reboot
+Power off
+Suspend
+Hibernate
+Hibernate and suspend"
+
+  echo -e "$OPTIONS"
+fi
+
