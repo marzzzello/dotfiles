@@ -69,13 +69,14 @@ client.background       $color0
 bindsym $mod+Return  exec --no-startup-id gnome-terminal
 
 ## start Rofi (a application launcher, window switcher. dmenu replacement)
-bindsym $mod+d       exec --no-startup-id "rofi -show"
-bindsym $alt+Tab     exec --no-startup-id "rofi -show window"
-bindsym $mod+m       exec --no-startup-id "~/.config/i3/monitor.sh"
-bindsym XF86Display  exec --no-startup-id "~/.config/i3/monitor.sh"
-bindsym $mod+Shift+e exec --no-startup-id "~/.config/i3/quit-i3.zsh"
-bindsym XF86Sleep    exec --no-startup-id "~/.config/i3/quit-i3.zsh"
-bindsym $mod+t       exec --no-startup-id "~/.config/wpg/scripted_themes/theme_chooser.sh"
+bindsym $mod+d       exec --no-startup-id "rofi -modi drun,run -show"
+bindsym $alt+Tab     exec --no-startup-id "rofi -modi window   -show"
+bindsym $mod+m       exec --no-startup-id "rofi -modi    menu:~/.config/rofi/modi/menu    -show"
+bindsym Menu         exec --no-startup-id "rofi -modi    menu:~/.config/rofi/modi/menu    -show"
+bindsym XF86Display  exec --no-startup-id "rofi -modi monitor:~/.config/rofi/modi/monitor -show"
+bindsym $mod+t       exec --no-startup-id "rofi -modi   theme:~/.config/rofi/modi/theme   -show"
+bindsym $mod+Shift+e exec --no-startup-id "rofi -modi    quit:~/.config/rofi/modi/quit    -show"
+bindsym XF86Sleep    exec --no-startup-id "rofi -modi    quit:~/.config/rofi/modi/quit    -show"
 ## custom rofi scripts
 bindsym $mod+n       exec --no-startup-id networkmanager_dmenu
 bindsym $mod+p       exec --no-startup-id rofimoji
