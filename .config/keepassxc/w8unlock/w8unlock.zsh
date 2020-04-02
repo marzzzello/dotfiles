@@ -25,7 +25,7 @@ debug(){
 
 # max 15 seconds
 wait_for_keepassxc(){
-  for i in {1..15}; do
+  for i in {1..20}; do
     qdbus org.keepassxc.KeePassXC.MainWindow / org.freedesktop.DBus.Peer.Ping &> /dev/null
     case $? in
       0) echo "Ready"             | adddate; return;;
