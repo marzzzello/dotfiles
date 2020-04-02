@@ -23,5 +23,5 @@ configuration {{
 	show-icons:         true;
 	sidebar-mode:		true;
 	
-	theme: 				"~/.config/rofi/theme.rasi";
 }}
+@import "~/.config/rofi/themes/wpgtk.rasi"
