@@ -5,7 +5,7 @@
 .config/i3status-rust/config.toml filter=head
 .config/polybar/config filter=head
 .config/rofi/config.rasi filter=head
-.config/rofi/theme.rasi filter=head
+.config/rofi/themes/wpgtk.rasi filter=head
 .teeworlds/settings_ddnet.cfg filter=teeworlds
 .teeworlds/settings.cfg filter=teeworlds
 .config/keepassxc/w8unlock/w8unlock.zsh filter=w8unlock
