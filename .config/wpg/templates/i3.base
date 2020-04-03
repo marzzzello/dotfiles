@@ -173,7 +173,8 @@ bindsym $mod+Shift+Prior move container to workspace prev_on_output
 bindsym $mod+Shift+Next  move container to workspace next_on_output 
 
 ## switch to workspace
-bindsym $mod+dead_circumflex    workspace $ws0 # ^
+# ^
+bindsym $mod+dead_circumflex    workspace $ws0
 bindsym $mod+1                  workspace $ws1
 bindsym $mod+2                  workspace $ws2
 bindsym $mod+3                  workspace $ws3
