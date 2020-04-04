@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# This script waits until i3 is ready, then it opens KeeKassXC and unlocks the database with the password given via stdin
+# This script waits until KeePassXC is ready (e.g. autostart KeePassXC via i3 config), then it  unlocks the database with the password given via stdin
 # w8unlock = wait until keepassxc is ready, unlock database via dbus
 
 # uncomment and insert your username and path:
