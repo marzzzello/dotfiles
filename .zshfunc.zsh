@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 mkcd(){
     mkdir "$@" && cd "$@"; 
 }
@@ -121,12 +122,22 @@ pdf() {
 }
 
 
+# pm -> yay if it is installed, if not pm -> pacman
+command -v yay &>/dev/null && alias pm="yay" || alias pm="pacman"
+
+
 ### cleanups
+
+# remove packages installed as dependency but not needed anymore
 cupm(){
-  if pacman -Qdtq; then
-    sudo pacman -Runcs `pacman -Qdtq` --noconfirm
+  
+  if pm -Qtdq; then
+      pm -Rucns --noconfirm $(pm -Qtdq)
   fi
-  echo "j\nj" | sudo pacman -Scc
+
+  # this will delete the complete package cache
+  sudo paccache -r -k 0
+  pm -Scc --noconfirm
 }
 
 cutrash(){
@@ -175,6 +186,33 @@ echo "Usage:
  -d  --docker
  -a  --all" ;;
   esac
+}
+
+### updates
+
+# update mirrorlist
+upmirror(){
+  sudo reflector --completion-percent 80 --country France --country Germany --age 6 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist
+}
+
+# update keyring
+upkeys(){
+  pm -Sy --noconfirm archlinux-keyring 
+  sudo pacman-key --populate archlinux
+}
+
+# update all packages 
+uppm(){
+  pm -Syu --devel --timeupdate --noconfirm --noremovemake --cleanafter --norebuild --useask --sudoloop
+}
+
+# full update
+upfull(){
+  upmirror
+  upkeys 
+  uppm
+
+  cupm 
 }
 
 # mount fs stud
