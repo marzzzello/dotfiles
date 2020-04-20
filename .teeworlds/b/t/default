@@ -1,4 +1,0 @@
-bind mouse1 "+fire"
-bind mouse2 "+hook"
-echo "Default Binds aktiviert"
-bind home "exec b/t/city"

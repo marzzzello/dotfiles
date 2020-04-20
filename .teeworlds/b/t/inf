@@ -1,2 +1,0 @@
-echo "Infection Binds aktiviert"
-bind home "exec b/t/ddnet"

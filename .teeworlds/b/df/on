@@ -1,3 +1,0 @@
-bind mouse1 "+fire; say /emote angry; +toggle cl_dummy_hammer 1 0"
-echo "DeepFly on"
-bind g "exec b/df/off"

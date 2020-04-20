@@ -1,8 +1,0 @@
-bind right "rcon right"
-bind left "rcon left"
-bind down "rcon down"
-bind up "rcon up"
-bind mouse1 "+fire; say /emote angry 1"
-bind mouse2 "+hook; say /emote happy 1"
-echo "DDNET Binds aktiviert"
-bind home "exec b/t/default"
