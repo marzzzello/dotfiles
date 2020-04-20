@@ -1,14 +1,14 @@
 # Dotfiles
 
 ![](https://forthebadge.com/images/badges/built-with-love.svg)
-![](https://forthebadge.com/images/badges/Built-By-hipsters.svg)
-![](https://forthebadge.com/images/badges/contains-Cat-GIFs.svg)
 ![](https://forthebadge.com/images/badges/fuck-it-ship-it.svg)
+![](https://forthebadge.com/images/badges/contains-Cat-GIFs.svg)
 
 [![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-fc6d26.svg?style=for-the-badge&logo=gitlab)](https://gitlab.com/marzzzello/dotfiles)
 [![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-4078c0.svg?style=for-the-badge&logo=github)](https://github.com/marzzzello/dotfiles)
-[![GitHub](https://img.shields.io/github/license/marzzzello/dotfiles.svg?style=for-the-badge)]( 	LICENSE.md)
-[![GitHub](https://img.shields.io/github/commit-activity/w/marzzzello/dotfiles.svg?style=for-the-badge)]()
+[![license](https://img.shields.io/github/license/marzzzello/dotfiles.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIHN0eWxlPSJmaWxsOiNkZGRkZGQiIGQ9Ik03IDRjLS44MyAwLTEuNS0uNjctMS41LTEuNVM2LjE3IDEgNyAxczEuNS42NyAxLjUgMS41UzcuODMgNCA3IDR6bTcgNmMwIDEuMTEtLjg5IDItMiAyaC0xYy0xLjExIDAtMi0uODktMi0ybDItNGgtMWMtLjU1IDAtMS0uNDUtMS0xSDh2OGMuNDIgMCAxIC40NSAxIDFoMWMuNDIgMCAxIC40NSAxIDFIM2MwLS41NS41OC0xIDEtMWgxYzAtLjU1LjU4LTEgMS0xaC4wM0w2IDVINWMwIC41NS0uNDUgMS0xIDFIM2wyIDRjMCAxLjExLS44OSAyLTIgMkgyYy0xLjExIDAtMi0uODktMi0ybDItNEgxVjVoM2MwLS41NS40NS0xIDEtMWg0Yy41NSAwIDEgLjQ1IDEgMWgzdjFoLTFsMiA0ek0yLjUgN0wxIDEwaDNMMi41IDd6TTEzIDEwbC0xLjUtMy0xLjUgM2gzeiIvPjwvc3ZnPgo=)](LICENSE.md)
+[![commit-activity](https://img.shields.io/github/commit-activity/m/marzzzello/dotfiles.svg?style=for-the-badge)](https://img.shields.io/github/commit-activity/m/marzzzello/dotfiles.svg?style=for-the-badge)
+[![Mastodon Follow](https://img.shields.io/mastodon/follow/103207?domain=https%3A%2F%2Fsocial.tchncs.de&logo=mastodon&style=for-the-badge)](https://social.tchncs.de/@marzzzello)
 
 ## To install
 
@@ -20,25 +20,26 @@ Package name            | Repo | Needed for                                     
 arandr                  | main | to set monitor layout with GUI                                          | Provide a simple visual front end for XRandR 1.2.
 autorandr               | main | to set monitor layout automatically e.g. after reboot                   | Auto-detect connected display hardware and load appropiate X11 setup using xrandr
 awesome-terminal-fonts  | main | powerline font for i3status-rust                                        | fonts/icons for powerlines
-compton                 | main | transparency and smooth transitions                                     | X compositor that may fix tearing issues
 dunst                   | main | notifications                                                           | Customizable and lightweight notification-daemon
 evolution               | main | autostart                                                               | Manage your email, contacts and schedule
 feh                     | main | to set wallpaper                                                        | Fast and light imlib2-based image viewer
 firefox                 | main | autostart                                                               | Standalone web browser from mozilla.org
-gajim                   | main | autostart                                                               | Full featured and easy to use XMPP (Jabber) client
 guake                   | main | autostart                                                               | Drop-down terminal for GNOME
 i3-gaps                 | main | my window manager                                                       | A fork of i3wm tiling window manager with more features, including gaps
 kdeconnect              | main | autostart                                                               | Adds communication between KDE and your smartphone
 light-locker            | main | screen locker                                                           | A simple session locker for LightDM
 lxappearance            | main | to set GTK theme  and icon-set                                          | Feature-rich GTK+ theme switcher of the LXDE Desktop
 lxsession               | main | needed for programms like e.g. gparted                                  | Lightweight X11 session manager
+neofetch                | main | show system information                                                 | A CLI system information tool written in BASH that supports displaying images.
 network-manager-applet  | main | to choose network connection                                            | Applet for managing network connections
 noto-fonts-emoji        | main | emojis :P                                                               | Google Noto emoji fonts
 pamixer                 | main | make sound control keys working                                         | Pulseaudio command-line mixer like amixer
-pavucontrol             | main | Sound settings and mixer                                                | PulseAudio Volume Control
+pavucontrol             | main | Sound settings and mixer                                                | PulseAudio Volume Contro
+picom                   | main | transparency and smooth transitions                                     | X compositor that may fix tearing issues
 playerctl               | main | make music control keys working                                         | mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
 powerline-fonts         | main | more powerline fonts                                                    | patched fonts for powerline
 python-i3-py            | main | for scripts                                                             | tools for i3 users and developers
+qt5-tools               | main | qdbus for w8unlock.zsh script                                           | A cross-platform application and UI framework (Development Tools, QtHelp)
 redshift                | main | night mode                                                              | Adjusts the color temperature of your screen according to your surroundings.
 rofi                    | main | launcher, to set theme, to exit i3, for searching the web, ...          | A window switcher, application launcher and dmenu replacement
 rxvt-unicode            | main | very customizable terminal emulator                                     | Unicode enabled rxvt-clone terminal emulator (urxvt)
@@ -58,6 +59,7 @@ shadowfox-updater            | AUR | dark firefox theme                         
 spotify                      | AUR | autostart                                                           | A proprietary music streaming service
 wpgtk-git                    | AUR | generate and set themes based on wallpapers and to generate the configs from the templates | A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme
 xuserrun-dbus-git            | AUR | run cronjob command as X11 user                                     | Run commands as the currently-active X11 user while also using his dbus-session
+yay                          | AUR | AUR helper                                                          | Yet another yogurt. Pacman wrapper and AUR helper written in go.
 
 </details>
 
@@ -65,22 +67,22 @@ xuserrun-dbus-git            | AUR | run cronjob command as X11 user            
 arandr
 autorandr
 awesome-terminal-fonts
-compton
 dunst
 evolution
 feh
 firefox
-gajim
 guake
 i3-gaps
 kdeconnect
 light-locker
 lxappearance
 lxsession
+neofetch
 network-manager-applet
 noto-fonts-emoji
 pamixer
 pavucontrol
+picom
 playerctl
 powerline-fonts
 python-i3-py
@@ -103,6 +105,7 @@ shadowfox-updater
 spotify
 wpgtk-git
 xuserrun-dbus-git
+yay
 `
 2. If you want some fancy wallpaper images from the earth in almost realtime then also install `goes16-background-git` and `himawaripy-git`
 3. Install dotfiles like descriped further down.
