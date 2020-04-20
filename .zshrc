@@ -85,11 +85,26 @@ if [[ -n $SSH_CONNECTION ]]; then
 elif [[ $USER = "root" ]]; then
   export EDITOR='vim'   # non ssh but root
 else
-  export EDITOR='subl'  # non ssh and non root
+  export EDITOR='vim'  # non ssh and non root
 fi
 
 # Display context under sudo -i
 [[ $USER != root ]] && DEFAULT_USER=$USER
+
+# colors for less and man pages
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
 
 
 ############ Plugins ############
@@ -139,6 +154,9 @@ antigen bundle hlissner/zsh-autopair
 
 # Randomly insults the user when typing wrong command.
 antigen bundle matmutant/zsh-insulter src/zsh.command-not-found
+
+# Expands ... to ../..
+antigen bundle danielbayerlein/zsh-plugins rationalize-dot.plugin.zsh
 
 # Load the theme
 antigen theme romkatv/powerlevel10k
@@ -231,7 +249,7 @@ alias duply=~/projects/Dubly/src/dubly.py
 
 
 # pm -> yay if it is installed, if not pm -> pacman
-type yay >/dev/null 2>&1 && alias pm="yay" || alias pm="pacman"
+command -v yay &>/dev/null && alias pm="yay" || alias pm="pacman"
 
 # Clipboard
 alias xclip="xclip -selection c"
