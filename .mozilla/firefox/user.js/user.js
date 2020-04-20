@@ -219,7 +219,8 @@ user_pref("dom.maxHardwareConcurrency",				2);
 // https://webassembly.org/
 // https://en.wikipedia.org/wiki/WebAssembly
 // https://trac.torproject.org/projects/tor/ticket/21549
-user_pref("javascript.options.wasm",				false);
+// needed for jitsi
+// user_pref("javascript.options.wasm",				false);
 
 /******************************************************************************
  * SECTION: Misc                                                              *
@@ -797,7 +798,7 @@ user_pref("privacy.clearOnShutdown.downloads",			true);
 user_pref("privacy.clearOnShutdown.formdata",			true);
 user_pref("privacy.clearOnShutdown.history",			false);
 user_pref("privacy.clearOnShutdown.offlineApps",		true);
-user_pref("privacy.clearOnShutdown.sessions",			true);
+user_pref("privacy.clearOnShutdown.sessions",			false);
 
 // allow resuming sessions
 user_pref("privacy.clearOnShutdown.openWindows",		false);
