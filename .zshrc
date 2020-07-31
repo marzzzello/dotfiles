@@ -17,32 +17,32 @@ ANTIGEN_LOG=$HOME/antigen.log
 ############ Important Functions ############
 fails=()
 getFails()   {  for fail in $fails; do echo $fail; done; }
-printFails() {  
-    local choicefile="$HOME/.cache/printNoFails"; 
-    if ! [ -f "$choicefile" ] && [ "${#fails[@]}" != 0 ]; then
+printFails() {
+  local choicefile="$HOME/.cache/printNoFails";
+  if ! [ -f "$choicefile" ] && [ "${#fails[@]}" != 0 ]; then
     getFails;
     local compcontext='y:yes:(yes)';
-    vared -cp 'Hide fails (yes)? ' ans; 
+    vared -cp 'Hide fails (yes)? ' ans;
     [[ "$ans" = "yes" ]] && touch "$choicefile";
-    fi
+  fi
 }
 include ()   {
-    for arg in "$@"; do
-        [[ -z $l ]] && local list="$arg" || list+=", $arg"
-        if [[ -f "$arg" ]]; then
-            source "$arg";
-            local SUCCESS=true;
-            break;
-        fi
-    done
-    if [[ -z $SUCCESS ]]; then
-        if [[ "${#[@]}" > 1 ]]; then 
-            fails+=("One of these: $list") 
-        else 
-            fails+=("$1");
+  for arg in "$@"; do
+    [[ -z $l ]] && local list="$arg" || list+=", $arg"
+    if [[ -f "$arg" ]]; then
+      source "$arg";
+      local SUCCESS=true;
+      break;
     fi
-        return 1;
+  done
+  if [[ -z $SUCCESS ]]; then
+    if [[ "${#[@]}" > 1 ]]; then
+      fails+=("One of these: $list")
+    else
+      fails+=("$1");
     fi
+    return 1;
+  fi
 }
 exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 
@@ -66,12 +66,12 @@ COMPLETION_WAITING_DOTS="true"
 # command execution timestamp shown in the history command output.
 HIST_STAMPS="yyyy-mm-dd"
 
-# The list (hash) of commands will be updated for each search by issuing the rehash command. 
-# Disable if file access is slow 
+# The list (hash) of commands will be updated for each search by issuing the rehash command.
+# Disable if file access is slow
 zstyle ":completion:*:commands" rehash 1
 
 ### setopts
-# GLOBDOTS lets files beginning with a . be matched without explicitly specifying the dot. 
+# GLOBDOTS lets files beginning with a . be matched without explicitly specifying the dot.
 # setopt globdots
 # http://zsh.sourceforge.net/Intro/intro_2.html#SEC2
 setopt extendedglob
@@ -81,15 +81,18 @@ setopt extendedglob
 # make go binaries accessible
 export PATH=$HOME/go/bin:$PATH
 
+# .local/bin
+export PATH=$HOME/.local/bin:$PATH
+
 export TERM="xterm-256color"
 
-export BROWSER="firefox" 
+export BROWSER="firefox"
 export XIVIEWER="shotwell"
 
 # Preferred editor for local & root & remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'   # ssh
-elif [[ $USER = "root" ]]; then
+  elif [[ $USER = "root" ]]; then
   export EDITOR='vim'   # non ssh but root
 else
   export EDITOR='vim'  # non ssh and non root
@@ -120,15 +123,15 @@ local a1="/usr/share/zsh/share/antigen.zsh"
 local a2="/usr/share/zsh-antigen/antigen.zsh"
 local a3="$HOME/antigen.zsh"
 if [[ -f $a1 ]]; then
-    ANTIGEN=$a1;
-elif [[ -f $a2 ]]; then
-    ANTIGEN=$a2;
-elif [[ -f $a3 ]]; then
-    ANTIGEN=$a3;
+  ANTIGEN=$a1;
+  elif [[ -f $a2 ]]; then
+  ANTIGEN=$a2;
+  elif [[ -f $a3 ]]; then
+  ANTIGEN=$a3;
 else
-    echo "Downloading Antigen to $a3"
-    curl -L git.io/antigen > $a3 \
-    && ANTIGEN=$a3
+  echo "Downloading Antigen to $a3"
+  curl -L git.io/antigen > $a3 \
+  && ANTIGEN=$a3
 fi
 
 source $ANTIGEN
@@ -143,7 +146,7 @@ antigen bundle common-aliases
 antigen bundle git
 antigen bundle gradle
 antigen bundle npm
-antigen bundle pip!
+antigen bundle pip
 antigen bundle thefuck
 
 # Syntax highlighting bundle.
@@ -162,9 +165,6 @@ antigen bundle hlissner/zsh-autopair
 # Randomly insults the user when typing wrong command.
 antigen bundle matmutant/zsh-insulter src/zsh.command-not-found
 
-# Expands ... to ../..
-antigen bundle danielbayerlein/zsh-plugins rationalize-dot.plugin.zsh
-
 # Load the theme
 antigen theme romkatv/powerlevel10k
 # Load theme settings. To customize, run `p10k configure` or edit ~/.p10k.zsh.
@@ -177,16 +177,16 @@ antigen apply
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# Some nice functions 
+# Some nice functions
 include "$HOME/.zshfunc.zsh"
 
 
 ############ FZF ############
-# CTRL-T - Paste the selected files and directories onto the command-line 
+# CTRL-T - Paste the selected files and directories onto the command-line
 export FZF_CTRL_T_OPTS="--height 80% --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200' --bind 'shift-left:preview-page-up,shift-right:preview-page-down,?:toggle-preview,alt-w:toggle-preview-wrap,alt-e:execute($EDITOR {})'"
-# CTRL-R - Paste the selected command from history onto the command-line 
+# CTRL-R - Paste the selected command from history onto the command-line
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
-# ALT-C - cd into the selected directory 
+# ALT-C - cd into the selected directory
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 # Directly executing the command (CTRL-X CTRL-R)
@@ -199,12 +199,12 @@ bindkey '^X^R' fzf-history-widget-accept
 
 # install fzf if not already installed
 if ! command -v fzf > /dev/null; then
-    export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
-    if [[ ! -d "$HOME/.fzf/bin" ]]; then
-        echo "Installing fzf..."
-        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
-        && $HOME/.fzf/install --bin
-    fi
+  export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+  if [[ ! -d "$HOME/.fzf/bin" ]]; then
+    echo "Installing fzf..."
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
+    && $HOME/.fzf/install --bin
+  fi
 fi
 # fzf keybindings for Arch + Ubuntu + others
 include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh $HOME/.fzf/shell/completion.zsh
@@ -291,7 +291,7 @@ alias fh="fd -HI" # fd with hidden and ignored files
 command -v lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
 
 # if bat is installed use it, if not use cat
-command -v bat > /dev/null && alias cat="bat" 
+command -v bat > /dev/null && alias cat="bat"
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
@@ -310,15 +310,14 @@ alias teamV="sudo systemctl start teamviewerd.service && teamviewer"
 alias ap="ansible-playbook"
 alias ip="ip -c"
 
-# mass renaming files 
+# mass renaming files
 autoload zmv
 alias mmv='noglob zmv -W'
 
 alias proxy='sudo iptables -t nat -A OUTPUT -p tcp --dport  80 -m owner ! --uid-owner 1001 -j DNAT --to-destination 127.0.0.1:8080; \
-             sudo iptables -t nat -A OUTPUT -p tcp --dport 443 -m owner ! --uid-owner 1001 -j DNAT --to-destination 127.0.0.1:8443'
+sudo iptables -t nat -A OUTPUT -p tcp --dport 443 -m owner ! --uid-owner 1001 -j DNAT --to-destination 127.0.0.1:8443'
 alias proxystop='sudo iptables -t nat -F'
 
 ###
 
 printFails
-
