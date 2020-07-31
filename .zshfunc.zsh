@@ -42,19 +42,6 @@ cont(){
 
 ### 
 
-# if in home directory and interactive shell, than manage dotfiles with extra parameters 
-git=$(command -v git)
-git(){
-  if [ $PWD = "$HOME" ] && [[ $- =~ 's' ]]; then		
-    #echo home
-		$git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
-	else
-		#echo nonhome
-		$git "$@"
-	fi
-	
-}
-
 # copys the main identidy to server (~/.ssh/main.pub) and removes old ssh keys from server (see next function)
 ssh-update-key(){
   if grep 'SSH2 PUBLIC KEY' -q $HOME/.ssh/main.pub; then 
@@ -191,19 +178,15 @@ echo "Usage:
 ### updates
 
 # update mirrorlist
-upmirror(){
-  sudo reflector --completion-percent 80 --country France --country Germany --age 6 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist
-}
+alias upmirror="sudo reflector --completion-percent 80 --country France --country Germany --age 6 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
+
+# update all packages
+alias uppm="pm -Syu --devel --timeupdate --noconfirm --noremovemake --cleanafter --norebuild --useask --sudoloop"
 
 # update keyring
 upkeys(){
   pm -Sy --noconfirm archlinux-keyring 
   sudo pacman-key --populate archlinux
-}
-
-# update all packages 
-uppm(){
-  pm -Syu --devel --timeupdate --noconfirm --noremovemake --cleanafter --norebuild --useask --sudoloop
 }
 
 # full update
