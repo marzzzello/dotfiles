@@ -281,8 +281,13 @@ bar {{
 # first part of the WM_CLASS is the instance, the second part is the class
 assign [instance="evolution" title="(?<!(K|C)alend(e|a)r) – Evolution"] $ws9
 assign [class="firefox"]  $ws2
+assign [instance="code-oss"]  $ws5
 assign [instance="dino"]  $ws8
 assign [instance="gajim"] $ws8
+assign [instance="discord"] $ws8
+assign [instance="signal"] $ws8
+assign [instance="telegram-desktop"] $ws8
+assign [class="TeamSpeak 3"] $ws8
 for_window [instance="spotify"] move to workspace $ws10
 
 
