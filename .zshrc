@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,13 +8,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ANTIGEN_LOG=$HOME/antigen.log
-############ To install ############
-# antigen:              yay -S antigen-git            ## https://github.com/zsh-users/antigen
-# purepower:                                             ## https://github.com/romkatv/dotfiles-public/blob/master/.purepower
-# fzf:                  pacman -S fzf                    ## https://github.com/junegunn/fzf#installation
-# .zshfunc.zsh
-# thefuck:              pacman -S thefuck                ## https://github.com/nvbn/thefuck
-# wpgtk:                yay -S wpgtk-git              ## https://github.com/deviantfero/wpgtk
+############ To install (optional) ############
+# fzf:      pacman -S fzf       ## https://github.com/junegunn/fzf#installation
+# thefuck:  pacman -S thefuck   ## https://github.com/nvbn/thefuck
+# wpgtk:    yay -S wpgtk-git    ## https://github.com/deviantfero/wpgtk
 
 ############ Important Functions ############
 fails=()
@@ -140,17 +139,27 @@ source $ANTIGEN
 antigen use oh-my-zsh
 
 antigen bundle adb
+antigen bundle code
 antigen bundle colorize
 antigen bundle command-not-found
 antigen bundle common-aliases
+antigen bundle cp
 antigen bundle git
 antigen bundle gradle
 antigen bundle npm
 antigen bundle pip
-antigen bundle thefuck
+if command -v thefuck > /dev/null; then
+  antigen bundle thefuck
+fi;
+# nice directory listing, ls replacement
+antigen bundle supercrabtree/k
 
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+# jump around
+antigen bundle changyuheng/fz
+antigen bundle rupa/z
+
+# fzf completion everywhere
+antigen bundle Aloxaf/fzf-tab
 
 # Fish-like auto suggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=1'
@@ -164,6 +173,9 @@ antigen bundle hlissner/zsh-autopair
 
 # Randomly insults the user when typing wrong command.
 antigen bundle matmutant/zsh-insulter src/zsh.command-not-found
+
+# Syntax highlighting
+antigen bundle zdharma/fast-syntax-highlighting
 
 # Load the theme
 antigen theme romkatv/powerlevel10k
@@ -182,20 +194,13 @@ include "$HOME/.zshfunc.zsh"
 
 
 ############ FZF ############
+export FZF_DEFAULT_COMMAND='fd --type f --follow'
 # CTRL-T - Paste the selected files and directories onto the command-line
 export FZF_CTRL_T_OPTS="--height 80% --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200' --bind 'shift-left:preview-page-up,shift-right:preview-page-down,?:toggle-preview,alt-w:toggle-preview-wrap,alt-e:execute($EDITOR {})'"
 # CTRL-R - Paste the selected command from history onto the command-line
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 # ALT-C - cd into the selected directory
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
-
-# Directly executing the command (CTRL-X CTRL-R)
-fzf-history-widget-accept() {
-  fzf-history-widget
-  zle accept-line
-}
-zle     -N     fzf-history-widget-accept
-bindkey '^X^R' fzf-history-widget-accept
 
 # install fzf if not already installed
 if ! command -v fzf > /dev/null; then
@@ -264,8 +269,6 @@ alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
 # more colors
-alias ccat='colorize_via_pygmentize'
-alias cnf-lookup='cnf-lookup --colors'
 alias pacman='pacman --color=auto'  # use more colors
 
 # suffix aliases
@@ -293,22 +296,16 @@ command -v lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
 # if bat is installed use it, if not use cat
 command -v bat > /dev/null && alias cat="bat"
 
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
 alias diff='diff --color=auto'
-
 alias week='date +%V' #week number
-
 alias dd="dd status=progress"
-
 alias rmlh=" tail -3 ~/.zsh_history ; head -n -1 ~/.zsh_history > ~/.zsh_history.tmp ; mv ~/.zsh_history.tmp .zsh_history ; echo "last:" ;tail -1 ~/.zsh_history"
 alias searchsploit='/usr/share/exploit-db/searchsploit'
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
-
 alias teamV="sudo systemctl start teamviewerd.service && teamviewer"
-
 alias ap="ansible-playbook"
 alias ip="ip -c"
+alias k="k -h"
 
 # mass renaming files
 autoload zmv
