@@ -6,4 +6,6 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
 fi
 
 export GOPATH=$HOME/go
-rfkill block bluetooth
+
+# uncomment to disable bluetooth at startup:
+#rfkill block bluetooth
