@@ -24,13 +24,14 @@
 | evolution                   | main | autostart                                                             | Manage your email, contacts and schedule                                                                       |
 | feh                         | main | to set wallpaper                                                      | Fast and light imlib2-based image viewer                                                                       |
 | firefox                     | main | autostart                                                             | Standalone web browser from mozilla.org                                                                        |
+| gammastep                   | main | night mode                                                            | Adjust the color temperature of your screen according to your surroundings.                                    |
 | guake                       | main | autostart                                                             | Drop-down terminal for GNOME                                                                                   |
 | i3-gaps                     | main | my window manager                                                     | A fork of i3wm tiling window manager with more features, including gaps                                        |
 | kdeconnect                  | main | autostart                                                             | Adds communication between KDE and your smartphone                                                             |
 | keepassxc                   | main | password manager, ssh-agent (automatic unlock with pam script)        | Cross-platform community-driven port of Keepass password manager                                               |
 | light-locker                | main | screen locker                                                         | A simple session locker for LightDM                                                                            |
 | lxappearance                | main | to set GTK theme and icon-set                                         | Feature-rich GTK+ theme switcher of the LXDE Desktop                                                           |
-| lxsession                   | main | needed for programms like e.g. gparted                                | Lightweight X11 session manager                                                                                |
+| lxsession-gtk3              | main | needed for programms like e.g. gparted                                | Lightweight X11 session manager (GTK+ 3 version)                                                               |
 | neofetch                    | main | show system information                                               | A CLI system information tool written in BASH that supports displaying images.                                 |
 | network-manager-applet      | main | to choose network connection                                          | Applet for managing network connections                                                                        |
 | noto-fonts-emoji            | main | emojis 😍😜🧑‍💻                                                      | Google Noto emoji fonts                                                                                        |
@@ -41,7 +42,6 @@
 | powerline-fonts             | main | more powerline fonts                                                  | patched fonts for powerline                                                                                    |
 | python-i3-py                | main | for scripts                                                           | tools for i3 users and developers                                                                              |
 | qt5-tools                   | main | qdbus for w8unlock.zsh script                                         | A cross-platform application and UI framework (Development Tools, QtHelp)                                      |
-| redshift                    | main | night mode                                                            | Adjusts the color temperature of your screen according to your surroundings.                                   |
 | rofi                        | main | launcher, to set theme, to exit i3, for searching the web, ...        | A window switcher, application launcher and dmenu replacement                                                  |
 | terminus-font               | main | another font                                                          | Monospace bitmap font (for X11 and console)                                                                    |
 | ttf-dejavu                  | main | main font                                                             | Font family based on the Bitstream Vera Fonts with a wider range of characters                                 |
@@ -62,7 +62,7 @@
 
 </details>
 
-1. Install all: `$aurhelper arandr autorandr awesome-terminal-fonts dunst evolution feh firefox guake i3-gaps kdeconnect light-locker lxappearance lxsession neofetch network-manager-applet noto-fonts-emoji pamixer pavucontrol picom playerctl powerline-fonts python-i3-py redshift rofi rxvt-unicode seahorse terminus-font ttf-dejavu xsettingsd dino gnome-terminal-transparency goes16-background-git himawaripy-git i3status-rust-git nerd-fonts-complete rofi-surfraw-git rofimoji-git shadowfox-updater spotify wpgtk-git xuserrun-dbus-git yay `
+1. Install all: `$aurhelper arandr autorandr awesome-terminal-fonts dunst evolution feh firefox gammastep guake i3-gaps kdeconnect light-locker lxappearance lxsession-gtk3 neofetch network-manager-applet noto-fonts-emoji pamixer pavucontrol picom playerctl powerline-fonts python-i3-py rofi rxvt-unicode seahorse terminus-font ttf-dejavu xsettingsd dino gnome-terminal-transparency goes16-background-git himawaripy-git i3status-rust-git nerd-fonts-complete rofi-surfraw-git rofimoji-git shadowfox-updater spotify wpgtk-git xuserrun-dbus-git yay `
 2. If you want some fancy wallpaper images from the earth in almost realtime then also install `goes16-background-git` and `himawaripy-git`
 3. Install dotfiles like descriped further down.
 4. Set monitor layout with arandr. If you you want to save multiple different monitor setups have a look at autorandr. With `$mod+m` there is a script to set some basic layouts.
