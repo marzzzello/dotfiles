@@ -120,3 +120,7 @@ curl -L 'https://git.io/marzzzello' | zsh
 ## Starting from scratch
 
 I started with [this tutorial](https://de.atlassian.com/git/tutorials/dotfiles) on how to store your dotfiles
+
+## License
+
+This project is licensed under the [MIT License](LICENSE.md) except for the mpv scripts [[1]](.config/mpv/scripts/mpv_thumbnail_script_client_osc.lua)[[2]](.config/mpv/scripts/mpv_thumbnail_script_server.lua).
