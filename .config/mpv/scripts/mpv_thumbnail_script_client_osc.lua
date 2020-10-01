@@ -15,9 +15,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 --[[
-    mpv_thumbnail_script.lua 0.4.2 - commit a2de250 (branch master)
+    mpv_thumbnail_script.lua 0.4.3 - commit 1186019 (branch master)
     https://github.com/TheAMM/mpv_thumbnail_script
-    Built on 2018-02-07 20:36:55
+    Built on 2020-10-01 15:33:20
 ]]--
 local assdraw = require 'mp.assdraw'
 local msg = require 'mp.msg'
@@ -1075,7 +1075,7 @@ function Thumbnailer:register_client()
         local duration = mp.get_property_native("duration")
         local max_duration = thumbnailer_options.autogenerate_max_duration
 
-        if self.state.available and thumbnailer_options.autogenerate then
+        if duration ~= nil and self.state.available and thumbnailer_options.autogenerate then
             -- Notify if autogenerate is on and video is not too long
             if duration < max_duration or max_duration == 0 then
                 self:start_worker_jobs()
