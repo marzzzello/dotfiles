@@ -79,7 +79,8 @@ setopt extendedglob
 ############ Env variables ############
 # make go binaries accessible
 export PATH=$HOME/go/bin:$PATH
-
+# make perl tools accessible
+export PATH=/usr/bin/core_perl:$PATH
 # .local/bin
 export PATH=$HOME/.local/bin:$PATH
 
