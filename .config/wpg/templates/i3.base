@@ -98,10 +98,12 @@ bindsym XF86AudioMute         exec --no-startup-id pamixer -t
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 3
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 3
 
-## control media player (ignore vlc player)
-bindsym XF86AudioPlay         exec --no-startup-id playerctl play-pause -i vlc
-bindsym XF86AudioNext         exec --no-startup-id playerctl next       -i vlc
-bindsym XF86AudioPrev         exec --no-startup-id playerctl previous   -i vlc
+## control media player (ignore vlc player and give kdeconnect the lowest priority)
+## Workaround to print a comma: $(printf "\x2c")
+## If you have a better solution please tell me (escaping didn't work)
+bindsym XF86AudioPlay         exec --no-startup-id playerctl play-pause -i vlc -p "%any$(printf "\x2c")$(playerctl -l | grep kdeconnect.mpris | tr '\n' $(printf "\x2c"))"
+bindsym XF86AudioNext         exec --no-startup-id playerctl next       -i vlc -p "%any$(printf "\x2c")$(playerctl -l | grep kdeconnect.mpris | tr '\n' $(printf "\x2c"))"
+bindsym XF86AudioPrev         exec --no-startup-id playerctl previous   -i vlc -p "%any$(printf "\x2c")$(playerctl -l | grep kdeconnect.mpris | tr '\n' $(printf "\x2c"))"
 
 
 ##### OTHER KEYBINDINGS #####
@@ -293,9 +295,11 @@ for_window [instance="spotify"] move to workspace $ws10
 
 ######### FLOATING #########
 
-for_window [instance = "pavucontrol"]      floating enable
-for_window [instance = "gnome-calendar"]   floating enable
-for_window [instance = "gnome-calculator"] floating enable
+for_window [instance = "pavucontrol"]           floating enable
+for_window [instance = "gnome-calendar"]        floating enable
+for_window [instance = "gnome-calculator"]      floating enable
+for_window [instance = "blueberry.py"]          floating enable
+for_window [instance = "gnome-control-center"]  floating enable
 
 # evolution calendar
 for_window [title="(K|C)alend(e|a)r – Evolution"] floating enable, resize set 70ppt 70ppt, move position center
@@ -310,14 +314,14 @@ for_window [class="de-rub-dez6a3-cardcertificatemanager-Main"] floating enable
 ## BACKGROUND APPLICATIONS
 # set wallpaper and theme
 exec --no-startup-id "wpg -s $(wpg -c)"
+# old wallpaper + theme
+#exec --no-startup-id "~/.config/wpg/wp_init.sh"
 # run kde connect daemon
 exec --no-startup-id /usr/lib/kdeconnectd
 # authentication agent 
 exec --no-startup-id lxpolkit
 # notifications on low battery
 exec --no-startup-id "~/.config/i3/battery-notify.zsh"
-# wallpaper + theme
-exec --no-startup-id "~/.config/wpg/wp_init.sh"
 # compositor
 exec --no-startup-id picom
 
@@ -336,7 +340,7 @@ exec --no-startup-id redshift-gtk
 
 ## FOREGROUND APPLICATIONS
 # email, calender, contacts, tasks
-exec --no-startup-id evolution -c mail
+exec --no-startup-id sleep 10 && evolution -c mail
 # browser
 exec --no-startup-id firefox
 # XMPP messenger
