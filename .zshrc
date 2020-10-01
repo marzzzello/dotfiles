@@ -186,8 +186,8 @@ include ~/.p10k.zsh
 antigen apply
 
 # After oh-my-zsh
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTSIZE=1000000000
+SAVEHIST=1000000000
 
 # Some nice functions
 include "$HOME/.zshfunc.zsh"
