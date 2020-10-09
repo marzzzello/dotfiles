@@ -12,37 +12,40 @@ LOGFILE="${0:a:h}/log" # same directory as script
 LOGIN_PW="$(timeout --foreground 1 tr '\0' '\n')"
 
 adddate() {
-    while IFS= read -r line; do
-        printf '%s %s\n' "$(date --iso-8601=seconds)" "$line";
-    done
+  while IFS= read -r line; do
+    printf '%s %s\n' "$(date --iso-8601=seconds)" "$line"
+  done
 }
 
-debug(){
+debug() {
   echo "Starting..." | adddate
   env | adddate
   # echo "PW: $LOGIN_PW" | adddate
 }
 
 # max 15 seconds
-wait_for_keepassxc(){
+wait_for_keepassxc() {
   for i in {1..20}; do
-    qdbus org.keepassxc.KeePassXC.MainWindow / org.freedesktop.DBus.Peer.Ping &> /dev/null
+    qdbus org.keepassxc.KeePassXC.MainWindow / org.freedesktop.DBus.Peer.Ping &>/dev/null
     case $? in
-      0) echo "Ready"             | adddate; return;;
-      2) echo "Not ready"         | adddate;;
-      *) echo "non existing case" | adddate;;
+    0)
+      echo "Ready" | adddate
+      return
+      ;;
+    2) echo "Not ready" | adddate ;;
+    *) echo "non existing case" | adddate ;;
     esac
 
-    sleep 1;
-  done;
+    sleep 1
+  done
 
-  return 1;
+  return 1
 }
 
-openkeepassxc(){
+openkeepassxc() {
   echo "Exec KeePassXC..." | adddate
   qdbus org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.MainWindow.openDatabase "$DB_PATH" "$LOGIN_PW"
-  echo "Done; Returned ${pipestatus[1]}" | adddate;
+  echo "Done; Returned ${pipestatus[1]}" | adddate
 
 }
 
@@ -53,7 +56,7 @@ main() {
   if [[ "$PAM_USER" == "$KEEPASSXC_USER" ]]; then
     wait_for_keepassxc && openkeepassxc
   else
-    echo "Wrong user" | adddate
+    echo "Wrong user: $PAM_USER" | adddate
   fi
 
 }
