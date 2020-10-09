@@ -1,2 +1,142 @@
-# This file will get overwritten by wpgtk because there is a template file under ~/.config/wpg/templates/
+[theme]
+file = "wpg.toml"
 
+[icons]
+name = "awesome5"
+
+## [[block]]
+## block = "bluetooth"
+## mac = ""
+
+[[block]]
+block = "focused_window"
+max_width = 21
+
+[[block]]
+block = "music"
+## buttons = ["play", "next"]
+dynamic_width = true
+marquee_interval = 5
+marquee_speed = 0.2
+on_click = 'playerctl play-pause -i vlc -p "%any,$(playerctl -l | grep kdeconnect.mpris | tr \n ,))"'
+on_collapsed_click = "spotify"
+
+# [[block]]
+# block = "ibus"
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+
+[[block]]
+block = "battery"
+device = "DisplayDevice"
+driver = "upower"
+
+[[block]]
+alert = 10.0
+block = "disk_space"
+format = "{available}T"
+info_type = "available"
+interval = 20
+unit = "TiB"
+warning = 20.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "load"
+format = "{1m}"
+interval = 1
+
+# [[block]]
+# block = "custom"
+# command = "cat /proc/pressure/cpu | sed 's/some avg10=\\([^]*\\)avg60=\\([^]*\\)avg300=\\([^]*\\)total=\\([0-9]*\\)/\\1/g'"
+# interval = 1
+
+# [[block]]
+# block = "custom"
+# command = "pacmd list-sinks | sed '/*index:/{N;s/.*\\n//;s/\\W*name:.*\\.\\(.*\\)>/\\1/;p};d;'"
+# interval = "once"
+# on_click = "pactl set-default-sink $(pactl list sinks short | grep RUNNING | head -n1 | cut -f2) && pacmd list-sinks | sed '/*index:/{N;s/.*\\n//;s/\\W*name:.*\\.\\(.*\\)>/\\1/;p};d;'"
+
+[[block]]
+block = "sound"
+# set default device to current running sink, so the statusbar shows the volume of the current running sink
+on_click = "pactlset-default-sink$(pactllistsinksshort|grepRUNNING|head-n1|cut-f2);~/.config/i3status-rust/toggle-pavucontrol.py"
+show_volume_when_muted = true
+
+# [[block]]
+# block = "networkmanager"
+
+[[block]]
+block = "net"
+device = "w0"
+hide_inactive = true
+hide_missing = true
+interval = 1
+
+[[block]]
+block = "net"
+device = "e0"
+hide_inactive = true
+hide_missing = true
+interval = 1
+
+# [[block]]
+# block = "net"
+# device = "tun0"
+# hide_inactive = true
+# hide_missing = true
+# interval = 1
+
+[[block]]
+block = "kdeconnect"
+format = "{name} {notif_icon}{notif_count}"
+
+[[block]]
+block = "time"
+format = "%a %d-%m %H:%M:%S"
+interval = 1
+on_click = "~/.config/i3status-rust/toggle-calendar.py"
+
+[[block]]
+block = "pacman"
+format = "{pacman}+{aur}"
+interval = 3600
+# If a linux update is availble, but no ZFS package, it won't be possible to
+# actually perform a system upgrade, so we show a warning.
+warning_updates_regex = "(linux |linux-lts|linux-zen)"
+# If ZFS is available, we know that we can and should do an upgrade, so we show 
+# the status as critical.
+critical_updates_regex = "(zfs |zfs-lts)"
+
+aur_command = "yay -Qua"
+
+# [[block]]
+# block = "speedtest"
+# bytes = false
+# interval = 1800
+
+[[block]]
+block = "temperature"
+collapsed = true
+format = "{min}°{average}°{max}°"
+interval = 5
+
+# [[block]]
+# block = "uptime"
+
+#  [[block]]
+# block = "xrandr"
+# icons = true
+# resolution = false
+# interval = 5
