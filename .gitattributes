@@ -2,7 +2,7 @@
 .config/dunst/dunstrc filter=head
 .config/i3/config filter=head
 .config/i3/toggle-title-bar.py filter=head
-.config/i3status-rust/config.toml filter=head
+.config/i3status-rust/themes/wpg.toml filter=head
 .config/polybar/config filter=head
 .config/rofi/config.rasi filter=head
 .config/rofi/themes/wpgtk.rasi filter=head
@@ -10,4 +10,3 @@
 .teeworlds/settings.cfg filter=teeworlds
 .config/keepassxc/w8unlock/w8unlock.zsh filter=w8unlock
 .config/keepassxc/w8unlock/log filter=null
-

@@ -1,0 +1,17 @@
+# {infoMsg}
+
+alternating_tint_bg = "{color0}"
+alternating_tint_fg = "{color0}"
+critical_bg = "{color2}" ###red
+critical_fg = "{color0}" ###base03
+good_bg = "{color7}" ###green
+good_fg = "{color0}" ###base03
+idle_bg = "{color0}" ###base03
+idle_fg = "{color7}" ###base1
+info_bg = "{active}" ###blue
+info_fg = "{color0}" ###base03
+separator = "\ue0b2"
+separator_bg = "auto"
+separator_fg = "auto"
+warning_bg = "{color11}" ###yellow
+warning_fg = "{color0}" ###base03
