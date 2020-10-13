@@ -300,6 +300,8 @@ for_window [instance = "gnome-calendar"]        floating enable
 for_window [instance = "gnome-calculator"]      floating enable
 for_window [instance = "blueberry.py"]          floating enable
 for_window [instance = "gnome-control-center"]  floating enable
+for_window [instance = "discord-overlay"]  floating enable
+
 
 # evolution calendar
 for_window [title="(K|C)alend(e|a)r – Evolution"] floating enable, resize set 70ppt 70ppt, move position center
@@ -316,8 +318,6 @@ for_window [class="de-rub-dez6a3-cardcertificatemanager-Main"] floating enable
 exec --no-startup-id "wpg -s $(wpg -c)"
 # old wallpaper + theme
 #exec --no-startup-id "~/.config/wpg/wp_init.sh"
-# run kde connect daemon
-exec --no-startup-id /usr/lib/kdeconnectd
 # authentication agent 
 exec --no-startup-id lxpolkit
 # notifications on low battery
