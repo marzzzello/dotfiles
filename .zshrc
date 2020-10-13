@@ -77,12 +77,14 @@ setopt extendedglob
 
 
 ############ Env variables ############
-# make go binaries accessible
+# PATH: add go binaries
 export PATH=$HOME/go/bin:$PATH
-# make perl tools accessible
+# PATH: add perl tools
 export PATH=/usr/bin/core_perl:$PATH
-# .local/bin
+# PATH: add .local/bin
 export PATH=$HOME/.local/bin:$PATH
+# PATH: latest android build tools
+export PATH=/opt/android-sdk/build-tools/$(ls /opt/android-sdk/build-tools/ | tail -n1):$PATH &>/dev/null
 
 export TERM="xterm-256color"
 
