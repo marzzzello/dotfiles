@@ -100,9 +100,6 @@ else
   export EDITOR='vim'  # non ssh and non root
 fi
 
-# Display context under sudo -i
-[[ $USER != root ]] && DEFAULT_USER=$USER
-
 # colors for less and man pages
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
