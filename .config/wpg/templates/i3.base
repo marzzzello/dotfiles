@@ -256,6 +256,7 @@ bindsym $mod+r mode "resize"
 ############ BAR ############
 
 bar {{
+    tray_output primary
     strip_workspace_numbers yes
     #font pango:{font1}, FontAwesome 12
     font pango:FontAwesome, {font1} 12
