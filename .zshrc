@@ -167,6 +167,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 # Extra zsh completions
 antigen bundle zsh-users/zsh-completions
+antigen bundle spwhitt/nix-zsh-completions
 
 # Auto-close and delete matching delimiters
 antigen bundle hlissner/zsh-autopair
@@ -233,10 +234,6 @@ include /usr/share/fzf/completion.zsh /usr/share/zsh/vendor-completions/_fzf $HO
 # fix emulator
 alias emulator='/opt/android-sdk/tools/emulator'
 
-# start & unlock KeePassXC with secret-tool
-alias kxc="(secret-tool lookup keepassDB pws | keepassxc --pw-stdin ~/1+3/pws.kdbx &>/dev/null &)"
-
-
 ## Projects/Helpers
 
 # ddnet time
@@ -249,16 +246,11 @@ alias pdf2odt="~/projects/pdf2odt/pdf2odt"
 alias echo360="~/projects/echo360/run.sh"
 alias echo360Helper="~/projects/echo360/echoDlHelper.sh"
 
-# moodle crawler
-alias moodle="python2 ~/Moodle-Crawler/src/moodleCrawler.py"
-alias extlogrm="find . -name 'external-links.log' -execdir bash -c 'old="$1"; new="../$(basename -- "$PWD").${old##*.}"; mv "$old" "$new"; rmdir "$PWD"' - {} \;"
-
 # automerge folders
 alias automerge=~/projects/Dubly/src/automerge.py
 alias duply=~/projects/Dubly/src/dubly.py
 
 ##
-
 
 # pm -> yay if it is installed, if not pm -> pacman
 command -v yay &>/dev/null && alias pm="yay" || alias pm="pacman"
@@ -270,6 +262,8 @@ alias pbpaste='xsel --clipboard --output'
 
 # more colors
 alias pacman='pacman --color=auto'  # use more colors
+alias diff='diff --color=auto'
+alias ip="ip -color"
 
 # suffix aliases
 alias -s html='background firefox'
@@ -296,16 +290,16 @@ command -v lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
 # if bat is installed use it, if not use cat
 command -v bat > /dev/null && alias cat="bat"
 
-alias diff='diff --color=auto'
-alias week='date +%V' #week number
+
+
 alias dd="dd status=progress"
+alias week='date +%V' #week number
 alias rmlh=" tail -3 ~/.zsh_history ; head -n -1 ~/.zsh_history > ~/.zsh_history.tmp ; mv ~/.zsh_history.tmp .zsh_history ; echo "last:" ;tail -1 ~/.zsh_history"
 alias searchsploit='/usr/share/exploit-db/searchsploit'
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
-alias teamV="sudo systemctl start teamviewerd.service && teamviewer"
 alias ap="ansible-playbook"
-alias ip="ip -c"
 alias k="k -h"
+alias teamV="sudo systemctl start teamviewerd.service && teamviewer"
 
 # mass renaming files
 autoload zmv
