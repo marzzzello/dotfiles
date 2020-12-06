@@ -7,7 +7,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-ANTIGEN_LOG=$HOME/antigen.log
+ANTIGEN_LOG=$HOME/.antigen/antigen.log
 ############ To install (optional) ############
 # fzf:      pacman -S fzf       ## https://github.com/junegunn/fzf#installation
 # thefuck:  pacman -S thefuck   ## https://github.com/nvbn/thefuck
@@ -45,7 +45,7 @@ include ()   {
 }
 exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 
-#get emacs tramp working with zsh
+# get emacs tramp working with zsh
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
 
 
@@ -120,7 +120,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 # find antigen or install antigen
 local a1="/usr/share/zsh/share/antigen.zsh"
 local a2="/usr/share/zsh-antigen/antigen.zsh"
-local a3="$HOME/antigen.zsh"
+local a3="$HOME/.antigen/antigen.zsh"
 if [[ -f $a1 ]]; then
   ANTIGEN=$a1;
   elif [[ -f $a2 ]]; then
@@ -129,6 +129,7 @@ if [[ -f $a1 ]]; then
   ANTIGEN=$a3;
 else
   echo "Downloading Antigen to $a3"
+  mkdir -p ${a3:h}
   curl -L git.io/antigen > $a3 \
   && ANTIGEN=$a3
 fi
