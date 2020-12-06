@@ -181,7 +181,7 @@ echo "Usage:
 alias upmirror="sudo reflector --completion-percent 80 --country France --country Germany --age 6 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
 
 # update all packages
-alias uppm="pm -Syu --devel --timeupdate --noconfirm --noremovemake --cleanafter --norebuild --useask --sudoloop"
+alias uppm="pm -Syu --devel --timeupdate --noconfirm --noremovemake --noredownload  --norebuild --useask --sudoloop"
 
 # update keyring
 upkeys(){
