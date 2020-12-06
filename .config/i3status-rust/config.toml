@@ -115,7 +115,7 @@ interval = 3600
 # If a linux update is availble, but no ZFS package, it won't be possible to
 # actually perform a system upgrade, so we show a warning.
 warning_updates_regex = "(linux |linux-lts|linux-zen)"
-# If ZFS is available, we know that we can and should do an upgrade, so we show 
+# If ZFS is available, we know that we can and should do an upgrade, so we show
 # the status as critical.
 critical_updates_regex = "(zfs |zfs-lts)"
 

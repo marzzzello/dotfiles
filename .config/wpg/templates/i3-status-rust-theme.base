@@ -1,5 +1,6 @@
 # {infoMsg}
 
+native_separators = false ## needed for 0.14.3 workaround
 alternating_tint_bg = "{color0}"
 alternating_tint_fg = "{color0}"
 critical_bg = "{color2}" ###red
