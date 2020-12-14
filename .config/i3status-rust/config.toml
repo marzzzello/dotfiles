@@ -26,7 +26,6 @@ on_collapsed_click = "spotify"
 
 [[block]]
 block = "backlight"
-device = "intel_backlight"
 
 [[block]]
 block = "battery"
@@ -76,27 +75,13 @@ show_volume_when_muted = true
 
 # [[block]]
 # block = "networkmanager"
+# device_format = "{icon}{ap}"
 
 [[block]]
 block = "net"
-device = "w0"
 hide_inactive = true
 hide_missing = true
 interval = 1
-
-[[block]]
-block = "net"
-device = "e0"
-hide_inactive = true
-hide_missing = true
-interval = 1
-
-# [[block]]
-# block = "net"
-# device = "tun0"
-# hide_inactive = true
-# hide_missing = true
-# interval = 1
 
 [[block]]
 block = "kdeconnect"
