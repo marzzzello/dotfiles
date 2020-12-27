@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # {infoMsg}
 
-import i3
+from i3ipc import Connection
 
-border = i3.filter(focused=True)[0]['border']
+conn = Connection()
+border = conn.get_tree().find_focused().border
 
 if border == "normal":
-  i3.command("border pixel {borderSize}")
+    conn.command("border pixel {borderSize}")
 else:
-  i3.command("border normal {borderSize}")
+    conn.command("border normal {borderSize}")

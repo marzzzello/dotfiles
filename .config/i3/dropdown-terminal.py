@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+from i3ipc import Connection
+
+conn = Connection()
+terms = conn.get_tree().find_instanced('gnome-terminal-server')
+for term in terms:
+    if term.parent.scratchpad_state != 'none':
+        conn.command('scratchpad show')
+        exit(0)
+
+conn.command('exec --no-startup-id "gnome-terminal --window --title gnome-terminal-dropdown"')

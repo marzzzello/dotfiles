@@ -4,10 +4,6 @@ file = "wpg.toml"
 [icons]
 name = "awesome5"
 
-## [[block]]
-## block = "bluetooth"
-## mac = ""
-
 [[block]]
 block = "focused_window"
 max_width = 21
@@ -16,16 +12,44 @@ max_width = 21
 block = "music"
 ## buttons = ["play", "next"]
 dynamic_width = true
+#format = "{player}({avail}) {combo}"
 marquee_interval = 5
 marquee_speed = 0.2
-on_click = 'playerctl play-pause -i vlc -p "%any,$(playerctl -l | grep kdeconnect.mpris | tr \n ,))"'
+on_click = 'playerctl play-pause -i vlc -p "%any,$(playerctl -l | grep kdeconnect.mpris | tr \\n ,)"'
 on_collapsed_click = "spotify"
 
 # [[block]]
+# block = "docker"
+# format = "{running}/{total}"
+# interval = 2
+
+# [[block]]
+# block = "keyboard_layout"
+# driver = "setxkbmap"
+# interval = 1
+
+# [[block]]
 # block = "ibus"
+# [block.mappings]
+# "xkb:de::deu" = "DE"
+# "xkb:us::eng" = "EN"
+
+# needs dunst > v1.5.0
+[[block]]
+block = "notify"
 
 [[block]]
 block = "backlight"
+
+# [[block]]
+# block = "bluetooth"
+# mac = "00:16:94:1C:FE:9F"
+
+# [[block]]
+# block = "hueshift"
+# click_temp = 4000
+# hue_shifter = "redshift"
+# step = 100
 
 [[block]]
 block = "battery"
@@ -50,6 +74,7 @@ format_swap = "{SUp}%"
 [[block]]
 block = "cpu"
 interval = 1
+on_click = "~/.config/i3status-rust/toggle-htop.py"
 
 [[block]]
 block = "load"
@@ -79,9 +104,8 @@ show_volume_when_muted = true
 
 [[block]]
 block = "net"
-hide_inactive = true
-hide_missing = true
 interval = 1
+on_click = "~/.config/i3status-rust/toggle-net.py"
 
 [[block]]
 block = "kdeconnect"
@@ -96,6 +120,7 @@ on_click = "~/.config/i3status-rust/toggle-calendar.py"
 [[block]]
 block = "pacman"
 format = "{pacman}+{aur}"
+hide_when_uptodate = true
 interval = 3600
 # If a linux update is availble, but no ZFS package, it won't be possible to
 # actually perform a system upgrade, so we show a warning.
@@ -109,6 +134,7 @@ aur_command = "yay -Qua"
 # [[block]]
 # block = "speedtest"
 # bytes = false
+# speed_digits = 1
 # interval = 1800
 
 [[block]]

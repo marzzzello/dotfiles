@@ -8,7 +8,7 @@
 
 set $mod Mod4
 set $alt Mod1
-set $terminal urxvtc
+set $terminal gnome-terminal
 
 ## WPGTK VARIABLES
 set $coloract "{active}"
@@ -34,7 +34,6 @@ set  $ws9  "9:"
 set $ws10 "10:"
 set $ws11 "11:"
 set $ws12 "12:"
-set $ws13 "13:"
 
 # idk if this works
 workspace $ws2 output 0 1
@@ -48,7 +47,7 @@ workspace_auto_back_and_forth yes
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {{}} block below.
-font pango:{font1} 12
+font pango:{fontsans},{fontawesome} 12
 gaps outer 10
 gaps inner 0
 default_border pixel $borderSize
@@ -84,8 +83,10 @@ bindsym $mod+q       exec --no-startup-id rofi-surfraw
 
 # lock the current seat
 bindsym $mod+shift+x          exec --no-startup-id dm-tool lock
-# toggle titlebar on focused windowr
+# toggle titlebar on focused window
 bindsym $mod+z                exec --no-startup-id "~/.config/i3/toggle-title-bar.py"
+# show dropdown terminal, or start if not found
+bindsym $mod+BackSpace        exec --no-startup-id "~/.config/i3/dropdown-terminal.py"
 # open calculator
 bindsym XF86Calculator        exec --no-startup-id  gnome-calculator
 
@@ -195,7 +196,6 @@ bindsym XF86Tools               workspace $ws10
 bindsym $mod+ssharp             workspace $ws11
 # ´
 bindsym $mod+dead_acute         workspace $ws12
-bindsym $mod+BackSpace          workspace $ws13
 
 ## move focused container to workspace
 bindsym $mod+Shift+dead_circumflex  move container to workspace $ws0
@@ -211,8 +211,7 @@ bindsym $mod+Shift+9                move container to workspace $ws9
 bindsym $mod+Shift+0                move container to workspace $ws10
 bindsym $mod+Shift+ssharp           move container to workspace $ws11
 bindsym $mod+Shift+dead_acute       move container to workspace $ws12
-bindsym $mod+Shift+BackSpace        move container to workspace $ws13
-
+bindsym $mod+Shift+BackSpace        move container to scratchpad
 
 ########### MODES ###########
 
@@ -258,8 +257,8 @@ bindsym $mod+r mode "resize"
 bar {{
     tray_output primary
     strip_workspace_numbers yes
-    #font pango:{font1}, FontAwesome 12
-    font pango:FontAwesome, {font1} 12
+    # awesome5 font (see i3status-rust config) and font with powerline symbols
+    font pango:{fontawesome},{fontmono} 12
     position top
     status_command "i3status-rs ~/.config/i3status-rust/config.toml"
     colors {{
@@ -282,18 +281,20 @@ bar {{
 
 # xprop | grep WM_CLASS
 # first part of the WM_CLASS is the instance, the second part is the class
+assign [class="firefox"]    $ws2
+assign [instance="code-oss"]    $ws5
+assign [instance="vscodium"]    $ws5
+assign [instance="dino"]                $ws8
+assign [instance="gajim"]               $ws8
+assign [instance="discord"]             $ws8
+assign [instance="signal"]              $ws8
+assign [instance="telegram-desktop"]    $ws8
+assign [class="TeamSpeak 3"]            $ws8
 assign [instance="evolution" title="(?<!(K|C)alend(e|a)r) – Evolution"] $ws9
-assign [class="firefox"]  $ws2
-assign [instance="code-oss"]  $ws5
-assign [instance="vscodium"]  $ws5
-assign [instance="dino"]  $ws8
-assign [instance="gajim"] $ws8
-assign [instance="discord"] $ws8
-assign [instance="signal"] $ws8
-assign [instance="telegram-desktop"] $ws8
-assign [class="TeamSpeak 3"] $ws8
 for_window [instance="spotify"] move to workspace $ws10
 
+# dropdown terminal: set size, position, move to scratchpad
+for_window [title = "gnome-terminal-dropdown"] floating enable, resize set 90ppt 42ppt, move position center, move up 28ppt, move scratchpad; scratchpad show
 
 ######### FLOATING #########
 
@@ -302,7 +303,8 @@ for_window [instance = "gnome-calendar"]        floating enable
 for_window [instance = "gnome-calculator"]      floating enable
 for_window [instance = "blueberry.py"]          floating enable
 for_window [instance = "gnome-control-center"]  floating enable
-for_window [instance = "discord-overlay"]  floating enable
+for_window [instance = "discord-overlay"]       floating enable
+for_window [title = "htop-floating"]            floating enable, resize set 70ppt 70ppt, move position center
 
 
 # evolution calendar
@@ -318,8 +320,6 @@ for_window [class="de-rub-dez6a3-cardcertificatemanager-Main"] floating enable
 ## BACKGROUND APPLICATIONS
 # set wallpaper and theme
 exec --no-startup-id "wpg -s $(wpg -c)"
-# old wallpaper + theme
-#exec --no-startup-id "~/.config/wpg/wp_init.sh"
 # authentication agent
 exec --no-startup-id lxpolkit
 # notifications on low battery
