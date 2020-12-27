@@ -13,7 +13,7 @@
     geometry = "540x5-10+32"
     indicate_hidden = yes
     shrink = yes
-    transparency = 0
+    transparency = 5
     notification_height = 0
     separator_height = 3
     padding = 12
@@ -21,12 +21,12 @@
     frame_width = 3
 
     frame_color = "{active}"
-    separator_color = auto
+    separator_color = frame
     sort = yes
     idle_threshold = 120
 
     ### Text ###
-    font = go mono 9
+    font = Noto Sans 12
     line_height = 0
 
     markup = full
@@ -53,7 +53,7 @@
 
     ### Icons ###
     icon_position = left
-    max_icon_size = 64
+    max_icon_size = 96
     icon_path = .icons/flattrcolor/status/24:.icons/flattrcolor/devices/48:.icons/flattrcolor/apps/scalable:.icons/flattrcolor/actions/scalable
 
     ### History ###
@@ -93,4 +93,3 @@
     foreground = colors.foreground
     frame_color = "{color9}"
     timeout = 0
-
