@@ -322,6 +322,8 @@ for_window [class="de-rub-dez6a3-cardcertificatemanager-Main"] floating enable
 exec --no-startup-id "wpg -s $(wpg -c)"
 # authentication agent
 exec --no-startup-id lxpolkit
+# notifications
+exec --no-startup-id dunst
 # notifications on low battery
 exec --no-startup-id "~/.config/i3/battery-notify.zsh"
 # compositor
