@@ -34,7 +34,6 @@ set  $ws9  "9:"
 set $ws10 "10:"
 set $ws11 "11:"
 set $ws12 "12:"
-set $ws13 "13:"
 
 # idk if this works
 workspace $ws2 output 0 1
@@ -86,6 +85,8 @@ bindsym $mod+q       exec --no-startup-id rofi-surfraw
 bindsym $mod+shift+x          exec --no-startup-id dm-tool lock
 # toggle titlebar on focused window
 bindsym $mod+z                exec --no-startup-id "~/.config/i3/toggle-title-bar.py"
+# show dropdown terminal, or start if not found
+bindsym $mod+BackSpace        exec --no-startup-id "~/.config/i3/dropdown-terminal.py"
 # open calculator
 bindsym XF86Calculator        exec --no-startup-id  gnome-calculator
 
