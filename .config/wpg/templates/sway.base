@@ -1,8 +1,14 @@
 # {infoMsg}
 
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# sway config file
+
+########### INPUT ###########
+
+input * {
+    xkb_layout "de,us"
+    xkb_options "grp:win_space_toggle"
+}
+
 
 ######### VARIABLES #########
 
