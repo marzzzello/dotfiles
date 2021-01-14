@@ -10,9 +10,9 @@ max_width = 21
 
 [[block]]
 block = "music"
-## buttons = ["play", "next"]
+# buttons = ["play", "next"]
 dynamic_width = true
-#format = "{player}({avail}) {combo}"
+# format = "{player}({avail}) {combo}"
 marquee_interval = 5
 marquee_speed = 0.2
 on_click = 'playerctl play-pause -i vlc -p "%any,$(playerctl -l | grep kdeconnect.mpris | tr \\n ,)"'
@@ -57,6 +57,11 @@ device = "DisplayDevice"
 driver = "upower"
 
 [[block]]
+block = "cpu"
+interval = 1
+on_click = "~/.config/i3status-rust/toggle-htop.py"
+
+[[block]]
 alert = 10.0
 block = "disk_space"
 format = "{available}T"
@@ -66,25 +71,26 @@ unit = "TiB"
 warning = 20.0
 
 [[block]]
+block = "custom"
+command = "~/.config/i3status-rust/psi.py io"
+hide_when_empty = true
+interval = 1
+json = true
+on_click = "~/.config/i3status-rust/toggle-htop.py"
+
+[[block]]
 block = "memory"
 display_type = "memory"
 format_mem = "{Mup}%"
 format_swap = "{SUp}%"
 
 [[block]]
-block = "cpu"
+block = "custom"
+command = "~/.config/i3status-rust/psi.py memory"
+hide_when_empty = true
 interval = 1
+json = true
 on_click = "~/.config/i3status-rust/toggle-htop.py"
-
-[[block]]
-block = "load"
-format = "{1m}"
-interval = 1
-
-# [[block]]
-# block = "custom"
-# command = "cat /proc/pressure/cpu | sed 's/some avg10=\\([^]*\\)avg60=\\([^]*\\)avg300=\\([^]*\\)total=\\([0-9]*\\)/\\1/g'"
-# interval = 1
 
 # [[block]]
 # block = "custom"
@@ -95,7 +101,8 @@ interval = 1
 [[block]]
 block = "sound"
 # set default device to current running sink, so the statusbar shows the volume of the current running sink
-on_click = "pactlset-default-sink$(pactllistsinksshort|grepRUNNING|head-n1|cut-f2);~/.config/i3status-rust/toggle-pavucontrol.py"
+# on_click = "pactlset-default-sink$(pactllistsinksshort|grepRUNNING|head-n1|cut-f2);~/.config/i3status-rust/toggle-pavucontrol.py"
+on_click = "~/.config/i3status-rust/toggle-pavucontrol.py"
 show_volume_when_muted = true
 
 # [[block]]
