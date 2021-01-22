@@ -4,10 +4,10 @@
 
 ########### INPUT ###########
 
-input * {
+input * {{
     xkb_layout "de,us"
     xkb_options "grp:win_space_toggle"
-}
+}}
 
 
 ######### VARIABLES #########
