@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 
-import i3ipc
+from i3ipc import Connection
 import re
 
-i3 = i3ipc.Connection()
-tree = i3.get_tree()
-
-es = i3.get_tree().find_classed("Evolution")
+conn = Connection()
+es = conn.get_tree().find_classed("Evolution")
 
 killed = False
 for e in es:
@@ -15,4 +13,4 @@ for e in es:
         killed = True
 
 if not killed:
-    i3.command('exec "evolution -c calendar"')
+    conn.command('exec "evolution -c calendar"')

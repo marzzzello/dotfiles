@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-import i3ipc
+from i3ipc import Connection
 import re
 
-conn = i3ipc.Connection()
-ps = conn.get_tree().find_classed("Pavucontrol")
+conn = Connection()
+ps = conn.get_tree().find_classed("Blueberry.py")
 
 killed = False
 for p in ps:
@@ -13,4 +13,4 @@ for p in ps:
         killed = True
 
 if not killed:
-    conn.command('exec pavucontrol')
+    conn.command('exec blueberry')

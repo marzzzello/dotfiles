@@ -4,9 +4,8 @@ from i3ipc import Connection
 import re
 
 conn = Connection()
-tree = conn.get_tree()
-
 htops = conn.get_tree().find_titled("htop-floating")
+
 killed = False
 for e in htops:
     print(e.window_title, e.floating)

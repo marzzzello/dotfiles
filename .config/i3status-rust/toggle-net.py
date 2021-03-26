@@ -31,11 +31,9 @@ def wifi_rfkill():
 
 
 conn = Connection()
-tree = conn.get_tree()
-
 nets = conn.get_tree().find_instanced("gnome-control-center")
-killed = False
 
+killed = False
 for e in nets:
     if re.findall("on", e.floating):
         e.command('kill')

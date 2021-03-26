@@ -4,7 +4,7 @@ import i3ipc
 import re
 
 conn = i3ipc.Connection()
-ps = conn.get_tree().find_classed("Pavucontrol")
+ps = conn.get_tree().find_instanced("kdeconnect-app")
 
 killed = False
 for p in ps:
@@ -13,4 +13,4 @@ for p in ps:
         killed = True
 
 if not killed:
-    conn.command('exec pavucontrol')
+    conn.command('exec kdeconnect-app')

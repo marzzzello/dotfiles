@@ -15,6 +15,7 @@ dynamic_width = true
 # format = "{player}({avail}) {combo}"
 marquee_interval = 5
 marquee_speed = 0.2
+# kdeconnect with low priority
 on_click = 'playerctl play-pause -i vlc -p "%any,$(playerctl -l | grep kdeconnect.mpris | tr \\n ,)"'
 on_collapsed_click = "spotify"
 
@@ -22,39 +23,6 @@ on_collapsed_click = "spotify"
 # block = "docker"
 # format = "{running}/{total}"
 # interval = 2
-
-# [[block]]
-# block = "keyboard_layout"
-# driver = "setxkbmap"
-# interval = 1
-
-# [[block]]
-# block = "ibus"
-# [block.mappings]
-# "xkb:de::deu" = "DE"
-# "xkb:us::eng" = "EN"
-
-# needs dunst > v1.5.0
-[[block]]
-block = "notify"
-
-[[block]]
-block = "backlight"
-
-# [[block]]
-# block = "bluetooth"
-# mac = "00:16:94:1C:FE:9F"
-
-# [[block]]
-# block = "hueshift"
-# click_temp = 4000
-# hue_shifter = "redshift"
-# step = 100
-
-[[block]]
-block = "battery"
-device = "DisplayDevice"
-driver = "upower"
 
 [[block]]
 block = "cpu"
@@ -64,10 +32,9 @@ on_click = "~/.config/i3status-rust/toggle-htop.py"
 [[block]]
 alert = 10.0
 block = "disk_space"
-format = "{available}T"
+format = "{available*_;T}"
 info_type = "available"
 interval = 20
-unit = "TiB"
 warning = 20.0
 
 [[block]]
@@ -81,8 +48,8 @@ on_click = "~/.config/i3status-rust/toggle-htop.py"
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+format_mem = "{mem_used_percents:1}"
+format_swap = "{swap_used_percents:1}"
 
 [[block]]
 block = "custom"
@@ -111,12 +78,71 @@ show_volume_when_muted = true
 
 [[block]]
 block = "net"
-interval = 1
+format = "{speed_up:1}{speed_down:1}"
+format_alt = ""
 on_click = "~/.config/i3status-rust/toggle-net.py"
+
+[[block]]
+block = "backlight"
+
+# [[block]]
+# block = "hueshift"
+# click_temp = 4000
+# hue_shifter = "redshift"
+# step = 100
+
+[[block]]
+block = "battery"
+device = "DisplayDevice"
+driver = "upower"
+#format = "{percentage}% {power}W {time}"
+#full_format = "{percentage}% {power}W"
+
+# [[block]]
+# block = "keyboard_layout"
+# driver = "setxkbmap"
+# interval = 1
+
+[[block]]
+block = "ibus"
+[block.mappings]
+"pinyin" = "cn"
+"xkb:de::deu" = "de"
+"xkb:de:neo:deu" = "neo"
+"xkb:us::eng" = "en"
+
+[[block]]
+block = "bluetooth"
+format = ""
+hide_disconnected = true
+on_click = "~/.config/i3status-rust/toggle-blueberry.py"
+# mouse
+mac = DE:AD:FA:CE:CA:FE
+
+[[block]]
+block = "bluetooth"
+format = ""
+hide_disconnected = true
+on_click = "~/.config/i3status-rust/toggle-blueberry.py"
+# headset
+mac = DE:AD:FA:CE:CA:FE
 
 [[block]]
 block = "kdeconnect"
 format = "{name} {notif_icon}{notif_count}"
+on_click = "~/.config/i3status-rust/toggle-kdeconnect.py"
+
+# needs dunst >= v1.6.0
+[[block]]
+block = "notify"
+
+[[block]]
+# {location} {wind}m/s {direction} {wind_kmh}km/h {humidity}%"
+autolocate = true
+block = "weather"
+format = "{temp}"
+on_click = "firefox https://openweathermap.org/"
+service = {name = "openweathermap", units = "metric"}
 
 [[block]]
 block = "time"
@@ -129,6 +155,7 @@ block = "pacman"
 format = "{pacman}+{aur}"
 hide_when_uptodate = true
 interval = 3600
+on_click = "gnome-terminal"
 # If a linux update is availble, but no ZFS package, it won't be possible to
 # actually perform a system upgrade, so we show a warning.
 warning_updates_regex = "(linux |linux-lts|linux-zen)"
