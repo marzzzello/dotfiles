@@ -1,37 +1,49 @@
 [core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
+repositoryformatversion = 0
+filemode = true
+bare = false
+
 [submodule]
-	active = .
+active = .
+
 [status]
-	showUntrackedFiles = no
+showUntrackedFiles = no
 
 [remote "origin"]
-	url = https://gitlab.com/marzzzello/dotfiles.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
-	pushurl = git@gitlab.com:marzzzello/dotfiles.git
-	pushurl = git@github.com:marzzzello/dotfiles.git
+url = https://gitlab.com/marzzzello/dotfiles.git
+fetch = +refs/heads/*:refs/remotes/origin/*
+pushurl = git@gitlab.com:marzzzello/dotfiles.git
+pushurl = git@github.com:marzzzello/dotfiles.git
+
 [remote "github"]
-	url = git@github.com:marzzzello/dotfiles.git
-	fetch = +refs/heads/*:refs/remotes/github/*
+url = git@github.com:marzzzello/dotfiles.git
+fetch = +refs/heads/*:refs/remotes/github/*
+
 [remote "gitlab"]
-	url = git@gitlab.com:marzzzello/dotfiles.git
-	fetch = +refs/heads/*:refs/remotes/gitlab/*
+url = git@gitlab.com:marzzzello/dotfiles.git
+fetch = +refs/heads/*:refs/remotes/gitlab/*
+
 [branch "master"]
-	remote = origin
-	merge = refs/heads/master
+remote = origin
+merge = refs/heads/master
 
 [filter "head"]
-	clean = head -n 2
+clean = head -n 2
+
 [filter "w8unlock"]
-    clean = grep -P '^(?!KEEPASSXC_USER=)^(?!DB_PATH=)'
+clean = grep -P '^(?!KEEPASSXC_USER=)^(?!DB_PATH=)'
+
 [filter "null"]
-    clean = cat >/dev/null
+clean = cat >/dev/null
+
 [filter "gitglobal"]
-    clean = sed -e '/name = .*/d' -e '/email = /d' -e '/signingkey =/d'
+clean = sed -e '/name = .*/d' -e '/email = /d' -e '/signingkey =/d'
+
+[filter "i3rs"]
+clean = sed -e 's/api_key.*,/api_key = "YOUR API KEY",/' -e 's/mac\\W*=.\\+/mac = "DE:AD:FA:CE:CA:FE"/'
 
 [submodule ".vim_runtime"]
-	url = https://github.com/amix/vimrc
+url = https://github.com/amix/vimrc
+
 [submodule ".teeworlds"]
-	url = https://gitlab.com/marzzzello/ddnet-config.git
+url = https://gitlab.com/marzzzello/ddnet-config.git
