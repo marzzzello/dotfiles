@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 mkcd(){
-    mkdir "$@" && cd "$@"; 
+    mkdir "$@" && cd "$@";
 }
 
 dkim(){
@@ -40,13 +40,13 @@ cont(){
   fi
 }
 
-### 
+###
 
 # copys the main identidy to server (~/.ssh/main.pub) and removes old ssh keys from server (see next function)
 ssh-update-key(){
-  if grep 'SSH2 PUBLIC KEY' -q $HOME/.ssh/main.pub; then 
+  if grep 'SSH2 PUBLIC KEY' -q $HOME/.ssh/main.pub; then
       echo "Please use OpenSSH format"
-      return 1; 
+      return 1;
   fi
   ssh "$@" "cat ~/.ssh/authorized_keys" > /tmp/authorized_keys_before
   ssh-copy-id -i $HOME/.ssh/main.pub "$@"
@@ -60,17 +60,17 @@ ssh-update-key(){
 # removes all public keys from servers which are under ~/.ssh/old/*.pub
 ssh-remove-old-keys(){
   sed="sed -i '"
-  for file in $HOME/.ssh/old/*.pub; do 
-     if grep 'SSH2 PUBLIC KEY' -q $file; then 
+  for file in $HOME/.ssh/old/*.pub; do
+     if grep 'SSH2 PUBLIC KEY' -q $file; then
          echo "Please use OpenSSH format for $file"
-         return 1; 
+         return 1;
      fi
     #echo "file: $file"
     fingerprint=`sed -e 's/\(ssh[a-z0-9-]*\)\W\+\(AAAA[0-9A-Za-z+/]\+[=]\{0,3\}\)\W\+\(.*\)/\2/' $file`
     sed+="\~$fingerprint~d; " # use tilde (~) as delemiter
   done
   sed+="'"
-  
+
   ssh "$@" "$sed ~/.ssh/authorized_keys"
 }
 
@@ -88,9 +88,37 @@ background() {
 }
 
 function notify {
-  while read input; do 
-    notify-send "message" "$input"; 
-  done; 
+  while read input; do
+    notify-send "message" "$input";
+  done;
+}
+
+rf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 20 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="80%:down"
+	)" &&
+	echo "opening $file" &&
+	xdg-open "$file"
+}
+
+rpdf() {
+	RG_PREFIX="rga --files-with-matches -t pdf"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 20 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="80%:down"
+	)" &&
+	echo "opening $file" &&
+	xdg-open "$file"
 }
 
 ### pdf fuzzy searcher ## go get github.com/bellecp/fast-p
@@ -102,7 +130,7 @@ pdf() {
     | fast-p \
     | fzf --read0 --reverse -e -d $'\t'  \
         --preview-window down:80% --preview '
-            v=$(echo {q} | tr " " "|"); 
+            v=$(echo {q} | tr " " "|");
             echo -e {1}"\n"{2} | grep -E "^|$v" -i --color=always;
         ' \
     | cut -z -f 1 -d $'\t' | tr -d '\n' | xargs -r --null $open > /dev/null 2> /dev/null
@@ -117,7 +145,7 @@ command -v yay &>/dev/null && alias pm="yay" || alias pm="pacman"
 
 # remove packages installed as dependency but not needed anymore
 cupm(){
-  
+
   if pm -Qtdq; then
       pm -Rucns --noconfirm $(pm -Qtdq)
   fi
@@ -131,7 +159,7 @@ cutrash(){
   rm -rf $HOME/.local/share/Trash/
 }
 cudockerprune(){
-  docker system prune -a -f 
+  docker system prune -a -f
 }
 cudockervol(){
   docker volume rm $(docker volume ls -qf dangling=true)
@@ -139,8 +167,8 @@ cudockervol(){
 cudocker(){
   if systemctl status docker.service | grep " Active: " | grep " active"; then
     :
-  else 
-    case "$1" in 
+  else
+    case "$1" in
       -[fF]|-force) DockerStop=true;;
       *) echo "Docker not running. Use -f to temporarily start it."; return 1;;
     esac
@@ -148,9 +176,9 @@ cudocker(){
         echo "starting Docker..."
         sudo systemctl start docker.service;
       fi
-      
+
       cudockerprune;
-      cudockervol; 
+      cudockervol;
       sudo du -hs  /var/lib/docker/;
 
       if DockerStop==false; then
@@ -166,7 +194,7 @@ function cu() {
      -[pP]|-pm)     cupm;;
      -[dD]|-docker) cudocker $2 ;;
      -[aA]|-all)    cutrash; cupm; cudocker;;
-     *|-[hH]|-help)   
+     *|-[hH]|-help)
 echo "Usage:
  -t  --trash
  -p  --pm
@@ -185,17 +213,17 @@ alias uppm="pm -Syu --devel --timeupdate --noconfirm --noremovemake --noredownlo
 
 # update keyring
 upkeys(){
-  pm -Sy --noconfirm archlinux-keyring 
+  pm -Sy --noconfirm archlinux-keyring
   sudo pacman-key --populate archlinux
 }
 
 # full update
 upfull(){
   upmirror
-  upkeys 
+  upkeys
   uppm
 
-  cupm 
+  cupm
 }
 
 # mount fs stud
@@ -236,7 +264,7 @@ hirnlogout(){
 ### IP addresses
 ips(){
   echo 'Internal IPs:'
-  ipi 
+  ipi
   echo -e '\nPublic IP:'
   ipp
 }
@@ -254,8 +282,8 @@ ipi(){
 
 ### restart dnscrypt-proxy
 reDNS(){
-  sudo systemctl stop dnscrypt-proxy.service 
-  sudo systemctl restart dnscrypt-proxy.socket 
+  sudo systemctl stop dnscrypt-proxy.service
+  sudo systemctl restart dnscrypt-proxy.socket
   ping -c1 google.de
 }
 
@@ -263,7 +291,7 @@ reDNS(){
 ### keylogger
 keystart() {
   for dev in /sys/class/input/event*; do
-    event=`basename $dev`; 
+    event=`basename $dev`;
     grep -q '1[02]001[3Ff]' /sys/class/input/$event/device/capabilities/ev \
     && echo -n "$event: " \
     && cat /sys/class/input/$event/device/name \
@@ -281,8 +309,8 @@ keystop() {
 
 ### Repo updater
 gitud(){
-  for i in */.git; do 
-    ( echo $i; cd $i/..; git pull; ); 
+  for i in */.git; do
+    ( echo $i; cd $i/..; git pull; );
   done
 }
 
@@ -373,26 +401,26 @@ if command -v pacman > /dev/null; then
       xdg-open "https://www.archlinux.org/packages/$repo/$arch/$pkg/" &>/dev/null
     }
   fi
-  
+
   # list explicit installed package with extra info, sorted by install date
   # -c enables colors
   function mypaclist() {
     OLDIFS=$IFS
     c="$1"
-    comm -23 <(pacman -Qetq) <(pacman -Qgq base base-devel gnome texlive-most xorg | sort) | while read -r pkg version ; do 
+    comm -23 <(pacman -Qetq) <(pacman -Qgq base base-devel gnome texlive-most xorg | sort) | while read -r pkg version ; do
       sed -n -e "/ installed $pkg/{s/].*/]/p;q}" /var/log/pacman.log | tr "\n" ";";
       echo -n "$pkg;"
-      LANG=en_US.UTF-8 pacman -Qi $pkg | awk -F ': ' '/Description/ {print $2}' 
+      LANG=en_US.UTF-8 pacman -Qi $pkg | awk -F ': ' '/Description/ {print $2}'
       #sed -n "/%DESC%/{n;p}" "/var/lib/pacman/local/$pkg-$version/desc"
     done | sort > /tmp/tmpout
 
     IFS=';'
 
-    while read -r date pkg desc; do 
+    while read -r date pkg desc; do
       if [ "$c" = "-c" ]; then
         tput setaf 6; tput bold
       fi
-      echo "$pkg"; 
+      echo "$pkg";
       if [ "$c" = "-c" ]; then
         tput setaf 7; #tput sgr0; tput bold
       fi
