@@ -100,6 +100,7 @@ bindsym XF86Calculator        exec --no-startup-id  gnome-calculator
 bindsym XF86AudioRaiseVolume  exec --no-startup-id pamixer -i 5
 bindsym XF86AudioLowerVolume  exec --no-startup-id pamixer -d 5
 bindsym XF86AudioMute         exec --no-startup-id pamixer -t
+bindsym XF86AudioMicMute      exec --no-startup-id "~/.config/i3/mute-mics.zsh"
 
 ## control screen brightness (increase, decrease)
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 3
@@ -286,38 +287,22 @@ bar {{
 
 # xprop | grep WM_CLASS
 # first part of the WM_CLASS is the instance, the second part is the class
-assign [class="firefox"]    $ws2
-assign [instance="code-oss"]    $ws5
-assign [instance="vscodium"]    $ws5
-assign [instance="dino"]                $ws8
-assign [instance="gajim"]               $ws8
-assign [instance="discord"]             $ws8
-assign [instance="signal"]              $ws8
-assign [instance="telegram-desktop"]    $ws8
+assign [class="firefox|chromium"]       $ws2
+assign [instance="code-oss|vscodium"]   $ws5
 assign [class="TeamSpeak 3"]            $ws8
+assign [instance="dino|discord|element|gajim|signal|telegram-desktop"]  $ws8
 assign [instance="evolution" title="(?<!(K|C)alend(e|a)r) – Evolution"] $ws9
 for_window [instance="spotify"] move to workspace $ws10
-
 # dropdown terminal: set size, position, move to scratchpad
 for_window [title = "gnome-terminal-dropdown"] floating enable, resize set 90ppt 42ppt, move position center, move up 28ppt, move scratchpad; scratchpad show
 
 ######### FLOATING #########
-
-for_window [instance = "pavucontrol"]           floating enable
-for_window [instance = "gnome-calendar"]        floating enable
-for_window [instance = "gnome-calculator"]      floating enable
-for_window [instance = "blueberry.py"]          floating enable
-for_window [instance = "gnome-control-center"]  floating enable
-for_window [instance = "discord-overlay"]       floating enable
-for_window [title = "htop-floating"]            floating enable, resize set 70ppt 70ppt, move position center
-
-
+for_window [window_role="pop-up"]   floating enable, move absolute center
+for_window [instance = "blueberry.py|discord-overlay|gnome-calendar|gnome-calculator|gnome-control-center|kdeconnect-app|pavucontrol"]  floating enable
+for_window [class="de-rub-dez6a3-cardcertificatemanager-Main|sun-awt-X11-XFramePeer"]   floating enable
+for_window [title = "htop-floating"]    floating enable, resize set 70ppt 70ppt, move position center
 # evolution calendar
-for_window [title="(K|C)alend(e|a)r – Evolution"] floating enable, resize set 70ppt 70ppt, move position center
-
-# RUBCard Manager -.-
-for_window [class="sun-awt-X11-XFramePeer"]                    floating enable
-for_window [class="de-rub-dez6a3-cardcertificatemanager-Main"] floating enable
+for_window [title="(K|C)alend(e|a)r – Evolution"]   floating enable, resize set 70ppt 70ppt, move position center
 
 
 ######### AUTOSTART #########
