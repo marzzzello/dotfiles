@@ -245,8 +245,8 @@ fsstud(){
 hirn(){
   local ip=$(curl -s --resolve login.rub.de:443:134.147.64.8 https://login.rub.de/cgi-bin/start \
       | sed -n 's/.*ipaddr\" value=\"\([0-9\.]*\).*/\1/p');
-  local user=$(secret-tool lookup loginID user)
-  local password=$(secret-tool lookup loginID pw)
+  local user=$(cat ~/.hirn.user)
+  local password=$(cat ~/.hirn.pw)
   #echo "ip=$ip, user=$user, password=$password"
 
   curl -s --resolve login.rub.de:443:134.147.64.8 "https://login.rub.de/cgi-bin/laklogin" \
@@ -350,8 +350,7 @@ gitua(){
 if command -v pacman > /dev/null; then
   function paclist() {
     # Source: https://bbs.archlinux.org/viewtopic.php?id=93683
-    LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
-      awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{print $2}'
+    LC_ALL=C pacman -Qei $1 | awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{printf $2} /^Groups/{if ($2!=" None") printf("\033[1;31m%s\033[1;37m", $2)}/^Validated/{printf "\n"}'
   }
 
   function pacdisowned() {
