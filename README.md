@@ -76,7 +76,7 @@
 00  *   *   *   *  xuserrun $HOME/.config/wpg/scripted_themes/cron.sh >> $HOME/.config/wpg/scripted_themes/cron.log 2>&1
 ```
 
-10. Run the Firefox profile manager `firefox -ProfileManager -no-remote` and add a profile with the name `user.js` and set the path to `~/.mozilla/firefox/user.js`. Install your addons and then run ShadowFox (also themes some addons) with this command:  
+10. Run the Firefox profile manager `firefox -ProfileManager -no-remote` and add a profile with the name `user.js` and set the path to `~/.mozilla/firefox/user.js`. Install your addons and then run ShadowFox (also themes some addons) with this command:
     `shadowfox-updater -generate-uuids -profile-name user.js -set-dark-theme`
 
 ## Install dotfiles onto a new system
@@ -120,6 +120,20 @@ curl -L 'https://git.io/marzzzello' | zsh
 ## Starting from scratch
 
 I started with [this tutorial](https://de.atlassian.com/git/tutorials/dotfiles) on how to store your dotfiles
+
+Alternativly can just use a default `.git` folder instead of `.cfg` and a git alias:
+
+```sh
+cd
+git init
+git config --local status.showUntrackedFiles no
+
+# replace with your username/repo
+git remote add origin git@gitlab.com:marzzzello/dotfiles.git
+
+# then add the files you want to track
+git add .zshrc
+```
 
 ## License
 
