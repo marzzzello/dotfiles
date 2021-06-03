@@ -260,6 +260,7 @@ bar {{
     strip_workspace_numbers yes
     # awesome5 font (see i3status-rust config) and font with powerline symbols
     font pango:{fontawesome},{fontmono} 12
+    id bar-0
     position top
     status_command "i3status-rs ~/.config/i3status-rust/config.toml"
     colors {{
