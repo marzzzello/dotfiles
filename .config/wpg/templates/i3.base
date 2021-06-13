@@ -304,6 +304,8 @@ for_window [title="(K|C)alend(e|a)r – Evolution"]   floating enable, resize se
 ######### AUTOSTART #########
 
 ## BACKGROUND APPLICATIONS
+# screen lock
+exec --no-startup-id "xautolock -detectsleep -time 2 -locker 'betterlockscreen --lock' -notify 30 -notifier 'notify-send \"LOCKING screen in 30 seconds\"' -killer i3lock -corners 000-"
 # set wallpaper and theme
 exec --no-startup-id "wpg -s $(wpg -c)"
 # authentication agent

@@ -1,18 +1,25 @@
 #!/usr/bin/env zsh
 
-
-if [[ "$@" ]]
-then
-  lock=(dm-tool lock)
+if [[ "$@" ]]; then
+  lock=(xautolock -locknow)
   case "$@" in
-    Lock)                       $lock;;
-    Logout)                     i3-msg exit;;
-    Reboot)                     reboot;;
-    "Power off")                poweroff;;
-    Suspend)                    $lock; systemctl suspend;;
-    Hibernate)                  $lock; systemctl hibernate;;
-    "Hibernate and suspend")    $lock; systemctl hybrid-sleep;;
-    *)                          echo "what is that?";;
+  Lock) $lock ;;
+  Logout) i3-msg exit ;;
+  Reboot) reboot ;;
+  "Power off") poweroff ;;
+  Suspend)
+    $lock
+    systemctl suspend
+    ;;
+  Hibernate)
+    $lock
+    systemctl hibernate
+    ;;
+  "Hibernate and suspend")
+    $lock
+    systemctl hybrid-sleep
+    ;;
+  *) echo "what is that?" ;;
   esac
 else
   OPTIONS="\
@@ -26,4 +33,3 @@ Hibernate and suspend"
 
   echo -e "$OPTIONS"
 fi
-
