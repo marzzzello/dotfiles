@@ -124,7 +124,7 @@ format = "{label}"
 hide_disconnected = true
 on_click = "~/.config/i3status-rust/toggle-blueberry.py"
 # mouse
-mac = DE:AD:FA:CE:CA:FE
+mac = "DE:AD:FA:CE:CA:FE"
 
 [[block]]
 block = "bluetooth"
@@ -132,7 +132,7 @@ format = "{label}"
 hide_disconnected = true
 on_click = "~/.config/i3status-rust/toggle-blueberry.py"
 # headset
-mac = DE:AD:FA:CE:CA:FE
+mac = "DE:AD:FA:CE:CA:FE"
 
 # [[block]]
 # block = "kdeconnect"
