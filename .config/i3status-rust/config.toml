@@ -3,6 +3,8 @@ file = "wpg.toml"
 
 [icons]
 name = "awesome5"
+[icons.overrides]
+weather_sun = "\ufa98"
 
 [[block]]
 block = "focused_window"
@@ -113,6 +115,7 @@ driver = "upower"
 [[block]]
 block = "ibus"
 [block.mappings]
+"anthy" = "jp"
 "pinyin" = "cn"
 "xkb:de::deu" = "de"
 "xkb:de:neo:deu" = "neo"
@@ -149,7 +152,7 @@ autolocate = true
 block = "weather"
 format = "{temp}"
 on_click = "firefox https://openweathermap.org/"
-service = {name = "openweathermap", units = "metric"}
+service = {name = "openweathermap", api_key = "YOUR API KEY", units = "metric"}
 
 [[block]]
 block = "time"

@@ -40,7 +40,7 @@ clean = cat >/dev/null
 clean = sed -e '/name = .*/d' -e '/email = /d' -e '/signingkey =/d'
 
 [filter "i3rs"]
-clean = sed -e 's/api_key.*,/api_key = "YOUR API KEY",/' -e 's/mac\\W*=.\\+/mac = \"DE:AD:FA:CE:CA:FE\"/'
+clean = sed -e 's/api_key.*,/api_key = \"YOUR API KEY\",/' -e 's/mac\\W*=.\\+/mac = \"DE:AD:FA:CE:CA:FE\"/'
 
 [submodule ".vim_runtime"]
 url = https://github.com/amix/vimrc
