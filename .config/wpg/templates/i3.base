@@ -65,7 +65,7 @@ client.background       $color0
 ##### EXEC KEYBINDINGS #####
 
 # start a terminal
-bindsym $mod+Return  exec --no-startup-id gnome-terminal
+bindsym $mod+Return  exec --no-startup-id $terminal
 
 ## start Rofi (a application launcher, window switcher. dmenu replacement)
 bindsym $mod+d       exec --no-startup-id "rofi -modi drun,run -show"
@@ -290,7 +290,7 @@ assign [instance="dino|discord|element|gajim|signal|telegram-desktop"]  $ws8
 assign [instance="evolution" title="(?<!(K|C)alend(e|a)r) – Evolution"] $ws9
 for_window [instance="spotify"] move to workspace $ws10
 # dropdown terminal: set size, position, move to scratchpad
-for_window [title = "gnome-terminal-dropdown"] floating enable, resize set 90ppt 42ppt, move position center, move up 28ppt, move scratchpad; scratchpad show
+for_window [title = "terminal-dropdown"] floating enable, resize set 90ppt 42ppt, move position center, move up 28ppt, move scratchpad; scratchpad show
 
 ######### FLOATING #########
 for_window [window_role="pop-up"]   floating enable, move absolute center
@@ -323,8 +323,8 @@ exec_always --no-startup-id "autorandr --change"
 ## MINIMIZED APPLICATIONS
 # password manager
 exec --no-startup-id keepassxc
-# dropdown terminal
-exec --no-startup-id guake
+# KDE Connect
+exec --no-startup-id kdeconnect-indicator
 # manage network connections
 exec --no-startup-id nm-applet
 # red/night mode

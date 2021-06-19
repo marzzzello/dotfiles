@@ -8,4 +8,4 @@ for term in terms:
         conn.command('scratchpad show')
         exit(0)
 
-conn.command('exec --no-startup-id "gnome-terminal --window --title gnome-terminal-dropdown"')
+conn.command('exec --no-startup-id "gnome-terminal --window --title terminal-dropdown"')
