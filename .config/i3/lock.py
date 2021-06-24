@@ -18,20 +18,28 @@ class Locker:
     def __init__(self):
         self.locked = False
         self.notifications_props = None
+        self.secrets_props = None
 
-    def set_notifications_props(self):
+    def set_dbus_props(self):
         if self.notifications_props is None:
             notifications = dbus.SessionBus().get_object(
                 'org.freedesktop.Notifications', '/org/freedesktop/Notifications'
             )
             self.notifications_props = dbus.Interface(notifications, 'org.freedesktop.DBus.Properties')
 
+        if self.secrets_props is None:
+            secrets = dbus.SessionBus().get_object(
+                'org.freedesktop.secrets', '/org/freedesktop/secrets/aliases/default'
+            )
+            self.secrets_props = dbus.Interface(secrets, 'org.freedesktop.DBus.Properties')
+
     def run(self):
         DBusGMainLoop(set_as_default=True)
-        bus = dbus.SystemBus()
+        systembus = dbus.SystemBus()
+        sessionbus = dbus.SessionBus()
         # register your signal callback
-        bus.add_signal_receiver(
-            self.signal_handler,
+        systembus.add_signal_receiver(
+            self.signal_handler_session,
             # bus_name='org.freedesktop.DBus',
             dbus_interface='org.freedesktop.login1.Session',
             # destination_keyword='destination',
@@ -41,15 +49,38 @@ class Locker:
             path_keyword='path',
             # sender_keyword='sender',
         )
-
+        sessionbus.add_signal_receiver(
+            self.signal_handler_secretservice,
+            # bus_name='org.freedesktop.DBus',
+            dbus_interface='org.freedesktop.Secret.Service',
+            # destination_keyword='destination',
+            # interface_keyword='interface',
+            member_keyword='member',
+            message_keyword='message',
+            path_keyword='path',
+            # sender_keyword='sender',
+        )
         loop = GLib.MainLoop()
         loop.run()
 
-    def signal_handler(self, *args, **kwargs):
+    def signal_handler_session(self, *args, **kwargs):
         if kwargs['member'] == 'Lock':
             self.lock()
         elif kwargs['member'] == 'Unlock':
             self.unlock()
+
+    def signal_handler_secretservice(self, *args, **kwargs):
+        if kwargs['member'] == 'CollectionChanged':
+            self.set_dbus_props()
+            locked = bool(self.secrets_props.GetAll('org.freedesktop.Secret.Collection')['Locked'])
+            print('Keyring locked:', locked)
+
+            if locked is True:
+                # pause evolution
+                subprocess.run(['killall', 'evolution', '-s', 'STOP'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            elif locked is False:
+                # if keyring is unlocked, resume evolution
+                subprocess.run(['killall', 'evolution', '-s', 'CONT'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def i3lock(self, result):
         print('LOCKED')
@@ -82,7 +113,7 @@ class Locker:
         subprocess.run(['loginctl', 'unlock-session'], stdout=subprocess.PIPE)
 
         # if notifications have been on then resume them
-        if self.paused_before is False:
+        if self.notifications_paused_before is False:
             self.notifications_props.Set('org.dunstproject.cmd0', 'paused', False)
             print('resumed notifications')
 
@@ -118,11 +149,11 @@ class Locker:
                 # add lock icon to bg image
                 result.paste(icon, area, icon)
 
-        self.set_notifications_props()
-        self.paused_before = bool(self.notifications_props.GetAll('org.dunstproject.cmd0')['paused'])
+        self.set_dbus_props()
+        self.notifications_paused_before = bool(self.notifications_props.GetAll('org.dunstproject.cmd0')['paused'])
 
         # if notifications are on then pause them
-        if self.paused_before is False:
+        if self.notifications_paused_before is False:
             self.notifications_props.Set('org.dunstproject.cmd0', 'paused', True)
             print('paused notifications')
 
@@ -130,23 +161,12 @@ class Locker:
         # threading.Thread(target=self.betterlockscreen).start()
 
 
-import sys
+print(time.asctime(), 'Starting', flush=True)
 
+locker = Locker()
 try:
+    locker.run()
+except KeyboardInterrupt:
+    pass
 
-    print(time.asctime(), 'Starting', flush=True)
-
-    locker = Locker()
-    try:
-        locker.run()
-    except KeyboardInterrupt:
-        pass
-
-    print('\nExiting...', flush=True)
-
-
-except (BrokenPipeError, IOError):
-    print('BrokenPipeError caught', file=sys.stderr)
-
-print('Done', file=sys.stderr)
-sys.stderr.close()
+print('\nExiting...', flush=True)
