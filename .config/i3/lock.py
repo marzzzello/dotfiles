@@ -20,14 +20,14 @@ class Locker:
         self.notifications_props = None
         self.secrets_props = None
 
-    def set_dbus_props(self):
-        if self.notifications_props is None:
+    def set_dbus_props(self, refresh=False):
+        if self.notifications_props is None or refresh is True:
             notifications = dbus.SessionBus().get_object(
                 'org.freedesktop.Notifications', '/org/freedesktop/Notifications'
             )
             self.notifications_props = dbus.Interface(notifications, 'org.freedesktop.DBus.Properties')
 
-        if self.secrets_props is None:
+        if self.secrets_props is None or refresh is True:
             secrets = dbus.SessionBus().get_object(
                 'org.freedesktop.secrets', '/org/freedesktop/secrets/aliases/default'
             )
@@ -71,8 +71,12 @@ class Locker:
 
     def signal_handler_secretservice(self, *args, **kwargs):
         if kwargs['member'] == 'CollectionChanged':
-            self.set_dbus_props()
-            locked = bool(self.secrets_props.GetAll('org.freedesktop.Secret.Collection')['Locked'])
+            self.set_dbus_props(refresh=True)
+            try:
+                locked = bool(self.secrets_props.GetAll('org.freedesktop.Secret.Collection')['Locked'])
+            except dbus.exceptions.DBusException:
+                print('Keyring not available')
+                locked = True
             print('Keyring locked:', locked)
 
             if locked is True:
@@ -80,6 +84,7 @@ class Locker:
                 subprocess.run(['killall', 'evolution', '-s', 'STOP'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             elif locked is False:
                 # if keyring is unlocked, resume evolution
+                time.sleep(0.1)
                 subprocess.run(['killall', 'evolution', '-s', 'CONT'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def i3lock(self, result):
