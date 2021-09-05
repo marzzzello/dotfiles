@@ -18,10 +18,10 @@
     alternate-urgent-background: @urgent-background;
     selected-urgent-background:  @selected-normal-background;
 
-    
-    text:                  {color15};    
 
-    normal-text:           @text;    
+    text:                  {color15};
+
+    normal-text:           @text;
     alternate-normal-text: @normal-text;
     selected-normal-text:  @text;
 
@@ -29,171 +29,145 @@
     alternate-active-text: @active-text;
     selected-active-text:  @active-text;
 
-    urgent-text:           {color7};    
+    urgent-text:           {color7};
     alternate-urgent-text: @urgent-text;
     selected-urgent-text:  @urgent-text;
 
-
-    separatorcolor:              #{inactive.strip}aa;  
-
-    background-color:            #00000000;
-    border-color:                #{active.strip}aa;
-    spacing:                     2;
+    background-color:       #00000000;
+    border-color:           #{inactive.strip}aa;
+    spacing:                2;
 
 
 }}
 window {{
+    background-color: @background;
+	//border-color: @active;
+    //border:           5;
+    //padding:          0;
     transparency: "real";
     fullscreen: true;
-    background-color: @background;
-    //padding:          5;
-    //border:           5;
 }}
 mainbox {{
-    padding: 30% 30%;
-    //padding: 0;
     //border:  0;
+	//border-color: @active;
+    padding: 30% 30%;
 }}
 
 message {{
-    padding:          5px;
-    border-color:     @separatorcolor;
     border:           1px;
+    border-color:     @border-color;
+    padding:          5px;
     border-radius:    3px;
-    //text-color:       @alternate-normal-text;
     background-color: @selected-normal-background;
 }}
-/*
-textbox-prompt-colon {{
-  expand: false;
-  str: ":";
-  text-color: @alternate-normal-text;
-}}
-*/
+
 textbox {{
     text-color: @text;
 }}
+
 listview {{
-    padding:      2px 0px 0px ;
-    scrollbar:    true;
-    border-color: @separatorcolor;
-    spacing:      2px ;
-    fixed-height: 0;
     border:       0px ;
+    padding:      2px 0px 0px ;
+    border-color: @border-color;
+    spacing:      2px ;
+    scrollbar:    true;
+    fixed-height: 0;
 }}
 
-
-/*
 element {{
-    padding: 1px ;
-    border:  0;
+  padding:       5px;
+  border-radius: 3px;
+  text-color:    @text;
+  highlight:     bold {color3};
 }}
-element normal.normal {{
+
+
+
+element.normal.normal {{
     background-color: @normal-background;
     text-color:       @normal-text;
 }}
-element normal.urgent {{
+
+element.normal.urgent {{
     background-color: @urgent-background;
     text-color:       @urgent-text;
 }}
-element normal.active {{
+
+element.normal.active {{
     background-color: @active-background;
     text-color:       @active-text;
 }}
-element selected.normal {{
+
+element.selected.normal {{
     background-color: @selected-normal-background;
     text-color:       @selected-normal-text;
 }}
-element selected.urgent {{
+
+element.selected.urgent {{
     background-color: @selected-urgent-background;
     text-color:       @selected-urgent-text;
 }}
-element selected.active {{
+
+element.selected.active {{
     background-color: @selected-active-background;
-    text-color:       @selected-active-text;
+    text-color:      @selected-active-text;
 }}
-element alternate.normal {{
+
+element.alternate.normal {{
     background-color: @alternate-normal-background;
     text-color:       @alternate-normal-text;
 }}
-element alternate.urgent {{
+
+element.alternate.urgent {{
     background-color: @alternate-urgent-background;
     text-color:       @alternate-urgent-text;
 }}
-element alternate.active {{
+
+element.alternate.active {{
     background-color: @alternate-active-background;
     text-color:       @alternate-active-text;
 }}
-*/
-
-/* shorter variant of above: */
-element {{
-  padding: 5px;
-  text-color: @alternate-normal-text;
-  highlight: bold {color3};
-  border-radius: 3px;
-}}
-
-element selected {{
-  background-color: @selected-normal-background;
-  text-color: @text;
-}}
-
-element urgent, element selected urgent {{
-  text-color: @urgent-text;
-}}
-
-element active, element selected active {{
-  text-color: @active-text;
-}}
-
-/**/
 
 scrollbar {{
     width:        4px ;
-    padding:      0;
-    handle-width: 0px ;
     border:       0;
+    handle-width: 0px ;
     handle-color: @normal-text;
+    padding:      0;
 }}
+
 sidebar {{
-    border-color: @separatorcolor;
     border:       0px ;
+    border-color: @border-color;
 }}
-button {{
-    spacing:    0;
+
+inputbar {{
+    spacing:    0px ;
+    text-color: @normal-text;
+    padding:    1px ;
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}}
+
+case-indicator,
+entry,
+prompt,
+button {{    spacing:    0;
     text-color: @normal-text;
 }}
-button selected {{
+
+button.selected {{
     background-color: @selected-normal-background;
     text-color:       @selected-normal-text;
 }}
-inputbar {{
-    padding:    1px ;
-    spacing:    0px ;
-    text-color: @normal-text;
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-}}
-case-indicator {{
-    spacing:    0;
-    text-color: @normal-text;
-}}
-entry {{
-    spacing:    0;
-    text-color: @normal-text;
-}}
-prompt {{
-    spacing:    0;
-    text-color: @normal-text;
-}}
-textbox-prompt-colon {{
-    margin:     0px 0.3000em 0.0000em 0.0000em ;
+
+textbox-prompt-sep {{
     expand:     false;
     str:        ":";
-    text-color: inherit;
-}}
-error-message {{
-    background-color: rgba ( 0, 0, 0, 0 % );
-    text-color:       @normal-text;
+    text-color: @normal-foreground;
+    margin:     0 0.3em 0 0;
 }}
 
+element-text, element-icon {{
+    text-color:       inherit;
+    background-color: inherit;
+}}
