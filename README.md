@@ -20,12 +20,12 @@
 | arandr                      | main | to set monitor layout with GUI                                        | Provide a simple visual front end for XRandR 1.2.                                                              |
 | autorandr                   | main | to set monitor layout automatically e.g. after reboot                 | Auto-detect connected display hardware and load appropiate X11 setup using xrandr                              |
 | awesome-terminal-fonts      | main | powerline font for i3status-rust                                      | fonts/icons for powerlines                                                                                     |
+| dino                        | main | autostart                                                             | Modern XMPP (Jabber) chat client written in GTK+/Vala                                                          |
 | dunst                       | main | notifications                                                         | Customizable and lightweight notification-daemon                                                               |
 | evolution                   | main | autostart                                                             | Manage your email, contacts and schedule                                                                       |
 | feh                         | main | to set wallpaper                                                      | Fast and light imlib2-based image viewer                                                                       |
 | firefox                     | main | autostart                                                             | Standalone web browser from mozilla.org                                                                        |
 | gammastep                   | main | night mode                                                            | Adjust the color temperature of your screen according to your surroundings.                                    |
-| guake                       | main | autostart                                                             | Drop-down terminal for GNOME                                                                                   |
 | i3-gaps                     | main | my window manager                                                     | A fork of i3wm tiling window manager with more features, including gaps                                        |
 | kdeconnect                  | main | autostart                                                             | Adds communication between KDE and your smartphone                                                             |
 | keepassxc                   | main | password manager, ssh-agent (automatic unlock with pam script)        | Cross-platform community-driven port of Keepass password manager                                               |
@@ -46,8 +46,7 @@
 | terminus-font               | main | another font                                                          | Monospace bitmap font (for X11 and console)                                                                    |
 | ttf-dejavu                  | main | main font                                                             | Font family based on the Bitstream Vera Fonts with a wider range of characters                                 |
 | xsettingsd                  | main | for wpgtk to live reload GTK+ theme                                   | Provides settings to X11 applications via the XSETTINGS specification                                          |
-| dino                        | AUR  | autostart                                                             | Modern XMPP (Jabber) chat client written in GTK+/Vala                                                          |
-| gnome-terminal-transparency | AUR  | terminal emulator                                                     | The GNOME Terminal Emulator, with background transparency                                                      |
+| gnome-terminal-transparency | AUR  | terminal emulator, used also as dropdown terminal                     | The GNOME Terminal Emulator, with background transparency                                                      |
 | goes16-background-git       | AUR  | live earth wallpaper                                                  | Put near-realtime picture of Earth as your desktop background.                                                 |
 | himawaripy-git              | AUR  | live earth wallpaper (different satellite)                            | Put near-realtime picture of Earth as your desktop background.                                                 |
 | i3status-rust-git           | AUR  | status bar                                                            | Very resourcefriendly and feature-rich replacement for i3status to use with bar programs, written in pure Rust |
@@ -62,7 +61,7 @@
 
 </details>
 
-1. Install all: `$aurhelper arandr autorandr awesome-terminal-fonts dunst evolution feh firefox gammastep guake i3-gaps kdeconnect light-locker lxappearance lxsession-gtk3 neofetch network-manager-applet noto-fonts-emoji pamixer pavucontrol picom playerctl powerline-fonts python-i3-py rofi rxvt-unicode seahorse terminus-font ttf-dejavu xsettingsd dino gnome-terminal-transparency goes16-background-git himawaripy-git i3status-rust-git nerd-fonts-complete rofi-surfraw-git rofimoji-git shadowfox-updater spotify wpgtk-git xuserrun-dbus-git yay `
+1. Install all: `$aurhelper arandr autorandr awesome-terminal-fonts dino dunst evolution feh firefox gammastep i3-gaps kdeconnect light-locker lxappearance lxsession-gtk3 neofetch network-manager-applet noto-fonts-emoji pamixer pavucontrol picom playerctl powerline-fonts python-i3-py rofi rxvt-unicode seahorse terminus-font ttf-dejavu xsettingsd gnome-terminal-transparency goes16-background-git himawaripy-git i3status-rust-git nerd-fonts-complete rofi-surfraw-git rofimoji-git shadowfox-updater spotify wpgtk-git xuserrun-dbus-git yay `
 2. If you want some fancy wallpaper images from the earth in almost realtime then also install `goes16-background-git` and `himawaripy-git`
 3. Install dotfiles like descriped further down.
 4. Set monitor layout with arandr. If you you want to save multiple different monitor setups have a look at autorandr. With `$mod+m` there is a script to set some basic layouts.
