@@ -71,7 +71,7 @@ client.background       $color0
 ##### EXEC KEYBINDINGS #####
 
 # start a terminal
-bindsym $mod+Return  exec --no-startup-id gnome-terminal
+bindsym $mod+Return  exec --no-startup-id $terminal
 
 ## start Rofi (a application launcher, window switcher. dmenu replacement)
 bindsym $mod+d       exec --no-startup-id "rofi -modi drun,run -show"
@@ -223,10 +223,16 @@ bindsym $mod+Shift+BackSpace        move container to scratchpad
 ########### MODES ###########
 
 # toggle gaps
-set $mode_gaps Toggle gaps: (1) on (2) off
+set $mode_gaps gaps
+
 mode "$mode_gaps" {{
-    bindsym 1 mode "default", gaps inner all set 10, gaps outer all set 4
-    bindsym 2 mode "default", gaps inner all set 1, gaps outer all set 1
+    bindsym Down gaps inner all minus 5
+    bindsym Up gaps inner all plus 5
+    bindsym Right gaps outer all plus 5
+    bindsym Left gaps outer all minus 5
+    bindsym d gaps outer all set 10; gaps inner all set 0
+    bindsym n gaps outer all set 0; gaps inner all set 0
+
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }}
@@ -295,16 +301,15 @@ assign [instance="dino|discord|element|gajim|signal|telegram-desktop"]  $ws8
 assign [instance="evolution" title="(?<!(K|C)alend(e|a)r) – Evolution"] $ws9
 for_window [instance="spotify"] move to workspace $ws10
 # dropdown terminal: set size, position, move to scratchpad
-for_window [title = "gnome-terminal-dropdown"] floating enable, resize set 90ppt 42ppt, move position center, move up 28ppt, move scratchpad; scratchpad show
+for_window [title = "terminal-dropdown"] floating enable, resize set 90ppt 42ppt, move position center, move up 28ppt, move scratchpad; scratchpad show
 
 ######### FLOATING #########
 for_window [window_role="pop-up"]   floating enable, move absolute center
-for_window [instance = "blueberry.py|discord-overlay|gnome-calendar|gnome-calculator|gnome-control-center|kdeconnect-app|pavucontrol"]  floating enable
+for_window [instance = "blueberry.py|discord-overlay|gnome-calendar|gnome-calculator|gnome-control-center|kdeconnect-app|pavucontrol|rofi"]  floating enable
 for_window [class="de-rub-dez6a3-cardcertificatemanager-Main|sun-awt-X11-XFramePeer"]   floating enable
 for_window [title = "htop-floating"]    floating enable, resize set 70ppt 70ppt, move position center
 # evolution calendar
 for_window [title="(K|C)alend(e|a)r – Evolution"]   floating enable, resize set 70ppt 70ppt, move position center
-
 
 ######### AUTOSTART #########
 
@@ -326,8 +331,8 @@ exec_always --no-startup-id kanshi
 ## MINIMIZED APPLICATIONS
 # password manager
 exec --no-startup-id keepassxc
-# dropdown terminal
-exec --no-startup-id guake
+# KDE Connect
+exec --no-startup-id kdeconnect-indicator
 # manage network connections
 exec --no-startup-id nm-applet
 # red/night mode
