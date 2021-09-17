@@ -37,6 +37,7 @@ block = "disk_space"
 format = "{available*_B;T}"
 info_type = "available"
 interval = 20
+on_click = "qdirstat"
 warning = 20.0
 
 [[block]]
