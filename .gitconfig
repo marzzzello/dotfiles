@@ -1,6 +1,7 @@
 [user]
 name = marzzzello
 email = 15198431+marzzzello@users.noreply.github.com
+# signingKey =
 
 [core]
 # Check if converting CRLF is reversible
@@ -27,6 +28,9 @@ whitespace = warn
 
 [pull]
 rebase = true
+
+#[commit]
+#gpgSign = true
 
 [alias]
 
