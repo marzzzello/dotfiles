@@ -1,2 +1,280 @@
-/* vim:ft=css
- * This file will get overwritten by wpgtk because there is a template file under ~/.config/wpg/templates/
+configuration {
+    /*** Location on screen [number]: 0 ***/
+    /* location: */
+    /*** Y-offset relative to location [number]: 0 ***/
+    /* yoffset: */
+    /*** X-offset relative to location [number]: 0 ***/
+    /* xoffset: */
+    /*** Row height (in chars) [number]: 1 ***/
+    /* eh: */
+    /*** DPI [number]: -1 ***/
+    /* dpi: */
+    /*** Threads to use for string matching [number]: 0 ***/
+    /* threads: */
+    /*** Scrolling method. (0: Page, 1: Centered) [number]: 0 ***/
+    scroll-method: 1;
+    /*** Max history size (WARNING: can cause slowdowns when set too high). [number]: 25 ***/
+    /* max-history-size: */
+
+    /*** Set the character used to negate the matching. ('\0' to disable) [character]: - ***/
+    /* matching-negate-char: */
+
+    /*** Always show number of lines: True ***/
+    /* fixed-num-lines: */
+    /*** Whether to load and show icons: False ***/
+    show-icons: true;
+    /*** Desktop entry show actions.: False ***/
+    /* drun-show-actions: */
+    /*** Disable history in run/ssh: False ***/
+    /* disable-history: */
+    /*** Use sorting: False ***/
+    /* sort: */
+    /*** Set case-sensitivity: False ***/
+    /* case-sensitive: */
+    /*** Cycle through the results list: True ***/
+    /* cycle: */
+    /*** Enable sidebar-mode: False ***/
+    sidebar-mode: true;
+    /*** Enable hover-select: False ***/
+    /* hover-select: */
+    /*** Enable auto select mode: False ***/
+    /* auto-select: */
+    /*** Parse hosts file for ssh mode: False ***/
+    parse-hosts: true;
+    /*** Parse known_hosts file for ssh mode: True ***/
+    /* parse-known-hosts: */
+    /*** Tokenize input string: True ***/
+    /* tokenize: */
+    /*** Click outside the window to exit: True ***/
+    /* click-to-exit: */
+    /*** Hide the prefix mode prefix on the combi view.: False ***/
+    /* combi-hide-mode-prefix: */
+    /*** Show window thumbnail (if available) as icon in window switcher.: False ***/
+    window-thumbnail: true;
+    /*** DRUN: build and use a cache with desktop file content.: False ***/
+    /* drun-use-desktop-cache: */
+    /*** DRUN: If enabled, reload the cache with desktop file content.: False ***/
+    /* drun-reload-desktop-cache: */
+    /*** Normalize string when matching (disables match highlighting).: False ***/
+    /* normalize-match: */
+    /*** Steal focus on launch and restore to window that had it on rofi start on close .: False ***/
+    /* steal-focus: */
+
+    /*** Enabled modi [string]: window,run,ssh ***/
+    modi: "drun,run,window,combi";
+    /*** Font to use [string]: mono 12 ***/
+    font: "System San Francisco Display 12";
+    /*** Terminal to use [string]: rofi-sensible-terminal ***/
+    /* terminal: */
+    /*** Ssh client to use [string]: ssh ***/
+    /* ssh-client: */
+    /*** Ssh command to execute [string]: {terminal} -e {ssh-client} {host} [-p {port}] ***/
+    /* ssh-command: */
+    /*** Run command to execute [string]: {cmd} ***/
+    /* run-command: */
+    /*** Command to get extra run targets [string]: ***/
+    /* run-list-command: */
+    /*** Run command to execute that runs in shell [string]: {terminal} -e {cmd} ***/
+    /* run-shell-command: */
+    /*** Command to executed when -kb-accept-alt binding is hit on selected window  [string]: wmctrl -i -R {window} ***/
+    /* window-command: */
+    /*** Window fields to match in window mode [string]: all ***/
+    /* window-match-fields: */
+    /*** Theme to use to look for icons [string]: (unset) ***/
+    /* icon-theme: */
+    /*** Desktop entry fields to match in drun [string]: name,generic,exec,categories,keywords ***/
+    /* drun-match-fields: */
+    /*** Only show Desktop entry from these categories [string]: (unset) ***/
+    /* drun-categories: */
+    /*** DRUN format string. (Supports: generic,name,comment,exec,categories) [string]: {name} [<span weight='light' size='small'><i>({generic})</i></span>] ***/
+    /* drun-display-format: */
+    /*** Command to open a Desktop Entry that is a Link. [string]: xdg-open ***/
+    /* drun-url-launcher: */
+    /*** Programs ignored for history [string]: ***/
+    /* ignored-prefixes: */
+    /*** Choose the strategy used for sorting: normal (levenshtein) or fzf. [string]: normal ***/
+    /* sorting-method: */
+    /*** Set the modi to combine in combi mode [string]: window,run ***/
+    combi-modi: "window,drun,run";
+    /*** Set the matching algorithm. (normal, regex, glob, fuzzy, prefix) [string]: normal ***/
+    /* matching: */
+    /*** Monitor id to show on [string]: -5 ***/
+    /* m: */
+    /*** Pre-set filter [string]: (unset) ***/
+    /* filter: */
+    /*** Window Format. w (desktop name), t (title), n (name), r (role), c (class) [string]: {w}    {c}   {t} ***/
+    window-format: "{c}";
+    /*** Directory where history and temporary files are stored. [string]: (unset) ***/
+    /* cache-dir: */
+    /*** Fallback icon to use when the application icon is not found in run/drun. [string]: (unset) ***/
+    /* application-fallback-icon: */
+    /*** Pidfile location [string]: /run/user/1000/rofi.pid ***/
+    /* pid: */
+    /*** The display name of this browser [string]: (unset) ***/
+    /* display-window: */
+    /*** The display name of this browser [string]: (unset) ***/
+    /* display-windowcd: */
+    /*** The display name of this browser [string]: (unset) ***/
+    /* display-run: */
+    /*** The display name of this browser [string]: (unset) ***/
+    /* display-ssh: */
+    /*** The display name of this browser [string]: (unset) ***/
+    /* display-drun: */
+    /*** The display name of this browser [string]: (unset) ***/
+    /* display-combi: */
+    /*** The display name of this browser [string]: (unset) ***/
+    /* display-keys: */
+    /*** The display name of this browser [string]: (unset) ***/
+    /* display-filebrowser: */
+    /*** Paste primary selection [string]: Control+V,Shift+Insert ***/
+    /* kb-primary-paste: */
+    /*** Paste clipboard [string]: Control+v,Insert ***/
+    /* kb-secondary-paste: */
+    /*** Clear input line [string]: Control+w ***/
+    /* kb-clear-line: */
+    /*** Beginning of line [string]: Control+a ***/
+    /* kb-move-front: */
+    /*** End of line [string]: Control+e ***/
+    /* kb-move-end: */
+    /*** Move back one word [string]: Alt+b,Control+Left ***/
+    /* kb-move-word-back: */
+    /*** Move forward one word [string]: Alt+f,Control+Right ***/
+    /* kb-move-word-forward: */
+    /*** Move back one char [string]: Left,Control+b ***/
+    /* kb-move-char-back: */
+    /*** Move forward one char [string]: Right,Control+f ***/
+    /* kb-move-char-forward: */
+    /*** Delete previous word [string]: Control+Alt+h,Control+BackSpace ***/
+    /* kb-remove-word-back: */
+    /*** Delete next word [string]: Control+Alt+d ***/
+    /* kb-remove-word-forward: */
+    /*** Delete next char [string]: Delete,Control+d ***/
+    /* kb-remove-char-forward: */
+    /*** Delete previous char [string]: BackSpace,Shift+BackSpace,Control+h ***/
+    /* kb-remove-char-back: */
+    /*** Delete till the end of line [string]: Control+k ***/
+    /* kb-remove-to-eol: */
+    /*** Delete till the start of line [string]: Control+u ***/
+    /* kb-remove-to-sol: */
+    /*** Accept entry [string]: Control+j,Control+m,Return,KP_Enter ***/
+    /* kb-accept-entry: */
+    /*** Use entered text as command (in ssh/run modi) [string]: Control+Return ***/
+    /* kb-accept-custom: */
+    /*** Use entered text as command (in ssh/run modi) [string]: Control+Shift+Return ***/
+    /* kb-accept-custom-alt: */
+    /*** Use alternate accept command. [string]: Shift+Return ***/
+    /* kb-accept-alt: */
+    /*** Delete entry from history [string]: Shift+Delete ***/
+    /* kb-delete-entry: */
+    /*** Switch to the next mode. [string]: Shift+Right,Control+Tab ***/
+    /* kb-mode-next: */
+    /*** Switch to the previous mode. [string]: Shift+Left,Control+ISO_Left_Tab ***/
+    /* kb-mode-previous: */
+    /*** Start completion for mode. [string]: Control+l ***/
+    /* kb-mode-complete: */
+    /*** Go to the previous column [string]: Control+Page_Up ***/
+    /* kb-row-left: */
+    /*** Go to the next column [string]: Control+Page_Down ***/
+    /* kb-row-right: */
+    /*** Select previous entry [string]: Up,Control+p,ISO_Left_Tab ***/
+    /* kb-row-up: */
+    /*** Select next entry [string]: Down,Control+n ***/
+    /* kb-row-down: */
+    /*** Go to next row, if one left, accept it, if no left next mode. [string]: Tab ***/
+    /* kb-row-tab: */
+    /*** Go to the previous page [string]: Page_Up ***/
+    /* kb-page-prev: */
+    /*** Go to the next page [string]: Page_Down ***/
+    /* kb-page-next: */
+    /*** Go to the first entry [string]: Home,KP_Home ***/
+    /* kb-row-first: */
+    /*** Go to the last entry [string]: End,KP_End ***/
+    /* kb-row-last: */
+    /*** Set selected item as input text [string]: Control+space ***/
+    /* kb-row-select: */
+    /*** Take a screenshot of the rofi window [string]: Alt+S ***/
+    /* kb-screenshot: */
+    /*** Toggle between ellipsize modes for displayed data [string]: Alt+period ***/
+    /* kb-ellipsize: */
+    /*** Toggle case sensitivity [string]: grave,dead_grave ***/
+    /* kb-toggle-case-sensitivity: */
+    /*** Toggle sort [string]: Alt+grave ***/
+    /* kb-toggle-sort: */
+    /*** Quit rofi [string]: Escape,Control+g,Control+bracketleft ***/
+    /* kb-cancel: */
+    /*** Custom keybinding 1 [string]: Alt+1 ***/
+    /* kb-custom-1: */
+    /*** Custom keybinding 2 [string]: Alt+2 ***/
+    /* kb-custom-2: */
+    /*** Custom keybinding 3 [string]: Alt+3 ***/
+    /* kb-custom-3: */
+    /*** Custom keybinding 4 [string]: Alt+4 ***/
+    /* kb-custom-4: */
+    /*** Custom Keybinding 5 [string]: Alt+5 ***/
+    /* kb-custom-5: */
+    /*** Custom keybinding 6 [string]: Alt+6 ***/
+    /* kb-custom-6: */
+    /*** Custom Keybinding 7 [string]: Alt+7 ***/
+    /* kb-custom-7: */
+    /*** Custom keybinding 8 [string]: Alt+8 ***/
+    /* kb-custom-8: */
+    /*** Custom keybinding 9 [string]: Alt+9 ***/
+    /* kb-custom-9: */
+    /*** Custom keybinding 10 [string]: Alt+0 ***/
+    /* kb-custom-10: */
+    /*** Custom keybinding 11 [string]: Alt+exclam ***/
+    /* kb-custom-11: */
+    /*** Custom keybinding 12 [string]: Alt+at ***/
+    /* kb-custom-12: */
+    /*** Custom keybinding 13 [string]: Alt+numbersign ***/
+    /* kb-custom-13: */
+    /*** Custom keybinding 14 [string]: Alt+dollar ***/
+    /* kb-custom-14: */
+    /*** Custom keybinding 15 [string]: Alt+percent ***/
+    /* kb-custom-15: */
+    /*** Custom keybinding 16 [string]: Alt+dead_circumflex ***/
+    /* kb-custom-16: */
+    /*** Custom keybinding 17 [string]: Alt+ampersand ***/
+    /* kb-custom-17: */
+    /*** Custom keybinding 18 [string]: Alt+asterisk ***/
+    /* kb-custom-18: */
+    /*** Custom Keybinding 19 [string]: Alt+parenleft ***/
+    /* kb-custom-19: */
+    /*** Select row 1 [string]: Super+1 ***/
+    /* kb-select-1: */
+    /*** Select row 2 [string]: Super+2 ***/
+    /* kb-select-2: */
+    /*** Select row 3 [string]: Super+3 ***/
+    /* kb-select-3: */
+    /*** Select row 4 [string]: Super+4 ***/
+    /* kb-select-4: */
+    /*** Select row 5 [string]: Super+5 ***/
+    /* kb-select-5: */
+    /*** Select row 6 [string]: Super+6 ***/
+    /* kb-select-6: */
+    /*** Select row 7 [string]: Super+7 ***/
+    /* kb-select-7: */
+    /*** Select row 8 [string]: Super+8 ***/
+    /* kb-select-8: */
+    /*** Select row 9 [string]: Super+9 ***/
+    /* kb-select-9: */
+    /*** Select row 10 [string]: Super+0 ***/
+    /* kb-select-10: */
+    /*** Go to the previous column [string]: ScrollLeft ***/
+    /* ml-row-left: */
+    /*** Go to the next column [string]: ScrollRight ***/
+    /* ml-row-right: */
+    /*** Select previous entry [string]: ScrollUp ***/
+    /* ml-row-up: */
+    /*** Select next entry [string]: ScrollDown ***/
+    /* ml-row-down: */
+    /*** Select hovered row [string]: MousePrimary ***/
+    /* me-select-entry: */
+    /*** Accept hovered row [string]: MouseDPrimary ***/
+    /* me-accept-entry: */
+    /*** Accept hovered row with custom action [string]: Control+MouseDPrimary ***/
+    /* me-accept-custom: */
+
+
+}
+@import "~/.config/rofi/themes/base.rasi"

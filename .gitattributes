@@ -5,7 +5,6 @@
 .config/i3status-rust/themes/wpg.toml filter=head
 .config/i3status-rust/config.toml filter=i3rs
 .config/polybar/config filter=head
-.config/rofi/config.rasi filter=head
 .config/rofi/themes/wpgtk.rasi filter=head
 .teeworlds/settings_ddnet.cfg filter=teeworlds
 .teeworlds/settings.cfg filter=teeworlds
