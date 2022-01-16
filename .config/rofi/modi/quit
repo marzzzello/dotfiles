@@ -1,35 +1,41 @@
 #!/usr/bin/env zsh
 
+lock="Lock"
+logout="Logout"
+reboot="Reboot"
+shutdown="Power off"
+suspend="Suspend"
+hibernate="Hibernate"
+hibersus="Hibernate and suspend"
+
 if [[ "$@" ]]; then
-  lock=(xautolock -locknow)
+  locker=(qdbus --system org.freedesktop.login1 /org/freedesktop/login1/session/auto org.freedesktop.login1.Session.Lock)
   case "$@" in
-  Lock) $lock ;;
-  Logout) i3-msg exit ;;
-  Reboot) reboot ;;
-  "Power off") poweroff ;;
-  Suspend)
-    $lock
+  $lock | Lock) $locker ;;
+  $logout) i3-msg exit ;;
+  $reboot) reboot ;;
+  $shutdown) poweroff ;;
+  $suspend)
+    $locker
     systemctl suspend
     ;;
-  Hibernate)
-    $lock
+  $hibernate)
+    $locker
     systemctl hibernate
     ;;
-  "Hibernate and suspend")
+  $hibersus)
     $lock
     systemctl hybrid-sleep
     ;;
-  *) echo "what is that?" ;;
+  *) echo "what is that? -$@-" ;;
   esac
 else
-  OPTIONS="\
-Lock
-Logout
-Reboot
-Power off
-Suspend
-Hibernate
-Hibernate and suspend"
-
-  echo -e "$OPTIONS"
+  echo -e "\
+$lock\0icon\x1fsystem-lock-screen
+$logout\0icon\x1fsystem-log-out
+$reboot\0icon\x1fsystem-reboot
+$shutdown\0icon\x1fsystem-shutdown
+$suspend\0icon\x1fsystem-suspend
+$hibernate\0icon\x1fsystem-suspend-hibernate
+$hibersus\0icon\x1fsystem-suspend-hibernate"
 fi
