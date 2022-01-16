@@ -1,48 +1,55 @@
 #!/usr/bin/env zsh
 
-# If second param is unused then set theme normal, 
-# else show theme list and use second param as offset for active line 
-# (needed if additional line is inserted at top e.g. menu)
-OFFSET=0
-[[ "$2" ]] || THEME="$1" && OFFSET="$2"
 
-if [[ "$THEME" ]]
-then
-  source $HOME/.config/wpg/scripted_themes/theme_func.sh
-  
-  case "$THEME" in
-    goes)     goes &!;;
-    lakeside) lakeside &!;;
-    himawari) himawari &!;;
-    random)   wpg -m &!;;
-    reset)    wpg -s $(wpg -c) &!;;
-    *)        wpg -s "$THEME" &!;;
-  esac >/dev/null
+if [[ ${ROFI_RETV} == 0 ]]; then
+# initial call
 
-else
-  themes=$(wpg -l)
+  themes=""
+  for theme in $(wpg -l); do
+    themes+="${theme}\0icon\x1f${HOME}/.config/wpg/wallpapers/${theme}\n"
+  done
+  #themes=$(wpg -l)
   scripted_themes="goes
 himawari
 lakeside"
-  
-  
+
   out="random\nreset\n$themes\n$scripted_themes"
 
   # highlight current theme
   current=$(wpg -c)
-  
-  case "$current" in
-    goes*)     current="goes";;
-    lakeside*) current="lakeside";;
-    himawari*) current="himawari";;
-  esac  >/dev/null
+
+  # case "$current" in
+  #   goes*)     current="goes";;
+  #   lakeside*) current="lakeside";;
+  #   himawari*) current="himawari";;
+  # esac  >/dev/null
 
   current_line=$(echo "$out" | grep -an "$current" | cut -f1 -d:)
 
- 
+
   echo -en "\0markup-rows\x1ftrue\n"
   echo -en "\0message\x1fCurrent theme: $current\n"
   echo -e "\0active\x1f$((current_line-1+OFFSET))"
-  echo "$out"
-  fi
+  #echo '<span foreground="red" size="100">Blue text</span> is <i>cool</i>!'
+  #echo -en "FOO\0icon\x1f${HOME}/.config/wpg/wallpapers/Zugspitze_light.jpg\n"
+  echo -e "$out"
 
+else
+  # entry selected
+
+  # echo "ARRinfo: ${ROFI_INFO} "
+  echo -en "\0message\x1f\n"
+
+  source $HOME/.config/wpg/scripted_themes/theme_func.sh
+
+  case "$1" in
+    goes)     goes >/dev/null &!;;
+    lakeside) lakeside >/dev/null &!;;
+    himawari) himawari >/dev/null &!;;
+    random)   wpg -m  >/dev/null &!;;
+    reset)    renew_cached >/dev/null &!;;
+    dark)     wpg -s "${ROFI_INFO}" >/dev/null &!;;
+    light)    cd ${HOME}/.config/wpg/wallpapers && wpg -s "${ROFI_INFO}" --light >/dev/null &!;;
+    *)        echo -e "dark\x00icon\x1fweather-clear-night\x1finfo\x1f${1}\nlight\x00icon\x1fweather-clear\x1finfo\x1f${1}";;
+  esac
+fi
