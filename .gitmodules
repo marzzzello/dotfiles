@@ -7,3 +7,6 @@
 	path = .teeworlds
 	url = https://gitlab.com/marzzzello/ddnet-config.git
 	branch = master
+[submodule ".config/mpv/scripts/mpv-twitch-chat"]
+	path = .config/mpv/scripts/mpv-twitch-chat
+	url = https://github.com/CrendKing/mpv-twitch-chat

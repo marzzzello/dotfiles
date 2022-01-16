@@ -15,9 +15,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 --[[
-    mpv_thumbnail_script.lua 0.4.4 - commit a8a910c (branch master)
+    mpv_thumbnail_script.lua 0.4.6 - commit c93ae22 (branch master)
     https://github.com/TheAMM/mpv_thumbnail_script
-    Built on 2021-05-11 23:50:44
+    Built on 2022-01-16 13:51:34
 ]]--
 local assdraw = require 'mp.assdraw'
 local msg = require 'mp.msg'
