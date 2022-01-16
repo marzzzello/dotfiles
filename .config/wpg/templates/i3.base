@@ -78,7 +78,7 @@ bindsym $mod+Shift+e exec --no-startup-id "rofi -modi    quit:~/.config/rofi/mod
 bindsym XF86Sleep    exec --no-startup-id "rofi -modi    quit:~/.config/rofi/modi/quit    -show"
 ## custom rofi scripts
 bindsym $mod+n       exec --no-startup-id networkmanager_dmenu
-bindsym $mod+p       exec --no-startup-id rofimoji
+bindsym $mod+p       exec --no-startup-id splatmoji type
 bindsym $mod+q       exec --no-startup-id rofi-surfraw
 
 # lock the current seat
