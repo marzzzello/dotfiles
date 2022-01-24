@@ -262,6 +262,7 @@ command -v lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
 
 # if bat is installed use it, if not use cat
 command -v bat > /dev/null && alias cat="bat"
+command -v batcat > /dev/null && alias cat="batcat"
 
 
 
