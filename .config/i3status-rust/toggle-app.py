@@ -18,6 +18,18 @@ def wifi_nm():
         return False
 
 
+# def wifi_rfkill():
+#     """
+#     get wifi state from rfkill
+#     """
+#     output = subprocess.check_output(['rfkill', 'list', 'wifi'])
+#     r = re.findall("blocked: yes", output.decode('utf-8'))
+#     if len(r) == 0:
+#         # wifi not blocked
+#         return True
+#     else:
+#         return False
+
 parser = argparse.ArgumentParser(
     formatter_class=argparse.RawDescriptionHelpFormatter,
     description='''
