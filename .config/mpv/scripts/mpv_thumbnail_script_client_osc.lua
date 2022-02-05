@@ -15,9 +15,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 --[[
-    mpv_thumbnail_script.lua 0.4.6 - commit c93ae22 (branch master)
+    mpv_thumbnail_script.lua 0.4.7 - commit 6282073 (branch master)
     https://github.com/TheAMM/mpv_thumbnail_script
-    Built on 2022-01-16 13:51:34
+    Built on 2022-02-05 16:00:13
 ]]--
 local assdraw = require 'mp.assdraw'
 local msg = require 'mp.msg'
@@ -1122,6 +1122,7 @@ function Thumbnailer:prepare_source_path()
         -- This skips ytdl on the sub-calls, making the thumbnailing faster
         -- Works well on YouTube, rest not really tested
         file_path = mp.get_property_native("stream-path")
+        file_path = file_path:gsub(",ytdl_description.+", "")
 
         -- edl:// urls can get LONG. In which case, save the path (URL)
         -- to a temporary file and use that instead.
