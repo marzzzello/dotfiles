@@ -406,10 +406,10 @@ if command -v pacman > /dev/null; then
   function mypaclist() {
     OLDIFS=$IFS
     c="$1"
-    comm -23 <(pacman -Qetq) <(pacman -Qgq base base-devel gnome texlive-most xorg | sort) | while read -r pkg version ; do
+    comm -23 <(pacman -Qetq) <(pacman -Qgq base-devel gnome texlive-most xorg | sort) | while read -r pkg version ; do
       sed -n -e "/ installed $pkg/{s/].*/]/p;q}" /var/log/pacman.log | tr "\n" ";";
       echo -n "$pkg;"
-      LANG=en_US.UTF-8 pacman -Qi $pkg | awk -F ': ' '/Description/ {print $2}'
+      LANG=C pacman -Qi $pkg | awk -F ': ' '/Description/ {print $2}'
       #sed -n "/%DESC%/{n;p}" "/var/lib/pacman/local/$pkg-$version/desc"
     done | sort > /tmp/tmpout
 
