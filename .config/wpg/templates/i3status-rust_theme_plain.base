@@ -1,0 +1,12 @@
+# {infoMsg}
+
+
+#alternating_tint_fg = "#22222200"
+#alternating_tint_bg = "#22222200"
+idle_fg = "{color7}"
+good_fg = "{color6}"
+info_fg = "{active}"
+warning_fg = "{color11}"
+critical_fg = "{color2}"
+
+separator = " "

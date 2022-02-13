@@ -1,5 +1,6 @@
 # {infoMsg}
 
+
 alternating_tint_bg = "#22222200"
 #alternating_tint_fg = "#22222200"
 critical_bg = "{color2}" ###red

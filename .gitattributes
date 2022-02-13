@@ -2,7 +2,8 @@
 .config/dunst/dunstrc filter=head
 .config/i3/config filter=head
 .config/i3/toggle-title-bar.py filter=head
-.config/i3status-rust/themes/wpg.toml filter=head
+.config/i3status-rust/themes/wpg_plain.toml filter=head
+.config/i3status-rust/themes/wpg_powerline.toml filter=head
 .config/i3status-rust/config.toml filter=i3rs
 .config/polybar/config filter=head
 .config/rofi/themes/wpgtk.rasi filter=head

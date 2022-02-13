@@ -1,5 +1,7 @@
 [theme]
-file = "wpg.toml"
+file = "wpg_plain.toml"
+# file = "wpg_powerline.toml" # needs nerd font as $fontmono in wpgtk
+# name = "plain"
 
 [icons]
 name = "awesome5"
