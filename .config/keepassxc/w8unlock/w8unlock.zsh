@@ -47,7 +47,7 @@ wait_for_keepassxc() {
 
 openkeepassxc() {
   echo "Exec KeePassXC..." | adddate
-  qdbus org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.MainWindow.openDatabase "$DB_PATH" "$LOGIN_PW"
+  qdbus org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.KeePassXC.MainWindow.openDatabase "$DB_PATH" "$LOGIN_PW"
   echo "Done; Returned ${pipestatus[1]}" | adddate
 
 }
