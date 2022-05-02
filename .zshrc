@@ -89,22 +89,23 @@ fi
 
 ############ Plugins ############
 # find antigen or install antigen
-local a1="/usr/share/zsh/share/antigen.zsh"
-local a2="/usr/share/zsh-antigen/antigen.zsh"
-local a3="$HOME/.antigen/antigen.zsh"
-if [[ -f $a1 ]]; then
-  ANTIGEN=$a1;
-  elif [[ -f $a2 ]]; then
-  ANTIGEN=$a2;
-  elif [[ -f $a3 ]]; then
-  ANTIGEN=$a3;
-else
-  echo "Downloading Antigen to $a3"
-  mkdir -p ${a3:h}
-  curl -L git.io/antigen > $a3 \
-  && ANTIGEN=$a3
-fi
-
+function () {
+  local a1="/usr/share/zsh/share/antigen.zsh"
+  local a2="/usr/share/zsh-antigen/antigen.zsh"
+  local a3="$HOME/.antigen/antigen.zsh"
+  if [[ -f $a1 ]]; then
+    ANTIGEN="$a1";
+    elif [[ -f $a2 ]]; then
+    ANTIGEN="$a2";
+    elif [[ -f $a3 ]]; then
+    ANTIGEN="$a3";
+  else
+    echo "Downloading Antigen to $a3"
+    mkdir -p ${a3:h}
+    curl -L git.io/antigen > $a3 \
+    && ANTIGEN=$a3
+  fi
+}
 source $ANTIGEN
 
 # Load the oh-my-zsh's library
@@ -225,18 +226,14 @@ alias duply=~/projects/Dubly/src/dubly.py
 
 ##
 
-# pm -> yay if it is installed, if not pm -> pacman
-command -v yay &>/dev/null && alias pm="yay" || alias pm="pacman"
-
 # Clipboard
 alias xclip="xclip -selection c"
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
 # more colors
-alias pacman='pacman --color=auto'  # use more colors
-alias diff='diff --color=auto'
-alias ip="ip -color"
+command -vp diff >/dev/null && alias diff='diff --color=auto'
+command -vp ip >/dev/null && alias ip="ip -color"
 
 # suffix aliases
 alias -s html='background firefox'
@@ -252,11 +249,14 @@ alias -s tar='tar tf'
 # global alias
 alias -g ES="2>&1"
 
+## Modern Unix tools
+
 # use real fd ;)
 [[ $(command -v fd) == *alias* ]] && unalias fd
-# For Ubuntu: If fdfind exists and fd is not used then alias fd
+# for ubuntu: if fdfind exists and fd is not used then alias fd
 { command -v fdfind && ! command -v fd } > /dev/null && alias fd="fdfind"
 alias fh="fd -HI" # fd with hidden and ignored files
+
 # if lsd is installed use it, if not use ls
 command -v lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
 
@@ -264,7 +264,7 @@ command -v lsd > /dev/null && alias l="lsd -la" || alias l='ls -lAFh'
 command -v bat > /dev/null && alias cat="bat"
 command -v batcat > /dev/null && alias cat="batcat"
 
-
+##
 
 alias dd="dd status=progress"
 alias week='date +%V' #week number

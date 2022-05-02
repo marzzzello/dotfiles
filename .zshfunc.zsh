@@ -136,24 +136,7 @@ pdf() {
     | cut -z -f 1 -d $'\t' | tr -d '\n' | xargs -r --null $open > /dev/null 2> /dev/null
 }
 
-
-# pm -> yay if it is installed, if not pm -> pacman
-command -v yay &>/dev/null && alias pm="yay" || alias pm="pacman"
-
-
 ### cleanups
-
-# remove packages installed as dependency but not needed anymore
-cupm(){
-
-  if pm -Qtdq; then
-      pm -Rucns --noconfirm $(pm -Qtdq)
-  fi
-
-  # this will delete the complete package cache
-  sudo paccache -r -k 0
-  pm -Scc --noconfirm
-}
 
 cutrash(){
   rm -rf $HOME/.local/share/Trash/
@@ -203,28 +186,21 @@ echo "Usage:
   esac
 }
 
-### updates
-
-# update mirrorlist
-alias upmirror="sudo reflector --completion-percent 80 --country France --country Germany --age 6 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
-
-# update all packages
-alias uppm="pm -Syu --devel --timeupdate --noconfirm --noremovemake --noredownload  --norebuild --useask --sudoloop"
-
-# update keyring
-upkeys(){
-  pm -Sy --noconfirm archlinux-keyring
-  sudo pacman-key --populate archlinux
+# broot: a better tree
+function br {
+    local cmd cmd_file code
+    cmd_file=$(mktemp)
+    if broot --outcmd "$cmd_file" "$@"; then
+        cmd=$(<"$cmd_file")
+        rm -f "$cmd_file"
+        eval "$cmd"
+    else
+        code=$?
+        rm -f "$cmd_file"
+        return "$code"
+    fi
 }
 
-# full update
-upfull(){
-  upmirror
-  upkeys
-  uppm
-
-  cupm
-}
 
 # mount fs stud
 fsstud(){
@@ -347,7 +323,47 @@ gitua(){
 
 ### pacman specific stuff
   # check if pacman is installed
-if command -v pacman > /dev/null; then
+if command -vp pacman > /dev/null; then
+
+  alias pacman='pacman --color=auto'  # use more colors
+
+  # pm -> yay if it is installed, if not pm -> pacman
+  command -v yay &>/dev/null && alias pm="yay" || alias pm="pacman"
+
+  # remove packages installed as dependency but not needed anymore
+  cupm(){
+
+    if pm -Qtdq; then
+        pm -Rucns --noconfirm $(pm -Qtdq)
+    fi
+
+    # this will delete the complete package cache
+    sudo paccache -r -k 0
+    pm -Scc --noconfirm
+  }
+
+  # update mirrorlist
+  alias upmirror="sudo reflector --completion-percent 80 --country France --country Germany --age 6 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
+
+  # update all packages
+  alias uppm="pm -Syu --devel --timeupdate --noconfirm --noremovemake --noredownload  --norebuild --useask --sudoloop"
+
+  # update keyring
+  upkeys(){
+    pm -Sy --noconfirm archlinux-keyring
+    sudo pacman-key --populate archlinux
+  }
+
+  # full update
+  upfull(){
+    upmirror
+    upkeys
+    uppm
+
+    cupm
+  }
+
+
   function paclist() {
     # Source: https://bbs.archlinux.org/viewtopic.php?id=93683
     LC_ALL=C pacman -Qei $1 | awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{printf $2} /^Groups/{if ($2!=" None") printf("\033[1;31m%s\033[1;37m", $2)}/^Validated/{printf "\n"}'
