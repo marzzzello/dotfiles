@@ -4,9 +4,9 @@ file = "wpg_plain.toml"
 # name = "plain"
 
 [icons]
-name = "awesome5"
-[icons.overrides]
-weather_sun = "\ufa98"
+name = "awesome6"
+# [icons.overrides]
+# weather_sun = "\ufa98"
 
 [[block]]
 block = "focused_window"
@@ -105,18 +105,18 @@ block = "backlight"
 # step = 100
 
 [[block]]
+block = "keyboard_layout"
+driver = "setxkbmap"
+#if_command = "command -v ibus && return 1 || return 0"
+interval = 1
+
+[[block]]
 block = "battery"
 device = "DisplayDevice"
 driver = "upower"
 if_command = "test -e /sys/class/power_supply/BAT0"
 #format = "{percentage}% {power}W {time}"
 #full_format = "{percentage}% {power}W"
-
-[[block]]
-block = "keyboard_layout"
-driver = "setxkbmap"
-if_command = "command -v ibus && return 1 || return 0"
-interval = 1
 
 [[block]]
 block = "ibus"
@@ -139,7 +139,7 @@ mac = "DE:AD:FA:CE:CA:FE"
 
 [[block]]
 block = "bluetooth"
-format = "{label}"
+format = "{label}{percentage}"
 hide_disconnected = true
 on_click = "~/.config/i3status-rust/toggle-app.py --instance blueberry --floating"
 # headset
@@ -154,13 +154,13 @@ on_click = "~/.config/i3status-rust/toggle-app.py --instance kdeconnect-app --fl
 [[block]]
 block = "notify"
 
-[[block]]
-# {location} {wind}m/s {direction} {wind_kmh}km/h {humidity}%"
-autolocate = true
-block = "weather"
-format = "{temp}"
-on_click = "firefox https://openweathermap.org/"
-service = {name = "openweathermap", api_key = "YOUR API KEY", units = "metric"}
+# [[block]]
+# # {location} {wind}m/s {direction} {wind_kmh}km/h {humidity}%"
+# autolocate = true
+# block = "weather"
+# format = "{temp}"
+# on_click = "firefox https://openweathermap.org/"
+# service = {name = "openweathermap", api_key = "YOUR API KEY", units = "metric"}
 
 [[block]]
 block = "time"
