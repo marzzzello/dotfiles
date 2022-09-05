@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Get pressure stall information (psi) from /proc/pressure/* and output it as JJSON for i3status-rust
+# Get pressure stall information (psi) from /proc/pressure/* and output it as JSON for i3status-rust
 
 import json
 import argparse
@@ -47,7 +47,6 @@ if args.type == 'io':
     output['icon'] = 'memory_swap'
 if args.type == 'memory':
     output['icon'] = 'memory_mem'
-
 
 # set text
 psi_avg = float(get_psi(args))

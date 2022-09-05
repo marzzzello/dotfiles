@@ -11,6 +11,7 @@ import threading
 from PIL import Image
 import mss
 
+import logging
 import time
 
 
@@ -19,6 +20,7 @@ class Locker:
         self.locked = False
         self.notifications_props = None
         self.secrets_props = None
+        self.locked_time = 0
 
     def set_dbus_props(self, refresh=False):
         if self.notifications_props is None or refresh is True:
@@ -75,9 +77,9 @@ class Locker:
             try:
                 locked = bool(self.secrets_props.GetAll('org.freedesktop.Secret.Collection')['Locked'])
             except dbus.exceptions.DBusException:
-                print('Keyring not available')
+                logging.warning('Keyring not available')
                 locked = True
-            print('Keyring locked:', locked)
+            logging.info(f'Keyring locked: {locked}')
 
             if locked is True:
                 # pause evolution
@@ -88,7 +90,7 @@ class Locker:
                 subprocess.run(['killall', 'evolution', '-s', 'CONT'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def i3lock(self, result):
-        print('LOCKED')
+        logging.info('LOCKED')
         self.locked = True
         self.killprog = 'i3lock'
         subprocess.run(
@@ -99,7 +101,7 @@ class Locker:
         self.unlock(kill=False)
 
     def betterlockscreen(self):
-        print('LOCKED')
+        logging.info('LOCKED')
         self.locked = True
         self.killprog = 'i3lock'
         subprocess.run(['betterlockscreen', '--lock'], stdout=subprocess.PIPE)
@@ -109,10 +111,17 @@ class Locker:
         if self.locked is False:
             return
 
+        logging.info("Unlocking...")
+
+        timediff = time.time() - self.locked_time
+        if timediff < 5:
+            logging.error(f'Time between lock and unlock shorter too short ({timediff:.1f}s <5s)')
+            return
+
         if kill is True:
             subprocess.run(['killall', self.killprog], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-        print('UNLOCKED')
+        logging.info('UNLOCKED')
         self.locked = False
 
         subprocess.run(['loginctl', 'unlock-session'], stdout=subprocess.PIPE)
@@ -120,11 +129,15 @@ class Locker:
         # if notifications have been on then resume them
         if self.notifications_paused_before is False:
             self.notifications_props.Set('org.dunstproject.cmd0', 'paused', False)
-            print('resumed notifications')
+            logging.info('resumed notifications')
 
     def lock(self):
         if self.locked:
             return
+
+        logging.info("Locking...")
+
+        self.locked_time = time.time()
 
         sct = mss.mss()
 
@@ -133,14 +146,14 @@ class Locker:
         img = Image.frombytes('RGB', sct_img.size, sct_img.bgra, 'raw', 'BGRX')
 
         # pixelate
-        imgSmall = img.resize((int(img.size[0] / 10), int(img.size[1] / 10)), resample=Image.BILINEAR)
-        result = imgSmall.resize(img.size, Image.NEAREST)
+        imgSmall = img.resize((int(img.size[0] / 10), int(img.size[1] / 10)), resample=Image.Resampling.BILINEAR)
+        result = imgSmall.resize(img.size, Image.Resampling.NEAREST)
 
         # add lock icon
         try:
             icon_path = sys.argv[1]
         except IndexError:
-            print('No lock icon path set')
+            logging.warning('No lock icon path set')
             # icon_path = '/usr/share/i3lock-fancy-dualmonitor/lock.png'
         else:
             icon = Image.open(icon_path)
@@ -160,18 +173,17 @@ class Locker:
         # if notifications are on then pause them
         if self.notifications_paused_before is False:
             self.notifications_props.Set('org.dunstproject.cmd0', 'paused', True)
-            print('paused notifications')
+            logging.info('paused notifications')
 
         threading.Thread(target=self.i3lock, args=(result,)).start()
         # threading.Thread(target=self.betterlockscreen).start()
 
 
-print(time.asctime(), 'Starting', flush=True)
-
+logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=logging.DEBUG, datefmt='%Y-%m-%d %H:%M:%S')
+logging.info('Starting')
 locker = Locker()
 try:
     locker.run()
 except KeyboardInterrupt:
     pass
-
-print('\nExiting...', flush=True)
+logging.info('Exiting...')
