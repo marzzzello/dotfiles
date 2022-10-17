@@ -12,59 +12,122 @@
 
 <details>
   <summary>
-    <b>Package list with details</b>
+  <b>General</b>
   </summary>
 
-| Package name                | Repo | Needed for                                                            | Package description                                                                                 |
-| --------------------------- | ---- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| arandr                      | main | to set monitor layout with GUI                                        | Provide a simple visual front end for XRandR 1.2.                                                   |
-| autorandr                   | main | to set monitor layout automatically e.g. after reboot                 | Auto-detect connected display hardware and load appropiate X11 setup using xrandr                   |
-| dino                        | main | autostart                                                             | Modern XMPP (Jabber) chat client written in GTK+/Vala                                               |
-| dunst                       | main | notifications                                                         | Customizable and lightweight notification-daemon                                                    |
-| evolution                   | main | autostart                                                             | Manage your email, contacts and schedule                                                            |
-| feh                         | main | to set wallpaper                                                      | Fast and light imlib2-based image viewer                                                            |
-| firefox                     | main | autostart                                                             | Standalone web browser from mozilla.org                                                             |
-| redshift                    | main | night mode                                                            | Adjusts the color temperature of your screen according to your surroundings.                        |
-| i3-gaps                     | main | my window manager                                                     | A fork of i3wm tiling window manager with more features, indcluding gaps                            |
-| i3status-rust               | main | status bar                                                            | Resourcefriendly and feature-rich replacement for i3status, written in pure Rust                    |
-| kdeconnect                  | main | autostart                                                             | Adds communication between KDE and your smartphone                                                  |
-| keepassxc                   | main | password manager, ssh-agent (automatic unlock with pam script)        | Cross-platform community-driven port of Keepass password manager                                    |
-| lxappearance                | main | to set GTK theme and icon-set                                         | Feature-rich GTK+ theme switcher of the LXDE Desktop                                                |
-| lxsession-gtk3              | main | needed for programms like e.g. gparted                                | Lightweight X11 session manager (GTK+ 3 version)                                                    |
-| neofetch                    | main | show system information                                               | A CLI system information tool written in BASH that supports displaying images.                      |
-| nerd-fonts-roboto-mono      | main | font for i3status-rust                                                | Patched font Roboto Mono from the nerd-fonts library                                                |
-| network-manager-applet      | main | to choose network connection                                          | Applet for managing network connections                                                             |
-| noto-fonts-emoji            | main | emojis 😍😜🧑‍💻                                                      | Google Noto emoji fonts                                                                             |
-| pamixer                     | main | make sound control keys working                                       | Pulseaudio command-line mixer like amixer                                                           |
-| pavucontrol                 | main | Sound settings and mixer                                              | PulseAudio Volume Contro                                                                            |
-| picom                       | main | transparency and smooth transitions                                   | X compositor that may fix tearing issues                                                            |
-| playerctl                   | main | make music control keys working                                       | mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.          |
-| python-i3ipc                | main | for scripts                                                           | An improved Python library to control i3wm                                                          |
-| qt5-tools                   | main | qdbus for w8unlock.zsh script                                         | A cross-platform application and UI framework (Development Tools, QtHelp)                           |
-| rofi                        | main | launcher, to set theme, to exit i3, for searching the web, ...        | A window switcher, application launcher and dmenu replacement                                       |
-| ttf-dejavu                  | main | main font                                                             | Font family based on the Bitstream Vera Fonts with a wider range of characters                      |
-| xsettingsd                  | main | for wpgtk to live reload GTK+ theme                                   | Provides settings to X11 applications via the XSETTINGS specification                               |
-| gnome-terminal-transparency | AUR  | terminal emulator, used also as dropdown terminal                     | The GNOME Terminal Emulator, with background transparency                                           |
-| goes16-background-git       | AUR  | live earth wallpaper                                                  | Put near-realtime picture of Earth as your desktop background.                                      |
-| himawaripy-git              | AUR  | live earth wallpaper (different satellite)                            | Put near-realtime picture of Earth as your desktop background.                                      |
-| nerd-fonts-complete         | AUR  | more fonts                                                            | Iconic font aggregator, collection, and patcher. 40+ patched fonts, over 3,600 glyph/icons          |
-| rofi-surfraw-git            | AUR  | web search with rofi                                                  | Universal tool to search the internet                                                               |
-| splatmoji-git               | AUR  | emoji picker                                                          | Quickly look up and input emoji and/or emoticons/kaomoji on your GNU/Linux desktop via pop-up menu. |
-| shadowfox-updater           | AUR  | dark firefox theme                                                    | An auto-updater for ShadowFox                                                                       |
-| spotify                     | AUR  | autostart                                                             | A proprietary music streaming service                                                               |
-| wpgtk-git                   | AUR  | generate and set themes and configs based on wallpapers and templates | A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme                  |
-| xuserrun-dbus-git           | AUR  | run cronjob command as X11 user                                       | Run commands as the currently-active X11 user while also using his dbus-session                     |
-| yay                         | AUR  | AUR helper                                                            | Yet another yogurt. Pacman wrapper and AUR helper written in go.                                    |
+Install all:
+
+```sh
+pacman -S dunst i3status-rust lxappearance lxsession-gtk3 neofetch nerd-fonts-roboto-mono network-manager-applet noto-fonts-emoji pamixer pavucontrol playerctl polkit-gnome python-i3ipc qt5-tools rofi ttf-dejavu xsettingsd
+$aurhelper -S goes16-background-git himawaripy-git nerd-fonts-complete rofi-surfraw-git splatmoji-git shadowfox-updater wpgtk-git yay
+```
+
+| Package name           | Repo | Needed for                                                            | Package description                                                                                 |
+| ---------------------- | ---- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| dunst                  | main | notifications                                                         | Customizable and lightweight notification-daemon                                                    |
+| i3status-rust          | main | status bar                                                            | Resourcefriendly and feature-rich replacement for i3status, written in pure Rust                    |
+| lxappearance           | main | to set GTK theme and icon-set                                         | Feature-rich GTK+ theme switcher of the LXDE Desktop                                                |
+| lxsession-gtk3         | main | needed for programms like e.g. gparted                                | Lightweight X11 session manager (GTK+ 3 version)                                                    |
+| neofetch               | main | show system information                                               | A CLI system information tool written in BASH that supports displaying images.                      |
+| nerd-fonts-roboto-mono | main | font for i3status-rust                                                | Patched font Roboto Mono from the nerd-fonts library                                                |
+| network-manager-applet | main | to choose network connection                                          | Applet for managing network connections                                                             |
+| noto-fonts-emoji       | main | emojis 😍😜🧑‍💻                                                         | Google Noto emoji fonts                                                                             |
+| pamixer                | main | make sound control keys working                                       | Pulseaudio command-line mixer like amixer                                                           |
+| pavucontrol            | main | Sound settings and mixer                                              | PulseAudio Volume Contro                                                                            |
+| playerctl              | main | make music control keys working                                       | mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.          |
+| polkit-gnome           | main | needed for privileged GUI apps like GParted                           | Legacy polkit authentication agent for GNOME                                                        |
+| python-i3ipc           | main | for scripts                                                           | An improved Python library to control i3wm                                                          |
+| qt5-tools              | main | qdbus for w8unlock.zsh script                                         | A cross-platform application and UI framework (Development Tools, QtHelp)                           |
+| rofi                   | main | launcher, to set theme, to exit i3, for searching the web, ...        | A window switcher, application launcher and dmenu replacement                                       |
+| ttf-dejavu             | main | main font                                                             | Font family based on the Bitstream Vera Fonts with a wider range of characters                      |
+| xsettingsd             | main | for wpgtk to live reload GTK+ theme                                   | Provides settings to X11 applications via the XSETTINGS specification                               |
+| goes16-background-git  | AUR  | live earth wallpaper                                                  | Put near-realtime picture of Earth as your desktop background.                                      |
+| himawaripy-git         | AUR  | live earth wallpaper (different satellite)                            | Put near-realtime picture of Earth as your desktop background.                                      |
+| nerd-fonts-complete    | AUR  | more fonts                                                            | Iconic font aggregator, collection, and patcher. 40+ patched fonts, over 3,600 glyph/icons          |
+| rofi-surfraw-git       | AUR  | web search with rofi                                                  | Universal tool to search the internet                                                               |
+| splatmoji-git          | AUR  | emoji picker                                                          | Quickly look up and input emoji and/or emoticons/kaomoji on your GNU/Linux desktop via pop-up menu. |
+| shadowfox-updater      | AUR  | dark firefox theme                                                    | An auto-updater for ShadowFox                                                                       |
+| wpgtk-git              | AUR  | generate and set themes and configs based on wallpapers and templates | A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme                  |
+| yay                    | AUR  | AUR helper                                                            | Yet another yogurt. Pacman wrapper and AUR helper written in go.                                    |
 
 </details>
 
-1. Install all:
+<details>
+  <summary>
+    <b>i3/x11 specific</b>
+  </summary>
+
+Install all:
 
 ```sh
- pacman -S arandr autorandr dino dunst evolution feh firefox redshift i3-gaps i3status-rust kdeconnect keepassxc lxappearance lxsession-gtk3 neofetch nerd-fonts-roboto-mono network-manager-applet noto-fonts-emoji pamixer pavucontrol picom playerctl python-i3ipc qt5-tools rofi ttf-dejavu xsettingsd
- $aurhelper -S gnome-terminal-transparency goes16-background-git himawaripy-git nerd-fonts-complete rofi-surfraw-git splatmoji-git shadowfox-updater spotify wpgtk-git xuserrun-dbus-git yay
+pacman -S arandr autorandr feh i3-gaps picom redshift
+$aurhelper -S gnome-terminal-transparency
 ```
 
+| Package name                | Repo | Needed for                                            | Package description                                                               |
+| --------------------------- | ---- | ----------------------------------------------------- | --------------------------------------------------------------------------------- |
+| arandr                      | main | to set monitor layout with GUI                        | Provide a simple visual front end for XRandR 1.2.                                 |
+| autorandr                   | main | to set monitor layout automatically e.g. after reboot | Auto-detect connected display hardware and load appropiate X11 setup using xrandr |
+| feh                         | main | to set wallpaper                                      | Fast and light imlib2-based image viewer                                          |
+| i3-gaps                     | main | my window manager                                     | A fork of i3wm tiling window manager with more features, indcluding gaps          |
+| picom                       | main | transparency and smooth transitions                   | X compositor that may fix tearing issues                                          |
+| redshift                    | main | night mode                                            | Adjusts the color temperature of your screen according to your surroundings.      |
+| gnome-terminal-transparency | AUR  | terminal emulator, used also as dropdown terminal     | The GNOME Terminal Emulator, with background transparency                         |
+
+</details>
+
+<details>
+  <summary>
+    <b>Sway/Wayland specific</b>
+  </summary>
+
+Install all:
+
+```sh
+pacman -S grim kanshi kitty sway swayidle swaylock wlsunset
+$aurhelper -S wdisplays
+```
+
+| Package name | Repo | Needed for                                            | Package description                                                 |
+| ------------ | ---- | ----------------------------------------------------- | ------------------------------------------------------------------- |
+| grim         | main | screenshots                                           | Screenshot utility for Wayland                                      |
+| kanshi       | main | to set monitor layout automatically e.g. after reboot | Dynamic output configuration for Wayland WMs                        |
+| kitty        | main | terminal emulator, used also as dropdown terminal     | A modern, hackable, featureful, OpenGL-based terminal emulator      |
+| sway         | main | my window manager                                     | Tiling Wayland compositor and replacement for the i3 window manager |
+| swayidle     | main | automatic screen locking                              | Idle management daemon for Wayland                                  |
+| swaylock     | main | screen locker                                         | Screen locker for Wayland                                           |
+| wlsunset     | main | night mode                                            | Day/night gamma adjustments for Wayland compositors                 |
+| wdisplays    | AUR  | to set monitor layout with GUI                        | GUI display configurator for wlroots compositors                    |
+
+</details>
+
+<details>
+  <summary>
+    <b>Autostart</b>
+
+  </summary>
+
+```sh
+pacman -S dino evolution fcitx5 kdeconnect
+flatpak install com.spotify.Client im.riot.Riot org.keepassxc.KeePassXC org.mozilla.firefox org.signal.Signal org.telegram.desktop
+```
+
+| Package name            | Repo    | Package description                                                          |
+| ----------------------- | ------- | ---------------------------------------------------------------------------- |
+| dino                    | main    | Modern XMPP (Jabber) chat client written in GTK+/Vala                        |
+| evolution               | main    | Manage your email, contacts and schedule                                     |
+| fcitx5                  | main    | Next generation of fcitx                                                     |
+| kdeconnect              | main    | Adds communication between KDE and your smartphone                           |
+| com.spotify.Client      | flatpak | Online music streaming service                                               |
+| im.riot.Riot            | flatpak | Create, share, communicate, chat and call securely, and bridge to other apps |
+| org.keepassxc.KeePassXC | flatpak | Community-driven port of the Windows application “KeePass Password Safe”     |
+| org.mozilla.firefox     | flatpak | Fast, Private & Safe Web Browser                                             |
+| org.signal.Signal       | flatpak | Private messenger                                                            |
+| org.telegram.desktop    | flatpak | Fast. Secure. Powerful. (lol?)                                               |
+
+</details>
+
+1. Install the general packages, then choose i3 or sway (or both) and the autostart packages you want.
 2. Install dotfiles like descriped further down.
 3. Set monitor layout with arandr. If you you want to save multiple different monitor setups have a look at autorandr. With `$mod+m` there is a script to set some basic layouts.
 4. Run `wpg-install.sh -ig` and then go to your wallpaper folder and generate colorscheme with `wpg -a *` or alternatively do it over the gui with `wpg`.
@@ -74,7 +137,7 @@
 8. Add the following line to cron with `EDITOR=vim crontab -e` and make sure cron service is running: `sudo systemctl enable --now cronie.service`.
 
 ```sh
-00 \* \* \* \* xuserrun $HOME/.config/wpg/scripted_themes/cron.sh >> $HOME/.config/wpg/scripted_themes/cron.log 2>&1
+00 * * * * $HOME/.config/wpg/scripted_themes/cron.sh >> $HOME/.config/wpg/scripted_themes/cron.log 2>&1
 ```
 
 10. Run the Firefox profile manager `firefox -ProfileManager -no-remote` and add a profile with the name `user.js` and set the path to `~/.mozilla/firefox/user.js`. Install your addons and then run ShadowFox (also themes some addons) with this command:

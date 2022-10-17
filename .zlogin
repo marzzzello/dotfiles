@@ -20,9 +20,6 @@ export PATH=/opt/android-sdk/build-tools/$(ls /opt/android-sdk/build-tools/ | ta
 
 export TERM="xterm-256color"
 
-export BROWSER="firefox"
-export XIVIEWER="shotwell"
-
 export GOPATH="$HOME/go"
 export npm_config_prefix="$HOME/.local"
 
@@ -60,3 +57,19 @@ export LESS_TERMCAP_ZN=$(tput ssubm)
 export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
+
+# export QT_SCALE_FACTOR=0.7
+# export QT_QPA_PLATFORMTHEME=qt5ct
+#export QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORMTHEME=qt5ct
+#export QT_STYLE_OVERRIDE=kvantum
+unset QT_STYLE_OVERRIDE
+#export GDK_BACKEND=x11
+export GDK_BACKEND=wayland
+
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+export SDL_IM_MODULE=fcitx
+export GLFW_IM_MODULE=ibus #kitty
+# ibus-daemon -drx

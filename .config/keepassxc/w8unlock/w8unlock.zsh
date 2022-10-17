@@ -5,11 +5,7 @@
 
 # uncomment and insert your username, user id and path:
 # KEEPASSXC_USER="YOUR_USERNAME"
-# USER_ID=1000
 # DB_PATH="/home/$KEEPASSXC_USER/path/to/your/database.kdbx"
-USER_ID=1000
-
-export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$USER_ID/bus"
 
 LOGFILE="${0:a:h}/log" # same directory as script
 LOGIN_PW="$(timeout --foreground 1 tr '\0' '\n')"
@@ -26,9 +22,17 @@ debug() {
   # echo "PW: $LOGIN_PW" | adddate
 }
 
-# max 15 seconds
+# max 20 seconds
 wait_for_keepassxc() {
   for i in {1..20}; do
+    # set DBUS address
+    pidof swayidle && _DBUS_ENV=$(cat /proc/$(pidof swayidle)/environ | grep -Po --text 'DBUS_SESSION_BUS_ADDRESS=[^\x00]*')
+    if [[ $_DBUS_ENV =~ unix ]]; then
+      export $_DBUS_ENV
+      echo "DBUS_SESSION_BUS_ADDRESS set to ${DBUS_SESSION_BUS_ADDRESS}"
+    else
+      echo "DBUS_SESSION_BUS_ADDRESS not found in /proc/$(pidof swayidle)/environ"
+    fi
     qdbus org.keepassxc.KeePassXC.MainWindow / org.freedesktop.DBus.Peer.Ping &>/dev/null
     case $? in
     0)
@@ -36,7 +40,7 @@ wait_for_keepassxc() {
       return
       ;;
     2) echo "Not ready" | adddate ;;
-    *) echo "non existing case" | adddate ;;
+    *) echo "Something went wrong" | adddate ;;
     esac
 
     sleep 1
@@ -49,7 +53,6 @@ openkeepassxc() {
   echo "Exec KeePassXC..." | adddate
   qdbus org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.KeePassXC.MainWindow.openDatabase "$DB_PATH" "$LOGIN_PW"
   echo "Done; Returned ${pipestatus[1]}" | adddate
-
 }
 
 main() {
@@ -57,7 +60,7 @@ main() {
   # debug
 
   if [[ "$PAM_USER" == "$KEEPASSXC_USER" ]]; then
-    wait_for_keepassxc && openkeepassxc
+    wait_for_keepassxc && sleep 3 && openkeepassxc
   else
     echo "Wrong user: $PAM_USER" | adddate
   fi

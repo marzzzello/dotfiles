@@ -65,9 +65,10 @@ else:
 
 killed = False
 for p in ps:
-    if (re.findall(args.title, p.window_title) if args.title else True) and (
-        re.findall("on", p.floating) if args.floating else True
+    if (re.findall(args.title, p.name) if args.title else True) and (
+        p.type == 'floating_con' if args.floating else True
     ):
+        print('kill', p.app_id)
         p.command('kill')
         killed = True
 

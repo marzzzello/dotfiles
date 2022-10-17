@@ -1,0 +1,15 @@
+profile laptop {
+    output eDP-1 enable scale 1
+    exec swaymsg bar bar-0 tray_output eDP-1
+}
+
+profile laptop_hdmi {
+    output eDP-1 scale 1.25 position 384,216
+    output HDMI-A-2 position 1920,0
+    exec swaymsg bar bar-0 tray_output HDMI-A-2
+}
+
+profile hdmi {
+    output HDMI-A-2 position 1920,0
+    exec swaymsg bar bar-0 tray_output HDMI-A-2
+}

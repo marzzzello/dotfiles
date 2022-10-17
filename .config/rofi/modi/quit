@@ -9,7 +9,7 @@ hibernate="Hibernate"
 hibersus="Hibernate and suspend"
 
 if [[ "$@" ]]; then
-  locker=(qdbus --system org.freedesktop.login1 /org/freedesktop/login1/session/auto org.freedesktop.login1.Session.Lock)
+  locker=(loginctl lock-session)
   case "$@" in
   $lock | Lock) $locker ;;
   $logout) i3-msg exit ;;

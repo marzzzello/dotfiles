@@ -36,7 +36,7 @@ format_alt = "$utilization.bar()"
 interval = 1
 [[block.click]]
 button = "right"
-cmd = "~/.config/i3status-rust/toggle-app.py --instance gnome-terminal-server --title 'htop-floating' --floating --exec 'gnome-terminal --window --title htop-floating -- htop'"
+cmd = "~/.config/i3status-rust/toggle-app.py --class kitty --title 'htop-floating' --floating --exec 'kitty --title htop-floating -- htop'"
 
 [[block]]
 alert = 10.0 # %
@@ -60,7 +60,7 @@ interval = 1
 json = true
 [[block.click]]
 button = "left"
-cmd = "~/.config/i3status-rust/toggle-app.py --instance gnome-terminal-server --title 'htop-floating' --floating --exec 'gnome-terminal --window --title htop-floating -- htop'"
+cmd = "~/.config/i3status-rust/toggle-app.py --class kitty --title 'htop-floating' --floating --exec 'kitty --title htop-floating -- htop'"
 
 [[block]]
 block = "memory"
@@ -76,7 +76,7 @@ interval = 1
 json = true
 [[block.click]]
 button = "left"
-cmd = "~/.config/i3status-rust/toggle-app.py --instance gnome-terminal-server --title 'htop-floating' --floating --exec 'gnome-terminal --window --title htop-floating -- htop'"
+cmd = "~/.config/i3status-rust/toggle-app.py --class kitty --title 'htop-floating' --floating --exec 'kitty --title htop-floating -- htop'"
 
 # [[block]]
 # block = "custom"
@@ -93,8 +93,8 @@ headphones_indicator = true
 show_volume_when_muted = true
 [[block.click]]
 button = "left"
-cmd = "~/.config/i3status-rust/toggle-app.py --instance pavucontrol --floating"
-# cmd = "pactlset-default-sink$(pactllistsinksshort|grepRUNNING|head-n1|cut-f2);~/.config/i3status-rust/toggle-app.py --instance pavucontrol --floating"
+cmd = "~/.config/i3status-rust/toggle-app.py --class pavucontrol --floating"
+# cmd = "pactlset-default-sink$(pactllistsinksshort|grepRUNNING|head-n1|cut-f2);~/.config/i3status-rust/toggle-app.py --class pavucontrol --floating"
 
 [[block]]
 block = "sound"
@@ -116,7 +116,7 @@ format = "{$signal_strength.bar(1)|}$speed_up.eng(3,B,K)$speed_down.eng(3,B,K)" 
 format_alt = "$speed_up.eng(0,B,K)$speed_down.eng(0,B,K)" # dynamic length
 [[block.click]]
 button = "right"
-cmd = "~/.config/i3status-rust/toggle-app.py --instance gnome-control-center --network"
+cmd = "~/.config/i3status-rust/toggle-app.py --class org.gnome.Settings --exec gnome-control-center --network"
 
 [[block]]
 block = "backlight"
@@ -146,7 +146,7 @@ if_command = "test -e /sys/class/power_supply/BAT0"
 # [[block]]
 # block = "ibus"
 # if_command = "command -v ibus"
-# on_click = "~/.config/i3status-rust/toggle-app.py --instance ibus-setup --floating"
+# on_click = "~/.config/i3status-rust/toggle-app.py --class ibus-setup --floating"
 # [block.mappings]
 # "anthy" = "jp"
 # "pinyin" = "cn"
@@ -162,7 +162,7 @@ hide_disconnected = true
 mac = "DE:AD:FA:CE:CA:FE"
 [[block.click]]
 button = "left"
-cmd = "~/.config/i3status-rust/toggle-app.py --instance blueberry --floating"
+cmd = "~/.config/i3status-rust/toggle-app.py --class blueberry --floating"
 
 [[block]]
 block = "bluetooth"
@@ -172,7 +172,7 @@ hide_disconnected = true
 mac = "DE:AD:FA:CE:CA:FE"
 [[block.click]]
 button = "left"
-cmd = "~/.config/i3status-rust/toggle-app.py --instance blueberry --floating"
+cmd = "~/.config/i3status-rust/toggle-app.py --class blueberry --floating"
 
 [[block]]
 block = "kdeconnect"
@@ -180,7 +180,7 @@ block = "kdeconnect"
 format = "$name{ $bat_icon $bat_charge|}{ $notif_icon|}"
 [[block.click]]
 button = "left"
-cmd = "~/.config/i3status-rust/toggle-app.py --instance kdeconnect-app --floating"
+cmd = "~/.config/i3status-rust/toggle-app.py --class org.kde.kdeconnect.app --exec kdeconnect-app --floating"
 
 # needs dunst >= v1.6.0
 [[block]]
@@ -202,7 +202,7 @@ format = "%a %d-%m %H:%M:%S"
 interval = 1
 [[block.click]]
 button = "left"
-cmd = "~/.config/i3status-rust/toggle-app.py --instance evolution --title '(K|C)alend(e|a)r — Evolution' --floating --exec 'evolution -c calendar'"
+cmd = "~/.config/i3status-rust/toggle-app.py --class evolution --title '(K|C)alend(e|a)r.+Evolution' --floating --exec 'evolution -c calendar'"
 
 [[block]]
 block = "pacman"
@@ -217,9 +217,6 @@ warning_updates_regex = "(linux |linux-lts|linux-zen)"
 # the status as critical.
 aur_command = "yay -Qua"
 critical_updates_regex = "(zfs |zfs-lts)"
-[[block.click]]
-button = "left"
-cmd = "gnome-terminal"
 
 # [[block]]
 # block = "speedtest"
