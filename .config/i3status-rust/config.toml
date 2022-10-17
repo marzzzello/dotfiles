@@ -11,19 +11,24 @@ icons = "awesome6"
 [[block]]
 block = "focused_window"
 [block.format]
-full = "$title.rot-str(15)|"
+full = "$title.rot-str(25)|"
 short = "$title.rot-str(10)|"
 
 [[block]]
 block = "music"
-format = "$combo.rot-str()$play$avail.eng(0)|"
 #hide_when_empty = true
 # interface_name_exclude = [".*kdeconnect.*", "mpd"]
+[block.format]
+full = "$combo.rot-str(20) $play $avail.eng(0)|"
+short = "$combo.rot-str(15)$play$avail.eng(0)|"
 [[block.click]]
 button = "left"
 # cmd = 'playerctl play-pause -i vlc -p "%any,$(playerctl -l | grep kdeconnect.mpris | tr \\n ,)"'
 cmd = "next" # not working :(
 # on_collapsed_click = "spotify"
+[[block.click]]
+button = "middle"
+cmd = "killall spotify -s9"
 
 # [[block]]
 # block = "docker"
@@ -41,7 +46,7 @@ cmd = "~/.config/i3status-rust/toggle-app.py --class kitty --title 'htop-floatin
 [[block]]
 alert = 10.0 # %
 block = "disk_space" 
-format = "$available.eng(3,B,T)" # TeraBytes with 3 digits
+format = "$icon $available.eng(3,B,T)" # TeraBytes with 3 digits
 info_type = "available" 
 interval = 20 
 warning = 20.0 # %
@@ -65,8 +70,8 @@ cmd = "~/.config/i3status-rust/toggle-app.py --class kitty --title 'htop-floatin
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "$mem_used_percents"
-format_swap = "$swap_used_percents"
+format_mem = "$icon $mem_used_percents"
+format_swap = "$icon $swap_used_percents"
 
 [[block]]
 block = "custom"
@@ -112,8 +117,8 @@ cmd = "~/.config/i3/mute-mics.zsh"
 
 [[block]]
 block = "net" 
-format = "{$signal_strength.bar(1)|}$speed_up.eng(3,B,K)$speed_down.eng(3,B,K)" # fixed length
-format_alt = "$speed_up.eng(0,B,K)$speed_down.eng(0,B,K)" # dynamic length
+format = "$icon {$signal_strength.bar(1)|}$speed_up.eng(3,B,K) $speed_down.eng(3,B,K)" # fixed length
+format_alt = "$speed_up.eng(0,B,K) $speed_down.eng(0,B,K)" # dynamic length
 [[block.click]]
 button = "right"
 cmd = "~/.config/i3status-rust/toggle-app.py --class org.gnome.Settings --exec gnome-control-center --network"
@@ -123,15 +128,10 @@ block = "backlight"
 
 # [[block]]
 # block = "hueshift"
-# click_temp = 4000
+# click_temp = 3500
 # hue_shifter = "redshift"
+# signal = 2
 # step = 100
-
-# [[block]]
-# block = "keyboard_layout"
-# driver = "setxkbmap"
-# #if_command = "command -v ibus && return 1 || return 0"
-# interval = 1
 
 [[block]]
 block = "battery"
@@ -140,7 +140,15 @@ driver = "upower"
 # format = "{$percentage} {$power} {$time}"
 # full_format = "{$percentage} {$power}"
 # full_threshold = 99
-if_command = "test -e /sys/class/power_supply/BAT0"
+# if_command = "test -e /sys/class/power_supply/BAT0"
+full_format = ""
+missing_format = ""
+
+# [[block]]
+# block = "keyboard_layout"
+# driver = "setxkbmap"
+# # #if_command = "command -v ibus && return 1 || return 0"
+# interval = 1
 
 # removed in 0.30.0
 # [[block]]
@@ -154,10 +162,35 @@ if_command = "test -e /sys/class/power_supply/BAT0"
 # "xkb:de:neo:deu" = "neo"
 # "xkb:us::eng" = "en"
 
+# [[block]]
+# block = "keyboard_layout"
+# driver = "sway"
+# #format = "$layout-$variant"
+# [block.mappings]
+# "English (US)" = "US"
+# "EurKEY (US)" = "eu"
+# "German" = "DE"
+# "German (US)" = "US-de"
+
+# "German (no dead keys)" = "DEndk"
+
+# [[block]]
+# block = "custom"
+# command = "qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.CurrentInputMethod | sed 's/keyboard-//;s/nodeadkeys/ndk/'"
+# # hide_when_empty = true
+# # json = false
+# interval = 1
+# [[block.click]]
+# button = "left"
+# cmd = "qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.SwitchInputMethodGroup deu"
+# [[block.click]]
+# button = "left"
+# cmd = "qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.Toggle"
+
 [[block]]
 block = "bluetooth"
-format = "$label"
-hide_disconnected = true
+disconnected_format = ""
+format = "{$icon |}$name{ $percentage|}|"
 # mouse
 mac = "DE:AD:FA:CE:CA:FE"
 [[block.click]]
@@ -166,13 +199,16 @@ cmd = "~/.config/i3status-rust/toggle-app.py --class blueberry --floating"
 
 [[block]]
 block = "bluetooth"
-format = "$percentage"
-hide_disconnected = true
+disconnected_format = ""
+format = "{$icon |}$percentage|"
 # headset
 mac = "DE:AD:FA:CE:CA:FE"
 [[block.click]]
 button = "left"
 cmd = "~/.config/i3status-rust/toggle-app.py --class blueberry --floating"
+[[block.click]]
+button = "right"
+cmd = "pw-cli s bluez_card.00_16_94_1C_FE_9F Profile '{ index: 4, save: true }' && sleep 1 && pw-cli s bluez_card.00_16_94_1C_FE_9F Profile '{ index: 8, save: true }'"
 
 [[block]]
 block = "kdeconnect"
@@ -185,6 +221,20 @@ cmd = "~/.config/i3status-rust/toggle-app.py --class org.kde.kdeconnect.app --ex
 # needs dunst >= v1.6.0
 [[block]]
 block = "notify"
+if_command = "dunstctl is-paused"
+
+# like notify but for mako
+# [[block]]
+# block = "custom"
+# cycle = [
+#   "makoctl mode -r do-not-disturb -r urgent-only >/dev/null && echo '{\"icon\":\"bell\",\"state\":\"Info\"}'",
+#   "makoctl mode -a do-not-disturb -r urgent-only >/dev/null && echo '{\"icon\":\"bell-slash\",\"state\":\"Info\"}'",
+#   "makoctl mode -r do-not-disturb -a urgent-only >/dev/null && echo '{\"icon\":\"bell\",\"state\":\"Warning\",\"text\":\"U\"}'",
+# ]
+# hide_when_empty = false
+# if_command = "makoctl list"
+# interval = "once"
+# json = true
 
 # [[block]]
 # # {location} {wind}m/s {direction} {wind_kmh}km/h {humidity}%"
@@ -197,8 +247,16 @@ block = "notify"
 # service = {name = "openweathermap", api_key = "YOUR API KEY", units = "metric"}
 
 [[block]]
+block = "pomodoro"
+# break_length = 5
+# length = 25
+break_message = "Back to work!"
+message = "Take a break!"
+notify_cmd = "notify-send"
+
+[[block]]
 block = "time"
-format = "%a %d-%m %H:%M:%S"
+format = "$icon %a %d-%m %H:%M:%S"
 interval = 1
 [[block.click]]
 button = "left"
@@ -206,10 +264,12 @@ cmd = "~/.config/i3status-rust/toggle-app.py --class evolution --title '(K|C)ale
 
 [[block]]
 block = "pacman"
-format = "$pacman+$aur"
-hide_when_uptodate = true
-if_command = "command -v yay"
+format = "$icon $pacman.eng(0)+$aur.eng(0)"
+format_singular = "$icon $pacman.eng(0)+$aur.eng(0)"
+format_up_to_date = ""
+if_command = "command -v yay && ping -c 1 -W 1 9.9.9.9"
 interval = 3600
+signal = 1
 # If a linux update is availble, but no ZFS package, it won't be possible to
 # actually perform a system upgrade, so we show a warning.
 warning_updates_regex = "(linux |linux-lts|linux-zen)"
@@ -217,6 +277,7 @@ warning_updates_regex = "(linux |linux-lts|linux-zen)"
 # the status as critical.
 aur_command = "yay -Qua"
 critical_updates_regex = "(zfs |zfs-lts)"
+error_format = "??"
 
 # [[block]]
 # block = "speedtest"
@@ -227,9 +288,7 @@ critical_updates_regex = "(zfs |zfs-lts)"
 [[block]]
 block = "temperature"
 collapsed = true
-format = "$average$max|"
-interval = 5
-
+format = "$icon {$average$max|}"
 # [[block]]
 # block = "uptime"
 
