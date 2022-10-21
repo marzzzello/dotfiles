@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+sc=~/.config/sway/screenshot.zsh
+
+all="All"
+selection="Selection"
+output="Output"
+window="Window"
+
+if [[ "$*" ]]; then
+  case "$@" in
+  "$all") coproc $sc all ;;
+  "$selection") coproc $sc selection ;;
+  "$output") coproc $sc output ;;
+  "$window") coproc $sc window ;;
+  *) echo "what is that? -$*-" ;;
+  esac
+else
+  echo -e "\
+$all\0icon\x1fwindow_fullscreen
+$selection\0icon\x1fkdenlive-select-tool
+$output\0icon\x1fvideo-display
+$window\0icon\x1fwindow"
+fi

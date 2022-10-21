@@ -18,7 +18,7 @@
 Install all:
 
 ```sh
-pacman -S dunst i3status-rust lxappearance lxsession-gtk3 neofetch nerd-fonts-roboto-mono network-manager-applet noto-fonts-emoji pamixer pavucontrol playerctl polkit-gnome python-i3ipc qt5-tools rofi ttf-dejavu xsettingsd
+pacman -S dunst i3status-rust jq lxappearance lxsession-gtk3 neofetch nerd-fonts-roboto-mono network-manager-applet noto-fonts-emoji pamixer pavucontrol playerctl polkit-gnome python-i3ipc qt5-tools rofi ttf-dejavu xsettingsd
 $aurhelper -S goes16-background-git himawaripy-git nerd-fonts-complete rofi-surfraw-git splatmoji-git shadowfox-updater wpgtk-git yay
 ```
 
@@ -26,6 +26,7 @@ $aurhelper -S goes16-background-git himawaripy-git nerd-fonts-complete rofi-surf
 | ---------------------- | ---- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | dunst                  | main | notifications                                                         | Customizable and lightweight notification-daemon                                                    |
 | i3status-rust          | main | status bar                                                            | Resourcefriendly and feature-rich replacement for i3status, written in pure Rust                    |
+| jq                     | main | scripts                                                               | Command-line JSON processor                                                                         |
 | lxappearance           | main | to set GTK theme and icon-set                                         | Feature-rich GTK+ theme switcher of the LXDE Desktop                                                |
 | lxsession-gtk3         | main | needed for programms like e.g. gparted                                | Lightweight X11 session manager (GTK+ 3 version)                                                    |
 | neofetch               | main | show system information                                               | A CLI system information tool written in BASH that supports displaying images.                      |
@@ -84,7 +85,7 @@ $aurhelper -S gnome-terminal-transparency
 Install all:
 
 ```sh
-pacman -S grim kanshi kitty sway swayidle swaylock wlsunset
+pacman -S grim kanshi kitty slurp swappy sway swayidle swaylock wlsunset
 $aurhelper -S wdisplays
 ```
 
@@ -93,11 +94,13 @@ $aurhelper -S wdisplays
 | grim         | main | screenshots                                           | Screenshot utility for Wayland                                      |
 | kanshi       | main | to set monitor layout automatically e.g. after reboot | Dynamic output configuration for Wayland WMs                        |
 | kitty        | main | terminal emulator, used also as dropdown terminal     | A modern, hackable, featureful, OpenGL-based terminal emulator      |
+| slurp        | main | screenshots                                           | Select a region in a Wayland compositor                             |
+| swappy       | main | screenshots                                           | Grab and edit screenshots from a Wayland compositor                 |
 | sway         | main | my window manager                                     | Tiling Wayland compositor and replacement for the i3 window manager |
 | swayidle     | main | automatic screen locking                              | Idle management daemon for Wayland                                  |
 | swaylock     | main | screen locker                                         | Screen locker for Wayland                                           |
-| wlsunset     | main | night mode                                            | Day/night gamma adjustments for Wayland compositors                 |
 | wdisplays    | AUR  | to set monitor layout with GUI                        | GUI display configurator for wlroots compositors                    |
+| wlsunset     | main | night mode                                            | Day/night gamma adjustments for Wayland compositors                 |
 
 </details>
 
