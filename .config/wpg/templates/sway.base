@@ -1,7 +1,5 @@
 # {infoMsg}
 
-# sway config file
-
 ######### VARIABLES #########
 
 set $mod Mod4
