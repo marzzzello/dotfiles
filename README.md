@@ -134,10 +134,9 @@ flatpak install com.spotify.Client im.riot.Riot org.keepassxc.KeePassXC org.mozi
 2. Install dotfiles like descriped further down.
 3. Set monitor layout with arandr. If you you want to save multiple different monitor setups have a look at autorandr. With `$mod+m` there is a script to set some basic layouts.
 4. Run `wpg-install.sh -ig` and then go to your wallpaper folder and generate colorscheme with `wpg -a *` or alternatively do it over the gui with `wpg`.
-5. Set GTK theme to `FlatColor` and icon theme to `FlattrColor`. E.g using `lxappearance`.
+5. Set GTK theme to `FlatColor` and icon theme to `FlattrColor`. E.g using `GDK_BACKEND=x11 lxappearance`.
 6. Set colorscheme with `wpg -s [TAB]`. This also generates all the config files from the templates in `.config/wpg/templates`. So make sure that no error messages appear and that the config files are generated.
-7. Run `systemctl --user enable --now dunst.service` to enable notifications.
-8. Add the following line to cron with `EDITOR=vim crontab -e` and make sure cron service is running: `sudo systemctl enable --now cronie.service`.
+7. Add the following line to cron with `EDITOR=vim crontab -e` and make sure cron service is running: `sudo systemctl enable --now cronie.service`.
 
 ```sh
 00 * * * * $HOME/.config/wpg/scripted_themes/cron.sh >> $HOME/.config/wpg/scripted_themes/cron.log 2>&1

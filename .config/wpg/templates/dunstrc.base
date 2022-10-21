@@ -10,11 +10,9 @@
     monitor = 0
     follow = mouse
 
-    geometry = "540x5-10+32"
     indicate_hidden = yes
     shrink = yes
     transparency = 5
-    notification_height = 0
     separator_height = 3
     padding = 12
     horizontal_padding = 12
@@ -60,23 +58,18 @@
     sticky_history = yes
     history_length = 20
 
+    mouse_left_click = do_action, close_current
+
     ### Misc/Advanced ###
-    dmenu = /usr/bin/rofi -show run -p dunst:
-    browser = /usr/bin/firefox -new-tab
+    dmenu = rofi -show run -p dunst:
+    browser = org.mozilla.firefox -new-tab
     always_run_script = true
     title = Dunst
     class = Dunst
-    startup_notification = false
     force_xinerama = false
 
 [experimental]
     per_monitor_dpi = false
-
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    context = ctrl+shift+period
-    history = ctrl+dead_circumflex
 
 [urgency_low]
     timeout = 10
