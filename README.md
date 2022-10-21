@@ -61,7 +61,7 @@ $aurhelper -S goes16-background-git himawaripy-git nerd-fonts-complete rofi-surf
 Install all:
 
 ```sh
-pacman -S arandr autorandr feh i3-gaps picom redshift
+pacman -S arandr autorandr feh gnome-screenshot i3-gaps picom redshift
 $aurhelper -S gnome-terminal-transparency
 ```
 
@@ -70,6 +70,7 @@ $aurhelper -S gnome-terminal-transparency
 | arandr                      | main | to set monitor layout with GUI                        | Provide a simple visual front end for XRandR 1.2.                                 |
 | autorandr                   | main | to set monitor layout automatically e.g. after reboot | Auto-detect connected display hardware and load appropiate X11 setup using xrandr |
 | feh                         | main | to set wallpaper                                      | Fast and light imlib2-based image viewer                                          |
+| gnome-screenshot            | main | screenshots                                           | Take pictures of your screen                                                      |
 | i3-gaps                     | main | my window manager                                     | A fork of i3wm tiling window manager with more features, indcluding gaps          |
 | picom                       | main | transparency and smooth transitions                   | X compositor that may fix tearing issues                                          |
 | redshift                    | main | night mode                                            | Adjusts the color temperature of your screen according to your surroundings.      |
