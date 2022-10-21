@@ -6,6 +6,7 @@
 # uncomment and insert your username, user id and path:
 # KEEPASSXC_USER="YOUR_USERNAME"
 # DB_PATH="/home/$KEEPASSXC_USER/path/to/your/database.kdbx"
+USER_ID=1000
 
 LOGFILE="${0:a:h}/log" # same directory as script
 LOGIN_PW="$(timeout --foreground 1 tr '\0' '\n')"
@@ -31,7 +32,8 @@ wait_for_keepassxc() {
       export $_DBUS_ENV
       echo "DBUS_SESSION_BUS_ADDRESS set to ${DBUS_SESSION_BUS_ADDRESS}"
     else
-      echo "DBUS_SESSION_BUS_ADDRESS not found in /proc/$(pidof swayidle)/environ"
+      export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$USER_ID/bus" # for x11
+      echo "DBUS_SESSION_BUS_ADDRESS set to ${DBUS_SESSION_BUS_ADDRESS}"
     fi
     qdbus org.keepassxc.KeePassXC.MainWindow / org.freedesktop.DBus.Peer.Ping &>/dev/null
     case $? in
