@@ -64,8 +64,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 export QT_QPA_PLATFORMTHEME=qt5ct
 #export QT_STYLE_OVERRIDE=kvantum
 unset QT_STYLE_OVERRIDE
-#export GDK_BACKEND=x11
-export GDK_BACKEND=wayland
+[[ $XDG_SESSION_TYPE == wayland ]] && export GDK_BACKEND=wayland
 
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
