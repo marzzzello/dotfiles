@@ -1,19 +1,10 @@
 # {infoMsg}
 
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
-######### INCLUDES #########
-
-include config.d/*.conf
-
-
 ######### VARIABLES #########
 
 set $mod Mod4
 set $alt Mod1
-set $terminal gnome-terminal
+set $terminal kitty
 
 ## WORKSPACES
 set  $ws0  "0:"
@@ -43,3 +34,7 @@ set_from_resource $color8 i3wm.color8 "{color8}"
 set $fontawesome {fontawesome}
 set $fontmono {fontmono}
 set $fontsans {fontsans}
+
+######### INCLUDES #########
+
+include config.d/*.conf
