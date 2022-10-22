@@ -44,13 +44,13 @@ renew_cached() {
 }
 
 goes() {
-    rm /home/marcel/.cache/goes16background/goes16-*.png &>/dev/null
+    rm -f ~/.cache/goes16background/goes16-*.png &>/dev/null
 
     # Download and set backround
     goes16-background --save-battery --deadline 1
 
     # Delete old, cached theme
-    rm ~/.config/wpg/schemes/_home_marcel__cache_goes16background_goes16-*_png_* &>/dev/null
+    rm -f ~/.config/wpg/schemes/_home_*__cache_goes16background_goes16-*_png_* &>/dev/null
 
     # Generate and set new theme
     wpg -n -s ~/.cache/goes16background/goes16-*.png
@@ -63,7 +63,7 @@ himawari() {
     himawaripy --auto-offset --save-battery --deadline 1
 
     # Delete old, cached themes
-    rm ~/.config/wpg/schemes/_home_marcel__cache_himawaripy-*_png_* &>/dev/null
+    rm -f ~/.config/wpg/schemes/_home_*__cache_himawaripy_himawari-*_png_* &>/dev/null
 
     # Generate and set new theme
     wpg -n -s ~/.cache/himawaripy/himawari-*.png

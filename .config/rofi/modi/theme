@@ -13,16 +13,16 @@ if [[ ${ROFI_RETV} == 0 ]]; then
 himawari
 lakeside"
 
-  out="random\nreset\n$themes\n$scripted_themes"
+  out="random\nreset\n$themes$scripted_themes"
 
   # highlight current theme
   current=$(wpg -c)
 
-  # case "$current" in
-  #   goes*)     current="goes";;
-  #   lakeside*) current="lakeside";;
-  #   himawari*) current="himawari";;
-  # esac  >/dev/null
+  case "$current" in
+    goes*)     current="goes";;
+    lakeside*) current="lakeside";;
+    himawari*) current="himawari";;
+  esac  >/dev/null
 
   current_line=$(echo "$out" | grep -an "$current" | cut -f1 -d:)
 
