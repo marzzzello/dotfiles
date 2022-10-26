@@ -1,0 +1,144 @@
+/* vim:ft=css
+ * Rofi version: 1.7.2
+ */
+
+@import "colors/wpgtk.rasi"
+/* no semicolon! */
+
+* {
+  spacing: 2;
+}
+
+window {
+  background-color: @bg;
+  //border-color: @active;
+  //border:           5;
+  //padding:          0;
+  transparency: "real";
+  fullscreen: true;
+}
+
+mainbox {
+  //border:  0;
+  //border-color: @active;
+  padding: 30% 30%;
+}
+
+message {
+  border: 1px;
+  border-color: @border-color;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: @selected-normal-bg;
+}
+
+textbox {
+  text-color: @fg;
+}
+
+listview {
+  border: 0px;
+  padding: 2px 0px 0px;
+  border-color: @border-color;
+  spacing: 2px;
+  scrollbar: true;
+  fixed-height: 0;
+}
+
+element {
+  padding: 5px;
+  border-radius: 3px;
+  text-color: @fg;
+  highlight: bold #b7985b;
+}
+
+element.normal.normal {
+  background-color: @normal-bg;
+  text-color: @normal-fg;
+}
+
+element.normal.urgent {
+  background-color: @urgent-bg;
+  text-color: @urgent-fg;
+}
+
+element.normal.active {
+  background-color: @active-bg;
+  text-color: @active-fg;
+}
+
+element.selected.normal {
+  background-color: @selected-normal-bg;
+  text-color: @selected-normal-fg;
+}
+
+element.selected.urgent {
+  background-color: @selected-urgent-bg;
+  text-color: @selected-urgent-fg;
+}
+
+element.selected.active {
+  background-color: @selected-active-bg;
+  text-color: @selected-active-fg;
+}
+
+element.alternate.normal {
+  background-color: @alternate-normal-bg;
+  text-color: @alternate-normal-fg;
+}
+
+element.alternate.urgent {
+  background-color: @alternate-urgent-bg;
+  text-color: @alternate-urgent-fg;
+}
+
+element.alternate.active {
+  background-color: @alternate-active-bg;
+  text-color: @alternate-active-fg;
+}
+
+scrollbar {
+  width: 4px;
+  border: 0;
+  handle-width: 0px;
+  handle-color: @normal-fg;
+  padding: 0;
+}
+
+sidebar {
+  border: 0px;
+  border-color: @border-color;
+}
+
+inputbar {
+  spacing: 0px;
+  text-color: @normal-fg;
+  padding: 1px;
+  children: [ prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+  spacing: 0;
+  text-color: @normal-fg;
+}
+
+button.selected {
+  background-color: @selected-normal-bg;
+  text-color: @selected-normal-fg;
+}
+
+textbox-prompt-sep {
+  expand: false;
+  str: ":";
+  text-color: @normal-foreground;
+  margin: 0 0.3em 0 0;
+}
+
+element-fg,
+element-icon {
+  text-color: inherit;
+  background-color: inherit;
+}

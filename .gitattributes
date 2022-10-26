@@ -7,7 +7,7 @@
 .config/keepassxc/w8unlock/log filter=null
 .config/keepassxc/w8unlock/w8unlock.zsh filter=w8unlock
 .config/polybar/config filter=head
-.config/rofi/themes/wpgtk.rasi filter=head
+.config/rofi/themes/colors/wpgtk.rasi filter=head
 .config/sway/config filter=head
 .teeworlds/settings_ddnet.cfg filter=teeworlds
 .teeworlds/settings.cfg filter=teeworlds
