@@ -69,9 +69,8 @@ cmd = "~/.config/i3status-rust/toggle-app.py --class kitty --title 'htop-floatin
 
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "$icon $mem_used_percents"
-format_swap = "$icon $swap_used_percents"
+format = "$icon $mem_used_percents"
+format_alt = "$icon_swap $swap_used_percents"
 
 [[block]]
 block = "custom"
@@ -287,8 +286,9 @@ error_format = "??"
 
 [[block]]
 block = "temperature"
-collapsed = true
-format = "$icon {$average$max|}"
+#collapsed = true
+format = "$icon|{$max|}"
+format_alt = "$icon {$average$max|}"
 # [[block]]
 # block = "uptime"
 
