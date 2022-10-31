@@ -134,9 +134,6 @@ antigen bundle spwhitt/nix-zsh-completions
 # Auto-close and delete matching delimiters
 antigen bundle hlissner/zsh-autopair
 
-# Randomly insults the user when typing wrong command.
-antigen bundle matmutant/zsh-insulter src/zsh.command-not-found
-
 # Syntax highlighting
 antigen bundle z-shell/F-Sy-H --branch=main
 
@@ -284,7 +281,7 @@ alias proxystop='sudo iptables -t nat -F'
 
 # docker-compose alias with all files
 [ -d /opt/stacks ] && alias dc="cd /opt/stacks && docker-compose $(for f in /opt/stacks/*-dc.yml; do echo -n -f ${f##*/}\ ; done)"
-if [[ "$TERM" == "xterm-kitty" ]]; then
+if [[ "$TERM" == "xterm-kitty" && "$SSH_CONNECTION" == "" ]]; then
   # fix ssh with kitty terminal
   alias ssh="kitty +kitten ssh"
   alias kk="kitty +kitten"
