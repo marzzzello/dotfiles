@@ -1,5 +1,14 @@
 #!/usr/bin/env zsh
 
+# copy/paste for x11/wayland. Copy if something is piped into this function otherwise paste
+clip(){
+  if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+    [[ -t 0 ]] && wl-paste -n || wl-copy
+  else
+    [[ -t 0 ]] && xclip || xclip -o
+  fi
+}
+
 mkcd(){
     mkdir "$@" && cd "$@";
 }
@@ -87,7 +96,8 @@ background() {
   done
 }
 
-function notify {
+# use pipe to notify
+notify(){
   while read input; do
     notify-send "message" "$input";
   done;
@@ -171,7 +181,7 @@ cudocker(){
   fi
 }
 
-function cu() {
+cu() {
   case "$1" in
      -[tT]|-trash)  cutrash;;
      -[pP]|-pm)     cupm;;
@@ -187,7 +197,7 @@ echo "Usage:
 }
 
 # broot: a better tree
-function br {
+br() {
     local cmd cmd_file code
     cmd_file=$(mktemp)
     if broot --outcmd "$cmd_file" "$@"; then
@@ -355,21 +365,15 @@ if command -vp pacman > /dev/null; then
   }
 
   # full update
-  upfull(){
-    upmirror
-    upkeys
-    uppm
-
-    cupm
-  }
+  alias upfull="upmirror && upkeys && uppm && cupm"
 
 
-  function paclist() {
+  paclist() {
     # Source: https://bbs.archlinux.org/viewtopic.php?id=93683
     LC_ALL=C pacman -Qei $1 | awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{printf $2} /^Groups/{if ($2!=" None") printf("\033[1;31m%s\033[1;37m", $2)}/^Validated/{printf "\n"}'
   }
 
-  function pacdisowned() {
+  pacdisowned() {
     emulate -L zsh
 
     tmp=${TMPDIR-/tmp}/pacman-disowned-$UID-$$
@@ -387,14 +391,14 @@ if command -vp pacman > /dev/null; then
     comm -23 "$fs" "$db"
   }
 
-  function pacmanallkeys() {
+  pacmanallkeys() {
     emulate -L zsh
-    curl -s https://www.archlinux.org/people/{developers,trustedusers}/ | \
-      awk -F\" '(/pgp.mit.edu/) { sub(/.*search=0x/,""); print $1}' | \
+    curl -s https://archlinux.org/people/{developers,trustedusers}/ | \
+      awk -F\" '(/keyserver.ubuntu.com/) { sub(/.*search=0x/,""); print $1}' | \
       xargs sudo pacman-key --recv-keys
   }
 
-  function pacmansignkeys() {
+  pacmansignkeys() {
     emulate -L zsh
     for key in $*; do
       sudo pacman-key --recv-keys $key
@@ -405,7 +409,7 @@ if command -vp pacman > /dev/null; then
   }
 
   if (( $+commands[xdg-open] )); then
-    function pacweb() {
+    pacweb() {
       pkg="$1"
       infos="$(pacman -Si "$pkg")"
       if [[ -z "$infos" ]]; then
@@ -413,13 +417,13 @@ if command -vp pacman > /dev/null; then
       fi
       repo="$(grep '^Repo' <<< "$infos" | grep -oP '[^ ]+$')"
       arch="$(grep '^Arch' <<< "$infos" | grep -oP '[^ ]+$')"
-      xdg-open "https://www.archlinux.org/packages/$repo/$arch/$pkg/" &>/dev/null
+      xdg-open "https://archlinux.org/packages/$repo/$arch/$pkg/" &>/dev/null
     }
   fi
 
   # list explicit installed package with extra info, sorted by install date
   # -c enables colors
-  function mypaclist() {
+  mypaclist() {
     OLDIFS=$IFS
     c="$1"
     comm -23 <(pacman -Qetq) <(pacman -Qgq base-devel gnome texlive-most xorg | sort) | while read -r pkg version ; do

@@ -7,7 +7,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-ANTIGEN_LOG=$HOME/.antigen/antigen.log
+ANTIGEN_LOG=${ZDOTDIR:-~}/.antigen/antigen.log
 ############ To install (optional) ############
 # fzf:      pacman -S fzf       ## https://github.com/junegunn/fzf#installation
 # thefuck:  pacman -S thefuck   ## https://github.com/nvbn/thefuck
@@ -81,7 +81,7 @@ setopt extendedglob
 function () {
   local a1="/usr/share/zsh/share/antigen.zsh"
   local a2="/usr/share/zsh-antigen/antigen.zsh"
-  local a3="$HOME/.antigen/antigen.zsh"
+  local a3="${ZDOTDIR:-~}/.antigen/antigen.zsh"
   if [[ -f $a1 ]]; then
     ANTIGEN="$a1";
     elif [[ -f $a2 ]]; then
@@ -95,6 +95,8 @@ function () {
     && ANTIGEN=$a3
   fi
 }
+typeset -a ANTIGEN_CHECK_FILES=(${ZDOTDIR:-~}/.zshrc ${ZDOTDIR:-~}/.antigen/antigen.zsh)
+ADOTDIR=${ZDOTDIR:-~}/.antigen
 source $ANTIGEN
 
 # Load the oh-my-zsh's library
@@ -150,7 +152,7 @@ HISTSIZE=1000000000
 SAVEHIST=1000000000
 
 # Some nice functions
-include "$HOME/.zshfunc.zsh"
+include "$ZDOTDIR/.zshfunc.zsh"
 
 
 ############ FZF ############
@@ -212,7 +214,7 @@ alias lrt='ls -1Fcrt'
 alias lsr='ls -lARFh' #Recursive list of files and directories
 alias lsn='ls -1'     #A column contains name of files and directories
 
-alias zshrc='${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc' # Quick access to the .zshrc file
+alias zshrc='${=EDITOR} ${ZDOTDIR:-~}/.zshrc' # Quick access to the .zshrc file
 
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
 
