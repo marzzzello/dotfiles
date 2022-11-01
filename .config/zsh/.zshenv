@@ -1,5 +1,5 @@
 # Set ZDOTDIR via systemd user environment variable (1) or call this file from ~/.zshenv (2)
-# 1: echo 'ZDOTDIR=${ZDOTDIR:-~/.config/zsh}' >> ~/.config/environment.d/env.conf
+# 1: echo 'ZDOTDIR=${ZDOTDIR:-~/.config/zsh}' >> ~/.config/environment.d/zsh.conf
 # 2: echo ". ~/.config/zsh/.zshenv" > ~/.zshenv
 
 export ZDOTDIR=${ZDOTDIR:-~/.config/zsh}

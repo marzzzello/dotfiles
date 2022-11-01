@@ -150,9 +150,10 @@ antigen apply
 # After oh-my-zsh
 HISTSIZE=1000000000
 SAVEHIST=1000000000
+HISTFILE=${ZDOTDIR:-~}/.zsh_history
 
 # Some nice functions
-include "$ZDOTDIR/.zshfunc.zsh"
+include "${ZDOTDIR:-~}/.zshfunc.zsh"
 
 
 ############ FZF ############
