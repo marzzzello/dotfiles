@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-basename="$HOME/Bilder/Screenshots PC/Screenshot_$(date '+%Y%m%d-%H%M%S')_"
+basename="$HOME/Pictures/Screenshots PC/Screenshot_$(date '+%Y%m%d-%H%M%S')_"
 
 screenshot() {
     case "$1" in
@@ -28,7 +28,8 @@ screenshot() {
         echo $regions | slurp -d -f "%x,%y %wx%h %l" | read -r pos size title
         grim -g "$pos $size" - | swappy -o "${basename}${title:-selection}.png" -f -
     else
-        grim - | swappy -o "${basename}${title:-selection}.png" -f -
+        slurp -d -f "%x,%y %wx%h" | read -r pos size
+        grim -g "$pos $size" - | swappy -o "${basename}${title:-selection}.png" -f -
     fi
 }
 
