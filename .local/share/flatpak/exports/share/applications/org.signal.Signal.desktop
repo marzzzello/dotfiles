@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Signal
+Exec=zsh -c "flatpak run org.signal.Signal --branch=stable --arch=x86_64 --command=signal-desktop $([[ $XDG_SESSION_TYPE == wayland ]] && echo '--enable-features=UseOzonePlatform --ozone-platform=wayland') --file-forwarding @@u %U @@"
+Terminal=false
+Type=Application
+Icon=org.signal.Signal
+StartupWMClass=Signal
+Comment=Private messaging from your desktop
+MimeType=x-scheme-handler/sgnl;x-scheme-handler/signalcaptcha;
+Categories=Network;InstantMessaging;Chat;
+X-Desktop-File-Install-Version=0.26
+X-Flatpak-RenamedFrom=signal-desktop.desktop;
+X-Flatpak=org.signal.Signal

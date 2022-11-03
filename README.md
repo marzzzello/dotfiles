@@ -18,8 +18,8 @@
 Install all:
 
 ```sh
-pacman -S dunst i3status-rust jq lxappearance lxsession-gtk3 neofetch nerd-fonts-roboto-mono network-manager-applet noto-fonts-emoji pamixer pavucontrol playerctl polkit-gnome python-i3ipc qt5-tools rofi ttf-dejavu xsettingsd
-$aurhelper -S goes16-background-git himawaripy-git nerd-fonts-complete rofi-surfraw-git splatmoji-git shadowfox-updater wpgtk-git yay
+pacman -S dunst i3status-rust jq kitty lxappearance lxsession-gtk3 neofetch nerd-fonts-roboto-mono network-manager-applet noto-fonts-emoji pamixer pavucontrol playerctl polkit-gnome python-i3ipc qt5-tools rofi ttf-dejavu xsettingsd
+$aurhelper -S goes16-background-git himawaripy-git nerd-fonts-complete rofi-surfraw-git splatmoji-git wpgtk-git yay
 ```
 
 | Package name           | Repo | Needed for                                                            | Package description                                                                                 |
@@ -27,6 +27,7 @@ $aurhelper -S goes16-background-git himawaripy-git nerd-fonts-complete rofi-surf
 | dunst                  | main | notifications                                                         | Customizable and lightweight notification-daemon                                                    |
 | i3status-rust          | main | status bar                                                            | Resourcefriendly and feature-rich replacement for i3status, written in pure Rust                    |
 | jq                     | main | scripts                                                               | Command-line JSON processor                                                                         |
+| kitty                  | main | terminal emulator, used also as dropdown terminal                     | A modern, hackable, featureful, OpenGL-based terminal emulator                                      |
 | lxappearance           | main | to set GTK theme and icon-set                                         | Feature-rich GTK+ theme switcher of the LXDE Desktop                                                |
 | lxsession-gtk3         | main | needed for programms like e.g. gparted                                | Lightweight X11 session manager (GTK+ 3 version)                                                    |
 | neofetch               | main | show system information                                               | A CLI system information tool written in BASH that supports displaying images.                      |
@@ -47,7 +48,6 @@ $aurhelper -S goes16-background-git himawaripy-git nerd-fonts-complete rofi-surf
 | nerd-fonts-complete    | AUR  | more fonts                                                            | Iconic font aggregator, collection, and patcher. 40+ patched fonts, over 3,600 glyph/icons          |
 | rofi-surfraw-git       | AUR  | web search with rofi                                                  | Universal tool to search the internet                                                               |
 | splatmoji-git          | AUR  | emoji picker                                                          | Quickly look up and input emoji and/or emoticons/kaomoji on your GNU/Linux desktop via pop-up menu. |
-| shadowfox-updater      | AUR  | dark firefox theme                                                    | An auto-updater for ShadowFox                                                                       |
 | wpgtk-git              | AUR  | generate and set themes and configs based on wallpapers and templates | A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme                  |
 | yay                    | AUR  | AUR helper                                                            | Yet another yogurt. Pacman wrapper and AUR helper written in go.                                    |
 
@@ -62,19 +62,17 @@ Install all:
 
 ```sh
 pacman -S arandr autorandr feh gnome-screenshot i3-gaps picom redshift
-$aurhelper -S gnome-terminal-transparency
 ```
 
-| Package name                | Repo | Needed for                                            | Package description                                                               |
-| --------------------------- | ---- | ----------------------------------------------------- | --------------------------------------------------------------------------------- |
-| arandr                      | main | to set monitor layout with GUI                        | Provide a simple visual front end for XRandR 1.2.                                 |
-| autorandr                   | main | to set monitor layout automatically e.g. after reboot | Auto-detect connected display hardware and load appropiate X11 setup using xrandr |
-| feh                         | main | to set wallpaper                                      | Fast and light imlib2-based image viewer                                          |
-| gnome-screenshot            | main | screenshots                                           | Take pictures of your screen                                                      |
-| i3-gaps                     | main | my window manager                                     | A fork of i3wm tiling window manager with more features, indcluding gaps          |
-| picom                       | main | transparency and smooth transitions                   | X compositor that may fix tearing issues                                          |
-| redshift                    | main | night mode                                            | Adjusts the color temperature of your screen according to your surroundings.      |
-| gnome-terminal-transparency | AUR  | terminal emulator, used also as dropdown terminal     | The GNOME Terminal Emulator, with background transparency                         |
+| Package name     | Repo | Needed for                                            | Package description                                                               |
+| ---------------- | ---- | ----------------------------------------------------- | --------------------------------------------------------------------------------- |
+| arandr           | main | to set monitor layout with GUI                        | Provide a simple visual front end for XRandR 1.2.                                 |
+| autorandr        | main | to set monitor layout automatically e.g. after reboot | Auto-detect connected display hardware and load appropiate X11 setup using xrandr |
+| feh              | main | to set wallpaper                                      | Fast and light imlib2-based image viewer                                          |
+| gnome-screenshot | main | screenshots                                           | Take pictures of your screen                                                      |
+| i3-gaps          | main | my window manager                                     | A fork of i3wm tiling window manager with more features, indcluding gaps          |
+| picom            | main | transparency and smooth transitions                   | X compositor that may fix tearing issues                                          |
+| redshift         | main | night mode                                            | Adjusts the color temperature of your screen according to your surroundings.      |
 
 </details>
 
@@ -86,7 +84,7 @@ $aurhelper -S gnome-terminal-transparency
 Install all:
 
 ```sh
-pacman -S grim kanshi kitty slurp swappy sway swayidle swaylock wlsunset
+pacman -S grim kanshi slurp swappy sway swayidle swaylock wlsunset
 $aurhelper -S wdisplays
 ```
 
@@ -94,7 +92,6 @@ $aurhelper -S wdisplays
 | ------------ | ---- | ----------------------------------------------------- | ------------------------------------------------------------------- |
 | grim         | main | screenshots                                           | Screenshot utility for Wayland                                      |
 | kanshi       | main | to set monitor layout automatically e.g. after reboot | Dynamic output configuration for Wayland WMs                        |
-| kitty        | main | terminal emulator, used also as dropdown terminal     | A modern, hackable, featureful, OpenGL-based terminal emulator      |
 | slurp        | main | screenshots                                           | Select a region in a Wayland compositor                             |
 | swappy       | main | screenshots                                           | Grab and edit screenshots from a Wayland compositor                 |
 | sway         | main | my window manager                                     | Tiling Wayland compositor and replacement for the i3 window manager |
@@ -112,22 +109,29 @@ $aurhelper -S wdisplays
   </summary>
 
 ```sh
-pacman -S dino evolution fcitx5 kdeconnect
-flatpak install com.spotify.Client im.riot.Riot org.keepassxc.KeePassXC org.mozilla.firefox org.signal.Signal org.telegram.desktop
+flatpak install com.spotify.Client im.riot.Riot org.fcitx.Fcitx5 org.fcitx.Fcitx5.Addon.ChineseAddons org.fcitx.Fcitx5.Addon.Mozc org.gnome.Evolution org.keepassxc.KeePassXC org.mozilla.firefox org.signal.Signal org.telegram.desktop
+
+sudo flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+flatpak install im.dino.Dino
+
+sudo flatpak remote-add --if-not-exists kdeapps      https://distribute.kde.org/kdeapps.flatpakrepo
+flatpak install org.kde.kdeconnect
 ```
 
-| Package name            | Repo    | Package description                                                          |
-| ----------------------- | ------- | ---------------------------------------------------------------------------- |
-| dino                    | main    | Modern XMPP (Jabber) chat client written in GTK+/Vala                        |
-| evolution               | main    | Manage your email, contacts and schedule                                     |
-| fcitx5                  | main    | Next generation of fcitx                                                     |
-| kdeconnect              | main    | Adds communication between KDE and your smartphone                           |
-| com.spotify.Client      | flatpak | Online music streaming service                                               |
-| im.riot.Riot            | flatpak | Create, share, communicate, chat and call securely, and bridge to other apps |
-| org.keepassxc.KeePassXC | flatpak | Community-driven port of the Windows application “KeePass Password Safe”     |
-| org.mozilla.firefox     | flatpak | Fast, Private & Safe Web Browser                                             |
-| org.signal.Signal       | flatpak | Private messenger                                                            |
-| org.telegram.desktop    | flatpak | Fast. Secure. Powerful. (lol?)                                               |
+| Package name                         | Repo         | Package description                                                                 |
+| ------------------------------------ | ------------ | ----------------------------------------------------------------------------------- |
+| com.spotify.Client                   | flatpak      | Online music streaming service                                                      |
+| im.riot.Riot                         | flatpak      | Create, share, communicate, chat and call securely, and bridge to other apps        |
+| org.fcitx.Fcitx5                     | flatpak      | Input Method                                                                        |
+| org.fcitx.Fcitx5.Addon.ChineseAddons | flatpak      | Add support for Pinyin, Table and many other Chinese related functionality to Fcitx |
+| org.fcitx.Fcitx5.Addon.Mozc          | flatpak      | Japanese input method based on Mozc                                                 |
+| org.gnome.Evolution                  | flatpak      | Manage your email, contacts and schedule                                            |
+| org.keepassxc.KeePassXC              | flatpak      | Community-driven port of the Windows application “KeePass Password Safe”            |
+| org.mozilla.firefox                  | flatpak      | Fast, Private & Safe Web Browser                                                    |
+| org.signal.Signal                    | flatpak      | Private messenger                                                                   |
+| org.telegram.desktop                 | flatpak      | Fast. Secure. Powerful. (lol?)                                                      |
+| im.dino.Dino                         | flatpak-beta | Modern XMPP Chat Client                                                             |
+| org.kde.kdeconnect                   | kdeapps      | Seamless connection of your devices                                                 |
 
 </details>
 
@@ -143,8 +147,7 @@ flatpak install com.spotify.Client im.riot.Riot org.keepassxc.KeePassXC org.mozi
 00 * * * * $HOME/.config/wpg/scripted_themes/cron.sh >> $HOME/.config/wpg/scripted_themes/cron.log 2>&1
 ```
 
-10. Run the Firefox profile manager `firefox -ProfileManager -no-remote` and add a profile with the name `user.js` and set the path to `~/.mozilla/firefox/user.js`. Install your addons and then run ShadowFox (also themes some addons) with this command:
-    `shadowfox-updater -generate-uuids -profile-name user.js -set-dark-theme`
+10. Run the Firefox profile manager `org.mozilla.firefox -ProfileManager -no-remote` and add a profile with the name `user.js` and set the path to `~/.var/app/org.mozilla.firefox/.mozilla/firefox/user.js/`.
 
 ## Install dotfiles onto a new system
 

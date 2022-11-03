@@ -209,7 +209,7 @@ format = "$icon %a %d-%m %H:%M:%S"
 interval = 1
 [[block.click]]
 button = "left"
-cmd = "~/.config/i3status-rust/toggle-app.py --class evolution --title '(K|C)alend(e|a)r.+Evolution' --floating --exec 'evolution -c calendar'"
+cmd = "~/.config/i3status-rust/toggle-app.py --class evolution --title '(K|C)alend(e|a)r(.+Evolution)?' --floating --exec 'org.gnome.Evolution -c calendar'"
 
 [[block]]
 block = "pacman"
