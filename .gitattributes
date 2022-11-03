@@ -11,5 +11,6 @@
 .config/i3/toggle-title-bar.py filter=head
 .config/i3status-rust/themes/wpg_plain.toml filter=head
 .config/i3status-rust/themes/wpg_powerline.toml filter=head
+.config/kdeglobals filter=head
 .config/rofi/themes/colors/wpgtk.rasi filter=head
 .config/sway/config filter=head
