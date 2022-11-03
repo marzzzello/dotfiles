@@ -5,7 +5,7 @@ clip(){
   if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
     [[ -t 0 ]] && wl-paste -n || wl-copy
   else
-    [[ -t 0 ]] && xclip || xclip -o
+    [[ -t 0 ]] && xclip -o || xclip
   fi
 }
 
