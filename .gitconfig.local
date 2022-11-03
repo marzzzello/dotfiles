@@ -31,19 +31,19 @@ merge = refs/heads/master
 clean = head -n 2
 
 [filter "w8unlock"]
-clean = grep -P '^(?!KEEPASSXC_USER=)^(?!DB_PATH=)'
+clean = grep -P '^(?!KEEPASSXC_USER=)^(?!DB_PATH=)^(?!USER_ID=)'
 
 [filter "null"]
 clean = cat >/dev/null
 
 [filter "gitglobal"]
-clean = sed -e '/name = .*/d' -e '/email = /d' -e '/signingkey =/d'
+clean = sed -e 's/\\(name = \\).*/\\1FIXME: your username/' -e 's/\\(email = \\).*/\\1FIXME: your email/' -e 's/\\(signingkey = \\).*/\\1FIXME: your signing key (optional)/'
 
 [filter "i3rs"]
-clean = sed -e 's/api_key.*,/api_key = \"YOUR API KEY\",/' -e 's/mac\\W*=.\\+/mac = \"DE:AD:FA:CE:CA:FE\"/'
+clean = sed -e 's/api_key.*,/api_key = \"FIXME: your api key\",/' -e 's/mac\\W*=.\\+/mac = \"DE:AD:FA:CE:CA:FE\" \\x23 FIXME\\: replace with mac of your device/'
 
 [filter "username"]
-clean = sed -E 's|/home/[^/]+/|/home/<YOUR USERNAME>/|'
+clean = sed -E 's|/home/[^/]+/|/home/FIXME: your username/|'
 
 [submodule ".vim_runtime"]
 url = https://github.com/amix/vimrc
