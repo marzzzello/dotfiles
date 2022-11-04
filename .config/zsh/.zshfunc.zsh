@@ -53,12 +53,12 @@ cont(){
 
 # copys the main identidy to server (~/.ssh/main.pub) and removes old ssh keys from server (see next function)
 ssh-update-key(){
-  if grep 'SSH2 PUBLIC KEY' -q $HOME/.ssh/main.pub; then
+  if grep 'SSH2 PUBLIC KEY' -q ~/.ssh/main.pub; then
       echo "Please use OpenSSH format"
       return 1;
   fi
   ssh "$@" "cat ~/.ssh/authorized_keys" > /tmp/authorized_keys_before
-  ssh-copy-id -i $HOME/.ssh/main.pub "$@"
+  ssh-copy-id -i ~/.ssh/main.pub "$@"
   ssh-remove-old-keys "$@"
   ssh "$@" "cat ~/.ssh/authorized_keys" > /tmp/authorized_keys_after
   echo diff:
@@ -69,7 +69,7 @@ ssh-update-key(){
 # removes all public keys from servers which are under ~/.ssh/old/*.pub
 ssh-remove-old-keys(){
   sed="sed -i '"
-  for file in $HOME/.ssh/old/*.pub; do
+  for file in ~/.ssh/old/*.pub; do
      if grep 'SSH2 PUBLIC KEY' -q $file; then
          echo "Please use OpenSSH format for $file"
          return 1;
@@ -149,7 +149,7 @@ pdf() {
 ### cleanups
 
 cutrash(){
-  rm -rf $HOME/.local/share/Trash/
+  rm -rf ~/.local/share/Trash/
 }
 cudockerprune(){
   docker system prune -a -f
