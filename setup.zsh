@@ -20,7 +20,7 @@ git checkout
 git submodule update --init --recursive --jobs 8
 
 rm "$HOME/.git/config"
-git config include.path ../.gitconfig.local
+git config include.path "${XDG_CONFIG_HOME:-~/.config}/dotfiles-git-config"
 
 if command -v wpg-install.sh >/dev/null; then
   echo "Installing wpgtk themes and icons"
