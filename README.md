@@ -178,13 +178,13 @@ git config include.path "${XDG_CONFIG_HOME:-~/.config}/dotfiles-git-config"
 As single command:
 
 ```
-curl 'https://gitlab.com/marzzzello/dotfiles/raw/master/setup.zsh' | zsh
+curl 'https://gitlab.com/marzzzello/dotfiles/-/raw/master/.local/share/dotfiles-setup.zsh' | zsh
 ```
 
 or even shorter
 
 ```
-curl -L 'https://git.io/marzzzello' | zsh
+curl -L 'https://u.07f.de/df' | zsh
 ```
 
 ## Starting from scratch
