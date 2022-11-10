@@ -15,7 +15,7 @@ ANTIGEN_LOG=${ZDOTDIR:-~}/.antigen/antigen.log
 fails=()
 getFails()   {  for fail in $fails; do echo $fail; done; }
 printFails() {
-  local choicefile="~/.cache/printNoFails";
+  local choicefile="${XDG_CACHE_HOME:-~/.cache}/printNoFails";
   if ! [[ -f "$choicefile" ]] && [[ "${#fails[@]}" != 0 ]]; then
     getFails;
     local compcontext='y:yes:(yes)';
@@ -52,7 +52,7 @@ exportzsh () { [[ -d "$1" ]] && export ZSH="$1" }
 # => see under FZF
 
 # Import colorscheme from wpgtk
-[[ -f "~/.config/wpg/sequences" ]] && (cat ~/.config/wpg/sequences &)
+[[ -f "${XDG_CONFIG_HOME:-~/.config}/wpg/sequences" ]] && (cat ${XDG_CONFIG_HOME:-~/.config}/wpg/sequences &)
 
 
 ############ Set shell options ############
@@ -140,7 +140,7 @@ antigen bundle z-shell/F-Sy-H --branch=main
 # Load the theme
 antigen theme romkatv/powerlevel10k
 # Load theme settings. To customize, run `p10k configure` or edit ~/.p10k.zsh.
-include ~/.p10k.zsh
+include ${ZDOTDIR:-~}/.p10k.zsh
 
 # Tell antigen that you're done
 antigen apply
