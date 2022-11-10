@@ -1,5 +1,5 @@
 [submodule "vimrc"]
-	path = .vim_runtime
+	path = .config/vim_runtime
 	url = https://github.com/amix/vimrc
 	branch = master
 
