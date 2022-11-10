@@ -45,8 +45,11 @@ clean = sed -e 's/api_key.*,/api_key = \"FIXME: your api key\",/' -e 's/mac\\W*=
 [filter "username"]
 clean = sed -E 's|/home/[^/]+/|/home/FIXME: your username/|'
 
-[submodule ".vim_runtime"]
+[submodule "vimrc"]
 url = https://github.com/amix/vimrc
 
-[submodule ".teeworlds"]
+[submodule "ddnet"]
 url = https://gitlab.com/marzzzello/ddnet-config.git
+
+[submodule "mpv-twitch-chat"]
+url = https://github.com/CrendKing/mpv-twitch-chat/
