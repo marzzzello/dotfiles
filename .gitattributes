@@ -1,9 +1,10 @@
-.config/git/config filter=gitglobal
-.config/i3status-rust/config.toml filter=i3rs
-.config/keepassxc/w8unlock/w8unlock.zsh filter=w8unlock
-.teeworlds/settings_ddnet.cfg filter=teeworlds
-.teeworlds/settings.cfg filter=teeworlds
-.var/app/org.mozilla.firefox/.mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json filter=username
+.config/git/config filter=dotsecrets
+.config/i3status-rust/config.toml filter=dotsecrets
+.config/keepassxc/w8unlock/w8unlock.zsh filter=dotsecrets
+.var/app/org.mozilla.firefox/.mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json filter=dotsecrets
+# * filter=dotsecrets
+
+.config/dotsecrets/dotsecrets.example.yaml filter=secrets
 
 # generated form wpg templates
 .config/dunst/dunstrc filter=head

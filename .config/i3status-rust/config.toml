@@ -157,7 +157,7 @@ block = "bluetooth"
 disconnected_format = ""
 format = "{$icon |}$name{ $percentage|}|"
 # mouse
-mac = "DE:AD:FA:CE:CA:FE" # FIXME: replace with mac of your device
+mac = "$DotSecrets: mac_1$"
 [[block.click]]
 button = "left"
 cmd = "~/.config/i3status-rust/toggle-app.py --class blueberry --floating"
@@ -167,7 +167,7 @@ block = "bluetooth"
 disconnected_format = ""
 format = "{$icon |}$percentage|"
 # headset
-mac = "DE:AD:FA:CE:CA:FE" # FIXME: replace with mac of your device
+mac = "$DotSecrets: mac_2$"
 [[block.click]]
 button = "left"
 cmd = "~/.config/i3status-rust/toggle-app.py --class blueberry --floating"
@@ -193,7 +193,7 @@ if_command = "dunstctl is-paused"
 # [[block.click]]
 # button = "left"
 # cmd = "firefox https://openweathermap.org/"
-# service = {name = "openweathermap", api_key = "FIXME: your api key", units = "metric"}
+# service = {name = "openweathermap", api_key = "$DotSecrets: openweathermap_api_key$", units = "metric"}
 
 [[block]]
 block = "pomodoro"

@@ -3,10 +3,9 @@
 # This script waits until KeePassXC is ready (e.g. autostart KeePassXC via i3 config), then it  unlocks the database with the password given via stdin
 # w8unlock = wait until keepassxc is ready, unlock database via dbus
 
-# FIXME: uncomment and insert your username, user id and path:
-# USER_ID=your user id, find out with command "id"
-# KEEPASSXC_USER=your username
-# DB_PATH="/home/$KEEPASSXC_USER/path/to/your/database.kdbx"
+USER_ID=$DotSecrets: user_id$
+KEEPASSXC_USER="$DotSecrets: keepassxc_user$"
+DB_PATH="$DotSecrets: db_path$"
 
 LOGFILE="${0:a:h}/log" # same directory as script
 LOGIN_PW="$(timeout --foreground 1 tr '\0' '\n')"

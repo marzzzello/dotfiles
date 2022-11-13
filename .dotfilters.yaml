@@ -1,0 +1,38 @@
+version: 2
+filters:
+  ".config/git/config":
+    rules:
+      name:
+        regex: (name\s*=\s*)(.*)
+        substitute: \1(?#Key)
+      email:
+        regex: email(\s*)=(\s*)(.*)
+        substitute: email\1=\2(?#Key)
+      signingkey:
+        regex: signingkey(\s*)=(\s*)(.*)
+        substitute: signingkey\1=\2(?#Key)
+  ".config/i3status-rust/config.toml":
+    rules:
+      openweathermap_api_key:
+        regex: (api_key\s*=\s*)(?#QuotedString)
+        substitute: \1"(?#Key)"
+      mac:
+        numbered: true
+        regex: (mac\s*=\s*)(?#QuotedString)
+        substitute: \1"(?#Key)"
+  ".config/keepassxc/w8unlock/w8unlock.zsh":
+    rules:
+      user_id:
+        regex: (USER_ID=)(.*)
+        substitute: \1(?#Key)
+      keepassxc_user:
+        regex: (KEEPASSXC_USER=)(?#QuotedString)
+        substitute: \1"(?#Key)"
+      db_path:
+        regex: (DB_PATH=)(?#QuotedString)
+        substitute: \1"(?#Key)"
+  ".var/app/org.mozilla.firefox/.mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json":
+    rules:
+      username:
+        regex: /home/([^/]+)
+        substitute: /home/(?#Key)

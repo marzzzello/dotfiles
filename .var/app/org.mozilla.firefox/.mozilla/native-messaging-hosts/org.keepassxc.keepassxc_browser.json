@@ -4,6 +4,6 @@
     ],
     "description": "KeePassXC integration with native messaging support",
     "name": "org.keepassxc.keepassxc_browser",
-    "path": "/home/FIXME: your username/.var/app/org.mozilla.firefox/data/bin/keepassxc-proxy-wrapper.sh",
+    "path": "/home/$DotSecrets: username$/.var/app/org.mozilla.firefox/data/bin/keepassxc-proxy-wrapper.sh",
     "type": "stdio"
 }

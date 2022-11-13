@@ -1,7 +1,7 @@
 [user]
-name = FIXME: your username
-email = FIXME: your email
-# signingKey =
+name = $DotSecrets: name$
+email = $DotSecrets: email$
+# signingkey = $DotSecrets: signingkey$
 
 [core]
 # Check if converting CRLF is reversible
@@ -21,6 +21,9 @@ ignorecase = false
 autocrlf = input
 
 editor = vim
+
+[init]
+defaultBranch = main
 
 [apply]
 # Warn about whitespace issues defined in core.whitespace

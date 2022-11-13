@@ -30,20 +30,16 @@ merge = refs/heads/master
 [filter "head"]
 clean = head -n 2
 
-[filter "w8unlock"]
-clean = grep -P '^(?!KEEPASSXC_USER=)^(?!DB_PATH=)^(?!USER_ID=)'
-
 [filter "null"]
 clean = cat >/dev/null
 
-[filter "gitglobal"]
-clean = sed -e 's/\\(name = \\).*/\\1FIXME: your username/' -e 's/\\(email = \\).*/\\1FIXME: your email/' -e 's/\\(signingkey = \\).*/\\1FIXME: your signing key (optional)/'
+[filter "dotsecrets"]
+clean = dotsecrets clean %f
+smudge = dotsecrets smudge %f
+required = true
 
-[filter "i3rs"]
-clean = sed -e 's/api_key.*,/api_key = \"FIXME: your api key\",/' -e 's/mac\\W*=.\\+/mac = \"DE:AD:FA:CE:CA:FE\" \\x23 FIXME\\: replace with mac of your device/'
-
-[filter "username"]
-clean = sed -E 's|/home/[^/]+/|/home/FIXME: your username/|'
+[filter "secrets"]
+clean = cat ~/.config/dotsecrets/dotsecrets.yaml | sed -e 's/secret:.*/secret: FIXME/'
 
 [submodule "vimrc"]
 url = https://github.com/amix/vimrc
