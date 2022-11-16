@@ -155,7 +155,7 @@ missing_format = ""
 [[block]]
 block = "bluetooth"
 disconnected_format = ""
-format = "{$icon |}$name{ $percentage|}|"
+format = "{$icon |}{$percentage|}|"
 # mouse
 mac = "$DotSecrets: mac_1$"
 [[block.click]]
@@ -165,7 +165,7 @@ cmd = "~/.config/i3status-rust/toggle-app.py --class blueberry --floating"
 [[block]]
 block = "bluetooth"
 disconnected_format = ""
-format = "{$icon |}$percentage|"
+format = "{$icon |}{$percentage|}|"
 # headset
 mac = "$DotSecrets: mac_2$"
 [[block.click]]
