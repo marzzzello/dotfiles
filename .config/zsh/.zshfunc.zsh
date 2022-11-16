@@ -1,5 +1,13 @@
 #!/usr/bin/env zsh
 
+# re-checkout everything, rerun gitattribute filters
+reattr(){
+  git stash
+  rm .git/index
+  git checkout HEAD -- "$(git rev-parse --show-toplevel)"
+  git stash pop
+}
+
 # copy/paste for x11/wayland. Copy if something is piped into this function otherwise paste
 clip(){
   if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then

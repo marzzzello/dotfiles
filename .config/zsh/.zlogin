@@ -10,13 +10,13 @@ fi
 
 ############ Env variables ############
 # PATH: add go binaries
-export PATH=$HOME/go/bin:$PATH
+[[ -d "$HOME/go/bin" ]] && export PATH=$HOME/go/bin:$PATH
 # PATH: add perl tools
-export PATH=/usr/bin/core_perl:$PATH
+[[ -d "/usr/bin/core_perl" ]] && export PATH=/usr/bin/core_perl:$PATH
 # PATH: add .local/bin
-export PATH=$HOME/.local/bin:$PATH
+[[ -d "$HOME/.local/bin" ]] && export PATH=$HOME/.local/bin:$PATH
 # PATH: latest android build tools
-export PATH=/opt/android-sdk/build-tools/$(ls /opt/android-sdk/build-tools/ | tail -n1):$PATH &>/dev/null
+[[ -d "/opt/android-sdk" ]] && export PATH=/opt/android-sdk/build-tools/$(ls /opt/android-sdk/build-tools/ | tail -n1):$PATH &>/dev/null
 
 export TERM="xterm-256color"
 
