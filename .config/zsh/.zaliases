@@ -119,6 +119,9 @@ alias proxy='sudo iptables -t nat -A OUTPUT -p tcp --dport  80 -m owner ! --uid-
 sudo iptables -t nat -A OUTPUT -p tcp --dport 443 -m owner ! --uid-owner 1001 -j DNAT --to-destination 127.0.0.1:8443'
 alias proxystop='sudo iptables -t nat -F'
 
+# old command but new docker-compose v2 because zsh completion for docker command is outdated
+[ -f /usr/libexec/docker/cli-plugins/docker-compose ] && alias docker-compose='/usr/libexec/docker/cli-plugins/docker-compose'
+
 # docker-compose alias with all files
 [ -d /opt/stacks ] && alias dc="cd /opt/stacks && docker-compose $(for f in /opt/stacks/*-dc.yml; do echo -n -f ${f##*/}\ ; done)"
 if [[ "$TERM" == "xterm-kitty" && "$SSH_CONNECTION" == "" ]]; then
