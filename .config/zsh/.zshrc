@@ -89,7 +89,7 @@ function () {
   else
     echo "Downloading Antigen to $a3"
     mkdir -p ${a3:h}
-    curl -L git.io/antigen > $a3 \
+    curl -L git.io/antigen-nightly > $a3 \
     && ANTIGEN=$a3
   fi
 }
@@ -176,13 +176,13 @@ if ! (( $+commands[fzf] )); then
   fi
 fi
 # FZF keybindings for Arch + Ubuntu + others
-include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh "${FZF_DIR}/shell/completion.zsh"
-include /usr/share/fzf/completion.zsh /usr/share/zsh/vendor-completions/_fzf "${FZF_DIR}/shell/key-bindings.zsh"
+include /usr/share/fzf/key-bindings.zsh /usr/share/doc/fzf/examples/key-bindings.zsh "${FZF_DIR}/shell/completion.zsh" "$(dirname $(command -v fzf))/../shell/completion.zsh"
+include /usr/share/fzf/completion.zsh /usr/share/zsh/vendor-completions/_fzf "${FZF_DIR}/shell/key-bindings.zsh" "$(dirname $(command -v fzf))/../shell//key-bindings.zsh"
 
 
 ############ Aliases ############
 
-source $ZDOTDIR/.zaliases
+source $ZDOTDIR/.zaliases.zsh
 
 ###
 

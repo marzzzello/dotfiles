@@ -92,7 +92,7 @@ ssh-remove-old-keys(){
 }
 
 autoload -Uz compinit
-compinit
+compinit -u
 compdef ssh-update-key=ssh
 compdef ssh-remove-old-keys=ssh
 
@@ -349,16 +349,7 @@ if command -vp pacman > /dev/null; then
   command -v yay &>/dev/null && alias pm="yay" || alias pm="pacman"
 
   # remove packages installed as dependency but not needed anymore
-  cupm(){
-
-    if pm -Qtdq; then
-        pm -Rucns --noconfirm $(pm -Qtdq)
-    fi
-
-    # this will delete the complete package cache
-    sudo paccache -r -k 0
-    pm -Scc --noconfirm
-  }
+  alias cupm='pm -Qtdq && pm -Rucns --noconfirm $(pm -Qtdq); sudo paccache -r -k 0; pm -Scc --noconfirm'
 
   # update mirrorlist
   alias upmirror="sudo reflector --completion-percent 80 --country France --country Germany --age 6 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
@@ -367,10 +358,7 @@ if command -vp pacman > /dev/null; then
   alias uppm="pm -Syu --devel --timeupdate --noconfirm --noremovemake --noredownload  --norebuild --useask --sudoloop"
 
   # update keyring
-  upkeys(){
-    pm -Sy --noconfirm archlinux-keyring
-    sudo pacman-key --populate archlinux
-  }
+  alias upkeys="pm -Sy --noconfirm archlinux-keyring; sudo pacman-key --populate archlinux"
 
   # full update
   alias upfull="upmirror && upkeys && uppm && cupm"
