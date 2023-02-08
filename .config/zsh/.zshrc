@@ -76,25 +76,15 @@ setopt extendedglob
 
 ############ Plugins ############
 # Find antigen or install antigen
-function () {
-  local a1="/usr/share/zsh/share/antigen.zsh"
-  local a2="/usr/share/zsh-antigen/antigen.zsh"
-  local a3="${ZDOTDIR:-~}/.antigen/antigen.zsh"
-  if [[ -f $a1 ]]; then
-    ANTIGEN="$a1";
-    elif [[ -f $a2 ]]; then
-    ANTIGEN="$a2";
-    elif [[ -f $a3 ]]; then
-    ANTIGEN="$a3";
-  else
-    echo "Downloading Antigen to $a3"
-    mkdir -p ${a3:h}
-    curl -L git.io/antigen-nightly > $a3 \
-    && ANTIGEN=$a3
-  fi
-}
-typeset -a ANTIGEN_CHECK_FILES=(${ZDOTDIR:-~}/.zshrc ${ZDOTDIR:-~}/.antigen/antigen.zsh)
 ADOTDIR=${ZDOTDIR:-~}/.antigen
+local ANTIGEN="${ADOTDIR}/antigen.zsh"
+if [[ ! -f $ANTIGEN ]]; then
+  echo "Downloading Antigen to $ANTIGEN"
+  mkdir -p ${ADOTDIR}
+  curl -L https://git.io/antigen-nightly > $ANTIGEN
+fi
+
+typeset -a ANTIGEN_CHECK_FILES=(${ZDOTDIR:-~}/.zshrc ${ZDOTDIR:-~}/.antigen/antigen.zsh)
 source $ANTIGEN
 
 # Load the oh-my-zsh's library
