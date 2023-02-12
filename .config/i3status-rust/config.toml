@@ -10,16 +10,16 @@ icons = "awesome6"
 [[block]]
 block = "focused_window"
 [block.format]
-full = "$title.rot-str(25)|"
-short = "$title.rot-str(10)|"
+full = "$title.str(max_w:25,rot_interval:0.2)|"
+short = "$title.str(max_w:10,rot_interval:0.2)|"
 
 [[block]]
 block = "music"
 #hide_when_empty = true
 # interface_name_exclude = [".*kdeconnect.*", "mpd"]
 [block.format]
-full = "$combo.rot-str(20) $play $avail.eng(0)|"
-short = "$combo.rot-str(15)$play$avail.eng(0)|"
+full = "$combo.str(max_w:20,rot_interval:0.2) $play $avail.eng(width:0)|"
+short = "$combo.str(max_w:15,rot_interval:0.2)$play$avail.eng(width:0)|"
 [[block.click]]
 button = "left" 
 cmd = "next" # not working :( https://github.com/greshake/i3status-rust/issues/1610
@@ -43,7 +43,7 @@ cmd = "~/.config/i3status-rust/toggle-app.py --class kitty --title 'htop-floatin
 [[block]]
 alert = 10.0 # %
 block = "disk_space" 
-format = "$icon $available.eng(3,B,T)" # TeraBytes with 3 digits
+format = "$icon $available.eng(width:3,prefix:T,hide_unit:true)" # TeraBytes with 3 digits
 info_type = "available" 
 interval = 20 
 warning = 20.0 # %
@@ -107,8 +107,8 @@ cmd = "~/.config/i3/mute-mics.zsh"
 
 [[block]]
 block = "net" 
-format = "$icon {$signal_strength.bar(1)|}$speed_up.eng(3,B,K) $speed_down.eng(3,B,K)" # fixed length
-format_alt = "$speed_up.eng(0,B,K) $speed_down.eng(0,B,K)" # dynamic length
+format = "$icon {$signal_strength.bar(width:1)|}$speed_up.eng(width:3,prefix:K,hide_unit:true) $speed_down.eng(width:3,prefix:K,hide_unit:true)" # fixed length
+format_alt = "$speed_up.eng(width:0,prefix:K,hide_unit:true) $speed_down.eng(width:0,prefix:K,hide_unit:true)" # dynamic length
 [[block.click]]
 button = "right"
 cmd = "~/.config/i3status-rust/toggle-app.py --class org.gnome.Settings --exec gnome-control-center --network"
@@ -213,8 +213,8 @@ cmd = "~/.config/i3status-rust/toggle-app.py --class evolution --title '(K|C)ale
 
 [[block]]
 block = "pacman"
-format = "$icon $pacman.eng(0)+$aur.eng(0)"
-format_singular = "$icon $pacman.eng(0)+$aur.eng(0)"
+format = "$icon $pacman.eng(width:0)+$aur.eng(width:0)"
+format_singular = "$icon $pacman.eng(width:0)+$aur.eng(width:0)"
 format_up_to_date = ""
 if_command = "command -v yay && ping -c 1 -W 1 9.9.9.9"
 interval = 3600
