@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-basename="$HOME/Pictures/Screenshots PC/Screenshot_$(date '+%Y%m%d-%H%M%S')_"
+basename="$HOME/Pictures/Screenshots-PC/Screenshot_$(date '+%Y%m%d-%H%M%S')_"
 
 screenshot() {
     case "$1" in
