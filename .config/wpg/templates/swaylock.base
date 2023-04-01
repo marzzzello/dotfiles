@@ -1,3 +1,5 @@
+{infoMsg}
+
 color={color0.strip}FF
 
 key-hl-color={color5.strip}DD
