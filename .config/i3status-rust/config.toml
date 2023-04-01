@@ -205,11 +205,14 @@ notify_cmd = "notify-send"
 
 [[block]]
 block = "time"
-format = "$icon %a %d-%m %H:%M:%S"
 interval = 1
-[[block.click]]
-button = "left"
-cmd = "~/.config/i3status-rust/toggle-app.py --class evolution --title '(K|C)alend(e|a)r(.+Evolution)?' --floating --exec 'org.gnome.Evolution -c calendar'"
+timezone = ["Europe/Berlin", "Etc/UTC", "Asia/Tokyo"]
+[block.format]
+full = " $icon $timestamp.datetime(f:'%a %m-%d %R:%S %Z') "
+short = " $icon $timestamp.datetime(f:%R) "
+# [[block.click]]
+# button = "left"
+# cmd = "~/.config/i3status-rust/toggle-app.py --class evolution --title '(K|C)alend(e|a)r(.+Evolution)?' --floating --exec 'org.gnome.Evolution -c calendar'"
 
 [[block]]
 block = "pacman"
