@@ -2,7 +2,7 @@
 Type=Application
 Name=Element
 Icon=im.riot.Riot
-Exec=zsh -c "flatpak run im.riot.Riot --branch=stable --arch=x86_64 --command=/app/bin/element $([[ $XDG_SESSION_TYPE == wayland ]] && echo '--enable-features=UseOzonePlatform --ozone-platform=wayland') --file-forwarding @@u %U @@"
+Exec=flatpak run im.riot.Riot --branch=stable --arch=x86_64 --command=/app/bin/element --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --file-forwarding @@u %U @@
 Categories=Network;InstantMessaging;Chat;VideoConference;
 MimeType=x-scheme-handler/element;
 StartupWMClass=element

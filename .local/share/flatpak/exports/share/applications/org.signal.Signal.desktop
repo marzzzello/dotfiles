@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Signal
-Exec=zsh -c "flatpak run org.signal.Signal --branch=stable --arch=x86_64 --command=signal-desktop $([[ $XDG_SESSION_TYPE == wayland ]] && echo '--enable-features=UseOzonePlatform --ozone-platform=wayland') --file-forwarding @@u %U @@"
+Exec=flatpak run org.signal.Signal --branch=stable --arch=x86_64 --command=signal-desktop --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --file-forwarding @@u %U @@
 Terminal=false
 Type=Application
 Icon=org.signal.Signal

@@ -27,7 +27,7 @@ Comment[ru]=Изменить конфигурацию Fcitx 5
 Comment[zh_CN]=修改 Fcitx 5 配置
 Comment[zh_TW]=變更 Fcitx 5 設定
 Comment=Change Fcitx 5 Configuration
-Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/fcitx5-configtool org.fcitx.Fcitx5
+Exec=flatpak run --command=/app/bin/fcitx5-configtool org.fcitx.Fcitx5
 Icon=org.fcitx.Fcitx5
 Type=Application
 Categories=Settings;
