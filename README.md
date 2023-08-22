@@ -84,21 +84,21 @@ pacman -S arandr autorandr feh gnome-screenshot i3-gaps picom redshift
 Install all:
 
 ```sh
-pacman -S grim kanshi slurp swappy sway swayidle swaylock wlsunset
-$aurhelper -S wdisplays
+pacman -S grim kanshi slurp swappy sway swayidle wlsunset
+$aurhelper -S swaylock-effects wdisplays
 ```
 
-| Package name | Repo | Needed for                                            | Package description                                                 |
-| ------------ | ---- | ----------------------------------------------------- | ------------------------------------------------------------------- |
-| grim         | main | screenshots                                           | Screenshot utility for Wayland                                      |
-| kanshi       | main | to set monitor layout automatically e.g. after reboot | Dynamic output configuration for Wayland WMs                        |
-| slurp        | main | screenshots                                           | Select a region in a Wayland compositor                             |
-| swappy       | main | screenshots                                           | Grab and edit screenshots from a Wayland compositor                 |
-| sway         | main | my window manager                                     | Tiling Wayland compositor and replacement for the i3 window manager |
-| swayidle     | main | automatic screen locking                              | Idle management daemon for Wayland                                  |
-| swaylock     | main | screen locker                                         | Screen locker for Wayland                                           |
-| wdisplays    | AUR  | to set monitor layout with GUI                        | GUI display configurator for wlroots compositors                    |
-| wlsunset     | main | night mode                                            | Day/night gamma adjustments for Wayland compositors                 |
+| Package name     | Repo | Needed for                                            | Package description                                                 |
+| ---------------- | ---- | ----------------------------------------------------- | ------------------------------------------------------------------- |
+| grim             | main | screenshots                                           | Screenshot utility for Wayland                                      |
+| kanshi           | main | to set monitor layout automatically e.g. after reboot | Dynamic output configuration for Wayland WMs                        |
+| slurp            | main | screenshots                                           | Select a region in a Wayland compositor                             |
+| swappy           | main | screenshots                                           | Grab and edit screenshots from a Wayland compositor                 |
+| sway             | main | my window manager                                     | Tiling Wayland compositor and replacement for the i3 window manager |
+| swayidle         | main | automatic screen locking                              | Idle management daemon for Wayland                                  |
+| swaylock-effects | AUR  | screen locker                                         | A fancier screen locker for Wayland                                 |
+| wdisplays        | AUR  | to set monitor layout with GUI                        | GUI display configurator for wlroots compositors                    |
+| wlsunset         | main | night mode                                            | Day/night gamma adjustments for Wayland compositors                 |
 
 </details>
 

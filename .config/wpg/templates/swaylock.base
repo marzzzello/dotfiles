@@ -1,10 +1,10 @@
-{infoMsg}
+# {infoMsg}
 
 color={color0.strip}FF
 
-key-hl-color={color5.strip}DD
-caps-lock-key-hl-color={color5.strip}DD
-bs-hl-color={color13.strip}FF
+key-hl-color={color12.strip}DD
+caps-lock-key-hl-color={color12.strip}DD
+bs-hl-color={color7.strip}FF
 caps-lock-bs-hl-color={color13.strip}FF
 
 inside-color={color0.strip}AA
@@ -13,7 +13,7 @@ inside-clear-color={color2.strip}AA
 inside-wrong-color={color1.strip}DD
 inside-caps-lock-color={color1.strip}AA
 
-ring-color={color8.strip}DD
+ring-color={color13.strip}DD
 ring-ver-color={color10.strip}DD
 ring-clear-color={color10.strip}DD
 ring-wrong-color={color9.strip}DD
@@ -25,7 +25,7 @@ text-clear-color={color8.strip}FF
 text-wrong-color={color8.strip}FF
 text-caps-lock-color={color8.strip}FF
 
-layout-text-color={color8.strip}FF
+layout-text-color={color12.strip}FF
 layout-bg-color=00000000
 layout-border-color=00000000
 
@@ -44,14 +44,19 @@ show-keyboard-layout
 show-failed-attempts
 daemonize
 font="Noto Sans"
-font-size=20
+font-size=40
 indicator-radius=100
 indicator-thickness=10
 image=~/.config/wpg/.current
 #image=$(fd --type=file --exclude='/nl/' --exclude='/motivating/' . ~/Bilder/Wallpapers | shuf -n 1)
 
 # swaylock-effects
-#effect-blur=5x2
-#clock
-#indicator
-#fade-in=1
+screenshots
+indicator
+clock
+#grace=3
+fade-in=1
+effect-pixelate=5
+# effect-greyscale
+timestr=%T
+datestr=%a, %x %Z
