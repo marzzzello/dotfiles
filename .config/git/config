@@ -133,7 +133,7 @@ prompt = false
 [difftool "meld"]
 cmd = meld "$LOCAL" "$REMOTE"
 [difftool "code"]
-cmd = code --wait --diff "$LOCAL" "$REMOTE"
+cmd = flatpak run --command=code-oss --file-forwarding com.visualstudio.code-oss --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch --wait --diff "$LOCAL" "$REMOTE"
 [merge]
 tool = code
 summary = true
