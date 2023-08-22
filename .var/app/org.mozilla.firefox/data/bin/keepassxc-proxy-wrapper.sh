@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP_REF="org.keepassxc.KeePassXC/x86_64/master"
+APP_REF="org.keepassxc.KeePassXC/current/active"
 
 for inst in "$HOME/.local/share/flatpak" "/var/lib/flatpak"; do
     if [ -d "$inst/app/$APP_REF" ]; then
