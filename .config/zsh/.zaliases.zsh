@@ -139,18 +139,29 @@ fi
 # fix emulator
 alias emulator='/opt/android-sdk/tools/emulator'
 
+# flatpak
+alias code='flatpak run --command=code-oss --file-forwarding com.visualstudio.code-oss --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch'
+alias codew='flatpak run --command=code-oss --file-forwarding com.visualstudio.code-oss --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch --wait'
+alias dino='gtk-launch im.dino.Dino'
+alias firefox='gtk-launch org.mozilla.firefox'
+alias gimp='gtk-launch org.gimp.GIMP'
+alias signal='gtk-launch org.signal.Signal'
+alias spotify='gtk-launch com.spotify.Client'
+alias telegram='gtk-launch org.telegram.desktop'
+
+
 ## Projects/Helpers
 
 # ddnet time
 alias ddtime='~/projects/ddtime/ddtime.sh'
 
 # PDF,JPG,PNG to ODT or ODS
-alias pdf2odt="~/projects/pdf2odt/pdf2odt"
+alias pdf2odt='~/projects/pdf2odt/pdf2odt'
 
 # echo360 helpers
-alias echo360="~/projects/echo360/run.sh"
-alias echo360Helper="~/projects/echo360/echoDlHelper.sh"
+alias echo360='~/projects/echo360/run.sh'
+alias echo360Helper='~/projects/echo360/echoDlHelper.sh'
 
 # automerge folders
-alias automerge=~/projects/Dubly/src/automerge.py
-alias duply=~/projects/Dubly/src/dubly.py
+alias automerge='~/projects/Dubly/src/automerge.py'
+alias duply='~/projects/Dubly/src/dubly.py'
