@@ -36,4 +36,4 @@ scratchpad show
     exit(0)
 
 # open dropdown terminal, positioning etc is done in sway config
-conn.command(f'exec --no-startup-id "kitty --title {title}"')
+conn.command(f'exec --no-startup-id "kitty --single-instance --title {title}"')
