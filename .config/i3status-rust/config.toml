@@ -15,14 +15,14 @@ short = "$title.str(max_w:10,rot_interval:0.2)|"
 
 [[block]]
 block = "music"
+seek_step_secs = 10
 #hide_when_empty = true
 # interface_name_exclude = [".*kdeconnect.*", "mpd"]
 [block.format]
 full = "$combo.str(max_w:20,rot_interval:0.2) $play $avail.eng(width:0)|"
-short = "$combo.str(max_w:15,rot_interval:0.2)$play$avail.eng(width:0)|"
 [[block.click]]
-button = "left" 
-cmd = "next" # not working :( https://github.com/greshake/i3status-rust/issues/1610
+button = "left"
+action = "next"
 [[block.click]]
 button = "middle"
 cmd = "killall spotify -s9"
@@ -41,12 +41,12 @@ button = "right"
 cmd = "~/.config/i3status-rust/toggle-app.py --class kitty --title 'htop-floating' --floating --exec 'kitty --title htop-floating -- htop'"
 
 [[block]]
-alert = 10.0 # %
-block = "disk_space" 
+block = "disk_space"
+alert = 10.0                                                     # %
 format = "$icon $available.eng(width:3,prefix:T,hide_unit:true)" # TeraBytes with 3 digits
-info_type = "available" 
-interval = 20 
-warning = 20.0 # %
+info_type = "available"
+interval = 20
+warning = 20.0                                                   # %
 [[block.click]]
 button = "left"
 cmd = "qdirstat"
@@ -95,20 +95,19 @@ show_volume_when_muted = true
 [[block.click]]
 button = "left"
 cmd = "~/.config/i3status-rust/toggle-app.py --class pavucontrol --floating"
-# cmd = "pactlset-default-sink$(pactllistsinksshort|grepRUNNING|head-n1|cut-f2);~/.config/i3status-rust/toggle-app.py --class pavucontrol --floating"
 
 [[block]]
-block = "sound" 
-device_kind = "source" 
-format = "$icon" # "$icon {$volume.eng(2) |}"
+block = "sound"
+device_kind = "source"
+format = "$icon"       # "$icon {$volume.eng(2) |}"
 [[block.click]]
 button = "left"
 cmd = "~/.config/i3/mute-mics.zsh"
 
 [[block]]
-block = "net" 
+block = "net"
 format = "$icon {$signal_strength.bar(width:1)|}$speed_up.eng(width:3,prefix:K,hide_unit:true) $speed_down.eng(width:3,prefix:K,hide_unit:true)" # fixed length
-format_alt = "$speed_up.eng(width:0,prefix:K,hide_unit:true) $speed_down.eng(width:0,prefix:K,hide_unit:true)" # dynamic length
+format_alt = "$speed_up.eng(width:0,prefix:K,hide_unit:true) $speed_down.eng(width:0,prefix:K,hide_unit:true)"                                   # dynamic length
 [[block.click]]
 button = "right"
 cmd = "~/.config/i3status-rust/toggle-app.py --class org.gnome.Settings --exec gnome-control-center --network"

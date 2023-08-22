@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from i3ipc import Connection
+from i3ipc import Connection  # use master branch for sway: https://github.com/altdesktop/i3ipc-python/pull/171
 import argparse
 import re
 import subprocess
