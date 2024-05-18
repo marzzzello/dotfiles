@@ -140,13 +140,11 @@ fi
 alias emulator='/opt/android-sdk/tools/emulator'
 
 # flatpak
-alias code='flatpak run --command=code-oss --file-forwarding com.visualstudio.code-oss --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch'
-alias codew='flatpak run --command=code-oss --file-forwarding com.visualstudio.code-oss --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch --wait'
 alias dino='gtk-launch im.dino.Dino'
 alias firefox='gtk-launch org.mozilla.firefox'
 alias gimp='gtk-launch org.gimp.GIMP'
 alias signal='gtk-launch org.signal.Signal'
-alias spotify='gtk-launch com.spotify.Client'
+# alias spotify='gtk-launch com.spotify.Client'
 alias telegram='gtk-launch org.telegram.desktop'
 
 

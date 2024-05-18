@@ -6,6 +6,7 @@ export ZDOTDIR=${ZDOTDIR:-~/.config/zsh}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:-~/.cache}
 export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
+pgrep --exact sway &>/dev/null && export XDG_CURRENT_DESKTOP=sway
 # export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-~/.xdg}
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
@@ -20,7 +21,9 @@ if [[ -n $SSH_CONNECTION ]]; then
 elif [[ $USER = "root" ]]; then
     export EDITOR='vim' # non ssh but root
 else
-    export EDITOR='flatpak run --command=code-oss --file-forwarding com.visualstudio.code-oss --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch --wait' # non ssh and non root
+    export EDITOR=vim 
+    # export EDITOR='flatpak run --command=code-oss --file-forwarding com.visualstudio.code-oss --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch --wait'
+    # non ssh and non root
 fi
 
 if ! pgrep -u "$USER" ssh-agent >/dev/null; then
@@ -86,9 +89,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 export QT_QPA_PLATFORMTHEME=qt5ct
 #export QT_STYLE_OVERRIDE=kvantum
 unset QT_STYLE_OVERRIDE
-[[ $XDG_SESSION_TYPE == wayland ]] && export GDK_BACKEND=wayland
-
-export GTK_IM_MODULE=fcitx
+[[ $XDG_SESSION_TYPE == wayland ]] && export GDK_BACKEND=wayland || export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
