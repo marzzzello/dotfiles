@@ -95,7 +95,6 @@ antigen bundle code
 antigen bundle colorize
 antigen bundle command-not-found
 antigen bundle cp
-antigen bundle docker-compose
 antigen bundle git
 antigen bundle gradle
 antigen bundle npm

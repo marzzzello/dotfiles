@@ -120,7 +120,7 @@ sudo iptables -t nat -A OUTPUT -p tcp --dport 443 -m owner ! --uid-owner 1001 -j
 alias proxystop='sudo iptables -t nat -F'
 
 # old command but new docker-compose v2 because zsh completion for docker command is outdated
-[ -f /usr/libexec/docker/cli-plugins/docker-compose ] && alias docker-compose='/usr/libexec/docker/cli-plugins/docker-compose'
+[ -f /usr/libexec/docker/cli-plugins/docker-compose ] && alias docker-compose='/usr/libexec/docker/cli-plugins/docker-compose' || alias dc="docker compose"
 
 # docker-compose alias with all files
 [ -d /opt/stacks ] && alias dc="cd /opt/stacks && docker-compose $(for f in /opt/stacks/*-dc.yml; do echo -n -f ${f##*/}\ ; done)"
@@ -128,7 +128,7 @@ alias proxystop='sudo iptables -t nat -F'
   # fix ssh with kitty terminal
 [[ "$TERM" == "xterm-kitty" && "$SSH_CONNECTION" == "" ]] &&  alias ssh="kitty +kitten ssh"
 
-if [[ -n "$KITTY_WINDOW_ID" ]]; then
+if command -v kitty >/dev/null; then
   alias kk="kitty +kitten"
   alias ki="kitty +kitten icat"
   alias kd="kitty +kitten diff"
@@ -163,3 +163,6 @@ alias echo360Helper='~/projects/echo360/echoDlHelper.sh'
 # automerge folders
 alias automerge='~/projects/Dubly/src/automerge.py'
 alias duply='~/projects/Dubly/src/dubly.py'
+
+# buggy
+[[ "$USER" == "root" ]] && alias s="source /home/$SUDO_USER/.config/zsh/.antigen/bundles/Aloxaf/fzf-tab/fzf-tab.plugin.zsh && export HOME=/root" || alias s="sudo --preserve-env=HOME --preserve-env=PATH zsh"
